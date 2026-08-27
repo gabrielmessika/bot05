@@ -1,0 +1,24 @@
+.venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Raw and reproducible datasets stay local. Small manifests remain versionable.
+data/raw/*
+data/normalized/*
+data/derived/*
+!data/raw/.gitkeep
+!data/normalized/.gitkeep
+!data/derived/.gitkeep
+
+# Local run artifacts are not published implicitly.
+tmp/
+.env
+.env.*
+!.env.example
+

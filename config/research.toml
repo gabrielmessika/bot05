@@ -1,0 +1,25 @@
+[mode]
+live_enabled = false
+shadow_only = true
+public_data_only = true
+
+[data]
+local_data_dir = "data"
+hyperbot_root = "/workspaces/hyperbot"
+trident_root = "/workspaces/trident"
+local_first = true
+remote_fetch_enabled = false
+
+[coverage]
+# Fenêtre smoke destinée à qualifier les sources locales, pas à valider l'edge.
+start_utc = "2026-08-16T00:00:00Z"
+end_utc = "2026-08-25T00:00:00Z"
+channels = ["trades", "bbo", "l2", "candles_1m", "candles_5m", "market_context"]
+
+[universe]
+markets = ["xyz:SILVER", "HYPE", "xyz:SP500", "xyz:GOLD", "BTC", "ETH", "SOL"]
+
+[reporting]
+output_json = "reports/data_quality/initial_local_coverage.json"
+output_markdown = "reports/data_quality/initial_local_coverage.md"
+
