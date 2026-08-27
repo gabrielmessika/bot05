@@ -1823,6 +1823,7 @@
     }
   ],
   "configuration": {
+    "code_sha256": "36cd9ffe4c4ae5c86734ad94330d683c4d80eb613134ed7cd1a4f838629000d9",
     "hyperbot_root": "/workspaces/hyperbot",
     "local_first": true,
     "network_performed": false,
@@ -3591,5 +3592,5 @@
       "reusable_dataset_ids": []
     }
   ],
-  "schema_version": 1
+  "schema_version": 2
 }

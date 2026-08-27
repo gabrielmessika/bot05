@@ -1,0 +1,12 @@
+[calendar]
+calendar_id = "test_europe_cash"
+version = "2026.fixture.1"
+timezone = "Europe/Paris"
+valid_from = 2026-01-01
+valid_to = 2026-12-31
+closed_dates = [2026-04-06, 2026-12-25]
+
+[[early_close]]
+date = 2026-12-24
+local_time = 13:00:00
+

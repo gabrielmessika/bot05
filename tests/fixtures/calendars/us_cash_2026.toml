@@ -1,0 +1,12 @@
+[calendar]
+calendar_id = "test_us_cash"
+version = "2026.fixture.1"
+timezone = "America/New_York"
+valid_from = 2026-01-01
+valid_to = 2026-12-31
+closed_dates = [2026-07-03, 2026-12-25]
+
+[[early_close]]
+date = 2026-11-27
+local_time = 13:00:00
+

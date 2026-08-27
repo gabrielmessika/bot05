@@ -4,8 +4,8 @@
 
 **Spécification :** [`PLAN.md`](PLAN.md)
 
-**État global :** D0/T0 et D1A livrés ; D1B est le prochain lot. Aucune capacité
-d'ordre et aucun appel réseau dans les lots livrés.
+**État global :** D0/T0, D1A et D1B livrés ; D1C est le prochain lot. Aucune
+capacité d'ordre et aucun appel réseau dans les lots livrés.
 
 ## 1. Rôle de ce document
 
@@ -37,7 +37,7 @@ Statuts utilisés : `À faire`, `En cours`, `Terminé`, `Bloqué`.
 |---|---|---|---|
 | D0 | dépôt, règles, packaging, config sûre, suivi | Terminé | package installable, aucun chemin live, commandes qualité vertes |
 | D1A | inventaire local-first HyperBot/TRIDENT et plan de gaps | Terminé | rapport déterministe, aucune lecture massive ni requête réseau |
-| D1B | contrats marché/candle/trade, calendrier et provenance | À faire | modèles immuables, DST/holidays et checksums couverts |
+| D1B | contrats marché/candle/trade, calendrier et provenance | Terminé | modèles immuables, DST/holidays et checksums couverts |
 | D1C | store append-only et adaptateurs H0/H1/L | À faire | import bit-identique, rejets séparés, sources inchangées |
 | D2 | bougies 1m/5m et features causales | À faire | aucune fuite, gaps explicites, parité officielle |
 | D3 | stratégie v0 et superviseur de risque | À faire | machine d'état exact-once et fail-closed |
@@ -53,7 +53,7 @@ Statuts utilisés : `À faire`, `En cours`, `Terminé`, `Bloqué`.
 |---|---|---|---|---|
 | T0 | packaging, config stricte, absence de live/secrets | D0 | Terminé | pytest + ruff + mypy verts |
 | T1 | provenance, lecture seule, checksums, gaps et déterminisme | D1A–D1C | En cours | sources inchangées, report bit-identique |
-| T2 | DST, jours fériés, bougies, lookahead et pivots | D1B–D2 | À faire | matrice temps/causalité complète |
+| T2 | DST, jours fériés, bougies, lookahead et pivots | D1B–D2 | En cours | calendrier couvert ; features/pivots attendent D2 |
 | T3 | transitions stratégie, refus risque, exact-once | D3 | À faire | invariants long/short et fail-closed |
 | T4 | intrabar, gaps, fees, slippage, funding, latence | D4 | À faire | central et stress couverts |
 | T5 | intégration dataset → signal → replay → rapport | D2–D5 | À faire | répétition bit-identique et audit des coûts |
@@ -132,14 +132,57 @@ datasets actuellement indexés.
 
 ## 7. Ordre de travail immédiat
 
-1. Fermer D0/T0 et D1A/T1 avec le rapport initial et les commandes qualité.
-2. Implémenter D1B : contrats de domaine et calendrier IANA/DST avant la stratégie.
-3. Implémenter D1C : adaptateurs checksumés des candidats utiles uniquement.
-4. Auditer la couverture événementielle des marchés et sessions cibles.
-5. Générer un manifest de gaps ; seulement alors autoriser un fetch H0/H1 public.
-6. Livrer D2 puis D3 sur fixtures synthétiques avant tout calcul de PnL.
+1. Implémenter D1C : store append-only et adaptateurs checksumés des candidats
+   utiles uniquement.
+2. Auditer la couverture événementielle des marchés et sessions cibles.
+3. Générer un manifest de gaps ; seulement alors autoriser un fetch H0/H1 public.
+4. Livrer D2 puis D3 sur fixtures synthétiques avant tout calcul de PnL.
 
-## 8. Décisions techniques
+## 8. Lot livré — D1B / T2 calendrier
+
+### Contrats de domaine
+
+`src/bot05/models.py` fournit des modèles gelés et typés pour :
+
+- `DatasetProvenance`, avec tier, chemins/URL, période UTC, timezone source,
+  versions code/config/calendrier/adaptateur et trois SHA-256 obligatoires ;
+- `MarketDefinition`, y compris DEX, asset ID, decimals, tick, size step,
+  leverage, marge, growth mode, deployer fee et statut ;
+- `Candle`, qui refuse une observation antérieure à sa clôture et contrôle ses
+  invariants OHLC ;
+- `Trade`, `BookLevel`, `BookSnapshot` et `MarketContext` ;
+- enveloppe JSON canonique v1, décimales sérialisées comme chaînes, rejet des
+  champs inconnus et round-trip bit-à-bit pour les cinq types de records.
+
+### Calendrier et sessions
+
+`src/bot05/calendars/` fournit :
+
+- les définitions distinctes `europe_open` à 09:00 `Europe/Paris`,
+  `us_cash_open` à 09:30 `America/New_York` et l'ablation
+  `video_us_1500` à 15:00 `Europe/Paris` ;
+- un loader TOML strict dont le SHA-256 entre dans `calendar_version` ;
+- une plage de validité obligatoire et fail-closed hors couverture ;
+- week-ends, jours fermés et demi-sessions avec fermeture anticipée ;
+- détection explicite des heures locales inexistantes ou ambiguës ;
+- résolution UTC de `t0`, fin du drive, expiration du pullback et dernière
+  sortie possible ;
+- rejet si l'ouverture ou l'horizon sort de la session externe ;
+- états XYZ `external_open`, `internal_oracle`, `closed` et `unknown`.
+
+Les calendriers 2026 présents sous `tests/fixtures/calendars/` sont des fixtures
+de validation, pas des sources de production. Tout calendrier de recherche réel
+devra être acquis avec une source opérateur, checksumé et limité à sa période ;
+aucune liste de jours fériés n'est extrapolée implicitement.
+
+### Tests de sortie
+
+La suite couvre les semaines où les DST US et Europe diffèrent, week-end,
+holiday, demi-session, ouverture hors plage externe, horizon dépassant une
+fermeture anticipée, bascule XYZ externe/interne, date hors version, temps local
+inexistant/ambigu et construction causale des trois bougies 5 minutes clôturées.
+
+## 9. Décisions techniques
 
 ### 2026-08-27 — séparation spécification / exécution
 
@@ -159,21 +202,36 @@ Le planner ne contient aucun transport HTTP/WebSocket. Il rend visibles les
 gaps et bloque l'acquisition distante tant que la configuration ne l'autorise
 pas dans un lot ultérieur couvert par tests.
 
-## 9. Preuves de validation
+### 2026-08-27 — temps de domaine en UTC, règles en IANA
+
+Les records de marché acceptent uniquement des timestamps UTC aware. Les
+heures de session restent exprimées dans leurs timezones IANA et sont résolues
+strictement à la date concernée ; une heure locale ambiguë ou inexistante est
+rejetée au lieu de choisir silencieusement un `fold`.
+
+### 2026-08-27 — calendrier réel jamais extrapolé
+
+Le moteur est générique, mais une expérience doit fournir un fichier calendrier
+checksumé avec plage de validité. Les fixtures de tests ne constituent pas une
+source opérateur et ne seront pas utilisées pour une conclusion de recherche.
+
+## 10. Preuves de validation
 
 - `uv sync` : réussi, lockfile créé, package `bot05==0.1.0` installé ;
-- `uv run pytest` : **19 tests réussis** ;
+- `uv run pytest` : **45 tests réussis** ;
 - `uv run ruff check .` : **réussi** ;
-- `uv run mypy src` : **réussi en mode strict**, 7 fichiers source ;
+- `uv run mypy src` : **réussi en mode strict**, 11 fichiers source ;
 - rapport JSON : `reports/data_quality/initial_local_coverage.json` ;
 - SHA-256 du rapport :
-  `04d627700f80b9771014a04949a9552966f9c006dfeefb74e28c0c8334479737` ;
+  `096af9241b895f70e581d5e12110a74326898a77e08f00314f7dc447d516ab27` ;
+- SHA-256 du code inclus dans le rapport :
+  `36cd9ffe4c4ae5c86734ad94330d683c4d80eb613134ed7cd1a4f838629000d9` ;
 - seconde génération : **identique**, même SHA-256, aucune baseline écrasée.
 
-## 10. Impact opérationnel
+## 11. Impact opérationnel
 
 - **Trading :** impossible ; aucun gateway ni dépendance d'exchange.
-- **Réseau :** aucun appel effectué ou implémenté dans D0/D1A.
+- **Réseau :** aucun appel effectué ou implémenté dans D0/D1A/D1B.
 - **Données partagées :** lecture seule ; aucun fichier HyperBot/TRIDENT modifié.
 - **Stockage BOT05 :** seuls petits manifests/rapports sont versionnables ; raw,
   normalized et derived restent ignorés hors `.gitkeep`.

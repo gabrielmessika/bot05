@@ -51,6 +51,7 @@ output_markdown = "reports/coverage.md"
 
     assert canonical_report_bytes(first) == canonical_report_bytes(second)
     assert first["configuration"]["network_performed"] is False  # type: ignore[index]
+    assert len(first["configuration"]["code_sha256"]) == 64  # type: ignore[index]
     digest = write_report(loaded, first)
     assert len(digest) == 64
     stored = json.loads(loaded.config.reporting.output_json.read_text())

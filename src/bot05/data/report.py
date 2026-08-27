@@ -21,11 +21,24 @@ from bot05.data.contracts import (
 from bot05.data.inventory import discover_local_inventory
 from bot05.data.planner import plan_inventory
 
-REPORT_SCHEMA_VERSION = 1
+REPORT_SCHEMA_VERSION = 2
 
 
 class ReportExistsError(RuntimeError):
     """Raised when a published report would be overwritten with new content."""
+
+
+def code_sha256() -> str:
+    """Fingerprint package paths and bytes without relying on mutable Git state."""
+
+    package_root = Path(__file__).resolve().parents[1]
+    digest = hashlib.sha256()
+    for path in sorted(package_root.rglob("*.py")):
+        digest.update(path.relative_to(package_root).as_posix().encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(path.read_bytes())
+        digest.update(b"\0")
+    return digest.hexdigest()
 
 
 def _iso(timestamp_ms: int) -> str:
@@ -110,6 +123,7 @@ def build_report(loaded: LoadedConfig) -> dict[str, object]:
         "configuration": {
             "path": str(loaded.source_path),
             "sha256": loaded.sha256,
+            "code_sha256": code_sha256(),
             "local_first": config.data.local_first,
             "remote_fetch_enabled": config.data.remote_fetch_enabled,
             "network_performed": False,
@@ -176,6 +190,7 @@ def render_markdown(report: dict[str, object], json_sha256: str) -> str:
         "intégrité et leurs gaps n'ont pas été qualifiés par BOT05.",
         "",
         f"- SHA-256 du JSON : `{json_sha256}`",
+        f"- SHA-256 du code : `{configuration['code_sha256']}`",
         f"- SHA-256 de configuration : `{configuration['sha256']}`",
         f"- Assets découverts : {summary['asset_count']}",
         f"- Problèmes d'inventaire : {summary['issue_count']}",

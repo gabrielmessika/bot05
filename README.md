@@ -18,6 +18,10 @@ Le lot initial fournit :
 - un package Python 3.11 avec pytest, ruff et mypy strict ;
 - une configuration TOML stricte et fail-closed ;
 - des contrats immuables de couverture de données ;
+- des contrats immuables et versionnés pour définitions de marché, bougies,
+  trades, carnets, contextes marché et provenance ;
+- un moteur de sessions IANA fail-closed pour `europe_open`, `us_cash_open` et
+  `video_us_1500`, avec calendriers checksumés, DST et demi-sessions ;
 - un inventaire en lecture seule des datasets utiles d'HyperBot et TRIDENT ;
 - un plan d'acquisition qui distingue données réutilisables, données locales à
   qualifier et intervalles réellement absents ;
@@ -43,6 +47,11 @@ manifests locaux, puis écrit le rapport configuré sous `reports/data_quality/`
 La fenêtre initiale est un smoke de qualification, pas un échantillon destiné à
 conclure sur la rentabilité.
 
+Les calendriers utilisés par une expérience sont des fichiers TOML stricts et
+versionnés par leur SHA-256. Une date hors de leur plage déclarée retourne un
+état inconnu ou un rejet explicite ; BOT05 ne prolonge jamais implicitement le
+calendrier de l'année précédente.
+
 ## Données
 
 La priorité d'acquisition est :
@@ -55,4 +64,3 @@ La priorité d'acquisition est :
 
 Les racines partagées restent en lecture seule. BOT05 écrit uniquement ses
 manifests, données normalisées, dérivés et rapports sous son propre dépôt.
-

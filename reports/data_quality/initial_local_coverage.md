@@ -4,7 +4,8 @@ Ce rapport est un plan d'acquisition local-first. Aucun appel réseau n'a été
 effectué. Les datasets partagés restent candidats tant que leur schéma, leur
 intégrité et leurs gaps n'ont pas été qualifiés par BOT05.
 
-- SHA-256 du JSON : `04d627700f80b9771014a04949a9552966f9c006dfeefb74e28c0c8334479737`
+- SHA-256 du JSON : `096af9241b895f70e581d5e12110a74326898a77e08f00314f7dc447d516ab27`
+- SHA-256 du code : `36cd9ffe4c4ae5c86734ad94330d683c4d80eb613134ed7cd1a4f838629000d9`
 - SHA-256 de configuration : `08a014bcb67439009a3554f69037e7d0c029c0e5f57ab38a1a2502b0fa36cfc9`
 - Assets découverts : 59
 - Problèmes d'inventaire : 0
