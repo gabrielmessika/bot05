@@ -1,0 +1,24 @@
+[mode]
+live_enabled = false
+shadow_only = true
+public_data_only = true
+
+[data]
+local_data_dir = "data"
+hyperbot_root = "/workspaces/hyperbot"
+trident_root = "/workspaces/trident"
+local_first = true
+remote_fetch_enabled = false
+
+[coverage]
+# Fenêtre H1 BTC qualifiée couvrant exactement l'opening drive US du 21 août.
+start_utc = "2026-08-21T13:30:00Z"
+end_utc = "2026-08-21T13:45:00Z"
+channels = ["trades", "bbo", "candles_1m", "candles_5m"]
+
+[universe]
+markets = ["BTC"]
+
+[reporting]
+output_json = "reports/data_quality/post_btc_open_qualification.json"
+output_markdown = "reports/data_quality/post_btc_open_qualification.md"

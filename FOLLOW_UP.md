@@ -4,10 +4,11 @@
 
 **Spécification :** [`PLAN.md`](PLAN.md)
 
-**État global :** D0/T0, D1A, D1B, D1C et T1 livrés ; un premier segment H1
-réel est qualifié et réutilisé par le planner. Les segments adjacents de
-l'ouverture US précèdent D2. Aucune capacité d'ordre et aucun appel réseau dans
-les lots livrés.
+**État global :** D0/T0, D1A, D1B, D1C et T1 livrés ; D2/T2 en cours. Les trois
+segments H1 de l'ouverture US BTC sont qualifiés, les bougies/features causales
+sont implémentées et auditées sur 13:30–13:45 UTC. La parité H0 officielle et
+l'historique de 20 sessions restent à fournir. Aucune capacité d'ordre et aucun
+appel réseau dans les lots livrés.
 
 ## 1. Rôle de ce document
 
@@ -41,7 +42,7 @@ Statuts utilisés : `À faire`, `En cours`, `Terminé`, `Bloqué`.
 | D1A | inventaire local-first HyperBot/TRIDENT et plan de gaps | Terminé | rapport déterministe, aucune lecture massive ni requête réseau |
 | D1B | contrats marché/candle/trade, calendrier et provenance | Terminé | modèles immuables, DST/holidays et checksums couverts |
 | D1C | store append-only et adaptateurs H0/H1/L | Terminé | import bit-identique, rejets séparés, sources inchangées |
-| D2 | bougies 1m/5m et features causales | À faire | aucune fuite, gaps explicites, parité officielle |
+| D2 | bougies 1m/5m et features causales | En cours | aucune fuite, gaps explicites, parité officielle |
 | D3 | stratégie v0 et superviseur de risque | À faire | machine d'état exact-once et fail-closed |
 | D4 | replay déterministe et coûts | À faire | modèles conservateur/central/stress reproductibles |
 | D5 | qualification des datasets et études par marché | À faire | rapports séparés U/H0/H1/H2/L, limites publiées |
@@ -134,9 +135,10 @@ datasets actuellement indexés.
 
 ## 7. Ordre de travail immédiat
 
-1. Qualifier les segments BTC adjacents qui complètent l'opening drive US du
-   21 août 2026 de 13:30 à 13:45 UTC.
-2. Livrer D2 : bougies 1m/5m, gaps explicites et parité sur cette fenêtre H1.
+1. Obtenir une source H0 officielle checksummée commune à la fenêtre BTC pour
+   fermer la parité D2, sans activer de fetch tant que le gap n'est pas prouvé.
+2. Qualifier au moins 20 sessions BTC comparables antérieures pour exercer les
+   seuils roulants q50/q75 et les niveaux de liquidité sur données réelles.
 3. Étendre ensuite la qualification aux marchés/session prioritaires ; seulement
    alors proposer un fetch H0/H1 public limité au reliquat prouvé.
 4. Livrer D3 sur fixtures synthétiques avant tout calcul de PnL.
@@ -242,6 +244,18 @@ L'absence de rejet de schéma prouve seulement que les records ont été adapté
 La réutilisation par le planner exige en plus un rapport de qualification
 checksumé prouvant la couverture déclarée et l'absence de gap critique.
 
+### 2026-08-28 — un bucket absent reste un gap
+
+L'agrégateur D2 ne fabrique jamais une bougie plate. Une couverture partielle,
+une minute sans trade ou un composant 1m absent produit un gap typé. Le temps
+`closed_at` conserve en outre le retard maximal de réception des trades.
+
+### 2026-08-28 — seuil roulant lié à son scope
+
+Un percentile causal porte le marché, la session et son instant `as_of`. Il ne
+peut pas être appliqué à un autre marché/session, et la valeur courante reste
+strictement exclue des 60 observations historiques.
+
 ### 2026-08-28 — L2 legacy incomplet rejeté
 
 Les snapshots TRIDENT fournissant meilleur bid/ask et profondeur à 10 bps sans
@@ -282,9 +296,9 @@ source opérateur et ne seront pas utilisées pour une conclusion de recherche.
 ## 11. Preuves de validation
 
 - `uv sync` : réussi, lockfile créé, package `bot05==0.1.0` installé ;
-- `uv run pytest` : **59 tests réussis** ;
+- `uv run pytest` : **74 tests réussis** ;
 - `uv run ruff check .` : **réussi** ;
-- `uv run mypy src` : **réussi en mode strict**, 16 fichiers source ;
+- `uv run mypy src` : **réussi en mode strict**, 20 fichiers source ;
 - D1C couvre H0 causal, chaîne/séquence/checksums H1, limites L, source gzip en
   lecture seule, doublons, rejets séparés, import bit-identique, idempotence,
   corruption du store et gate de qualification vers le planner ;
@@ -294,6 +308,11 @@ source opérateur et ne seront pas utilisées pour une conclusion de recherche.
 - SHA-256 du code inclus dans le rapport :
   `36cd9ffe4c4ae5c86734ad94330d683c4d80eb613134ed7cd1a4f838629000d9` ;
 - seconde génération : **identique**, même SHA-256, aucune baseline écrasée.
+- D2 couvre l'agrégation 1m/5m, les gaps explicites, la parité de séries,
+  l'Opening Drive long/short, le quartile externe, les percentiles exclusifs,
+  les pivots 2-left/2-right et les niveaux de session précédente complets ;
+- SHA-256 courant du code dans les rapports D2 :
+  `fbc38fa53b8bae67e99b5fa4a777aceff1c69f56d82cc5a6b25c7760b12369eb`.
 
 ## 12. Impact opérationnel
 
@@ -301,9 +320,9 @@ source opérateur et ne seront pas utilisées pour une conclusion de recherche.
 - **Réseau :** aucun appel effectué ou implémenté dans D0/D1A/D1B/D1C.
 - **Données partagées :** lecture seule ; aucun fichier HyperBot/TRIDENT modifié.
 - **Stockage BOT05 :** seuls petits manifests/rapports sont versionnables ; raw,
-  normalized et derived restent ignorés hors `.gitkeep`. Le format de segment
-  normalisé v1 est prêt sous `data/normalized/`, mais aucune donnée réelle n'y a
-  été écrite pendant D1C.
+  normalized et derived restent ignorés hors `.gitkeep`. Les trois segments BTC
+  normalisés occupent environ 33 Mo sous `data/normalized/` et sont
+  reproductibles depuis les sources H1 en lecture seule.
 
 ## 13. Première qualification réelle H1 — fermeture T1
 
@@ -348,7 +367,70 @@ fenêtre BTC apparaît désormais dans `reusable_dataset_ids`.
 
 ### Limite causale
 
-Cette tranche ne couvre pas à elle seule les trois bougies de l'opening drive
-13:30–13:45 UTC. Elle valide le pipeline T1 et une portion de données, pas un
-signal, un backtest ou une hypothèse de rendement. Les segments adjacents sont
-requis avant la parité D2.
+Cette tranche ne couvrait pas à elle seule les trois bougies de l'opening drive
+13:30–13:45 UTC. Elle validait le pipeline T1 et une portion de données, pas un
+signal, un backtest ou une hypothèse de rendement. La section suivante consigne
+la qualification des segments adjacents et l'audit D2.
+
+## 14. D2/T2 en cours — opening drive BTC complet
+
+### Qualification des segments adjacents
+
+Les fenêtres bornées des segments HyperBot `000617` et `000619` complètent sans
+trou la qualification centrale `000618` :
+
+- `000617` couvre 13:30:00.000–13:31:15.921 UTC, valide **130 809** records
+  source et conserve 1 740 trades plus 848 BBO ; gap BBO maximal **241 ms** ;
+- `000619` couvre 13:39:17.601–13:45:00.000 UTC, valide **130 872** records
+  source et conserve 6 692 trades plus 3 959 BBO ; gap BBO maximal **405 ms** ;
+- les deux rapports déclarent zéro rejet, doublon et gap critique ; leurs
+  SHA-256 sont respectivement
+  `1f1132275a9b9ce1d66adb028fe1b979bf34fd4053648dc67b41fdb0aa580446`
+  et `f1364a361098a09ea2640e8bcdefff5fac685bd4bba429e27543676ad3397e7c`.
+
+Sur les trois segments, l'audit porte donc sur **392 454 records source** et
+normalise **29 041 records BTC**, dont 18 617 trades et 10 424 BBO. Le rapport
+local-first dédié découvre 66 assets, dont trois BOT05 qualifiés, sans problème
+d'inventaire ; les quatre besoins BTC trades/BBO/candles 1m/5m sont
+`reuse_local`, avec zéro plage de fetch. Son SHA-256 est
+`621add2d5712b037a6196802f61697df3496fa6d7a2c1a03b1712ddd4ed44d3b`.
+
+### Features causales livrées
+
+- agrégation trades vers 1m/5m, et rollup 1m vers 5m, ordonnés par temps
+  exchange avec tie-break de réception/source ;
+- gaps typés pour couverture partielle, minute sans trade et composant absent,
+  sans prix synthétique ;
+- comparateur de parité OHLCV avec buckets manquants et tolérances explicites ;
+- Opening Drive immuable, direction symétrique, quartile externe et midpoint ;
+- percentiles q50/q75 type-7 sur les 60 sessions antérieures seulement, avec
+  minimum fail-closed de 20 et scope marché/session obligatoire ;
+- pivots stricts 2-left/2-right émis seulement après observation des deux
+  bougies droites, et previous-session high/low refusés si la série est
+  incomplète.
+
+Les tests synthétiques couvrent long, short, invalidation par quartile,
+lookahead des percentiles, scope erroné, bougie retardée, gaps, rollup, parité,
+pivot non confirmé et session précédente incomplète.
+
+### Audit réel 13:30–13:45 UTC
+
+Le rapport `reports/features/btc_us_open_2026-08-21.json` relit les trois stores
+et leurs qualifications checksummées. Les 18 617 trades produisent exactement
+15 bougies 1m et trois bougies 5m, sans gap. Les trois 5m directes sont
+bit-à-bit identiques au rollup des 1m. Le dernier `closed_at` causal est
+13:45:00.280 UTC.
+
+L'Opening Drive observé est long : open 77 116, high 77 364, low 76 256, close
+77 330, body 27,7504 bps, range 143,6797 bps, close-location 0,9693 et midpoint
+76 810. Ces valeurs vérifient uniquement la mécanique sur une session ; elles
+ne constituent ni backtest ni preuve d'edge. Le SHA-256 du rapport est
+`4b44bf9e36c110e280fde5de8d1bc796cbf916b28ab9d2f0fad944afb9eabc56`.
+
+### Gate restant
+
+D2 demeure `En cours` : aucune candle H0 officielle checksummée n'est présente
+sur cette fenêtre, donc la parité externe n'est pas revendiquée. Les filtres
+q50/q75 restent aussi indisponibles sur données réelles tant que 20 sessions
+comparables antérieures ne sont pas qualifiées. Aucun résultat de rendement et
+aucune capacité d'ordre n'ont été ajoutés.

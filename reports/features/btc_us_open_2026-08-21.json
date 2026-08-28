@@ -1,0 +1,104 @@
+{
+  "aggregation": {
+    "candles_1m": {
+      "candle_count": 15,
+      "gap_count": 0,
+      "gaps": [],
+      "records_sha256": "14f8b4a8c523d5e50ca98a02ae207f6ac7cb514acac9dfb6950d8cdf51f40ea0"
+    },
+    "candles_5m_direct": {
+      "candle_count": 3,
+      "gap_count": 0,
+      "gaps": [],
+      "records_sha256": "320dc58b1988c6dcfae4d33edf14b99b0010e6ec8b0ca6b3bbbbeaca66d8707f"
+    },
+    "candles_5m_from_1m": {
+      "candle_count": 3,
+      "gap_count": 0,
+      "gaps": [],
+      "records_sha256": "320dc58b1988c6dcfae4d33edf14b99b0010e6ec8b0ca6b3bbbbeaca66d8707f"
+    },
+    "internal_5m_parity": true,
+    "trade_count": 18617
+  },
+  "code_sha256": "fbc38fa53b8bae67e99b5fa4a777aceff1c69f56d82cc5a6b25c7760b12369eb",
+  "config_sha256": "f64d828ce18514bb91b7c9d7250b46b6dedb58cef8af2e0d08f411861bbb9247",
+  "derived_provenance": {
+    "adapter_version": "bot05-causal-candles-v1",
+    "code_version": "sha256:fbc38fa53b8bae67e99b5fa4a777aceff1c69f56d82cc5a6b25c7760b12369eb",
+    "dataset_id": "derived-btc-1787319000000-1787319900000",
+    "source_manifests_sha256": "10b9db966a4dbaa25bba34717a3b2449f8fbefc41491b798345cd4cc4e591205",
+    "source_records_sha256": "0b80fa35d324ed97e097587528fc16ea98d797783ab27088c37e3d70100b4464",
+    "transformations": [
+      "qualified_h1_trades_only",
+      "exchange_time_ohlcv_v1",
+      "explicit_gap_policy_v1"
+    ]
+  },
+  "end_utc": "2026-08-21T13:45:00.000Z",
+  "evidence_tier": "H1",
+  "kind": "bot05_causal_opening_drive_feature_audit",
+  "market": "BTC",
+  "network_performed": false,
+  "official_candle_parity": {
+    "reason": "no_checksummed_h0_official_candles_for_common_window",
+    "status": "pending"
+  },
+  "opening_drive": {
+    "body_bps": "27.75040199180455417812127185",
+    "close": "77330.0",
+    "close_location": "0.9693140794223826714801444043",
+    "direction": "long",
+    "high": "77364.0",
+    "low": "76256.0",
+    "midpoint": "76810.0",
+    "observed_at": "2026-08-21T13:45:00.280Z",
+    "open": "77116.0",
+    "range_bps": "143.6796514342030188287774262",
+    "status": "valid"
+  },
+  "rolling_filters": {
+    "current_session_excluded_by_contract": true,
+    "drive_none": "available",
+    "drive_q50": "unavailable_requires_20_prior_comparable_sessions",
+    "drive_q75": "unavailable_requires_20_prior_comparable_sessions"
+  },
+  "schema_version": 1,
+  "session_id": "us_cash_open",
+  "sources": [
+    {
+      "dataset_id": "h1-btc-068525daf99a-1787319000000-1787319075921",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-068525daf99a-1787319000000-1787319075921/manifests/38b20489840db5c31b99a2f5637f7f2fea970cd7385e730c8b7ab85ff1b17324.json",
+      "manifest_sha256": "03c10ca635f3a189fe6f1c299957684df1f422b8a7ec33447db1257e9583ee96",
+      "qualification_report_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-068525daf99a-1787319000000-1787319075921-38b20489840db5c3.json",
+      "qualification_report_sha256": "1f1132275a9b9ce1d66adb028fe1b979bf34fd4053648dc67b41fdb0aa580446",
+      "records_path": "/workspaces/bot05/data/normalized/h1-btc-068525daf99a-1787319000000-1787319075921/records/38b20489840db5c31b99a2f5637f7f2fea970cd7385e730c8b7ab85ff1b17324.jsonl",
+      "records_sha256": "00a0a41738d9a525520500447df7770832b92b406c52e1f5a35ffa66b60550bf",
+      "segment_id": "38b20489840db5c31b99a2f5637f7f2fea970cd7385e730c8b7ab85ff1b17324",
+      "trade_count": 1740
+    },
+    {
+      "dataset_id": "h1-btc-2841b3f01cc5-1787319075921-1787319557601",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-2841b3f01cc5-1787319075921-1787319557601/manifests/198f4f4968228e2494b281fd462f7074e2464feee3d98b5482cb1f4a8913747f.json",
+      "manifest_sha256": "9844e172a6e8d15fa97fb5972f509f457592af0c64e79b56d5780d8c065c955c",
+      "qualification_report_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-2841b3f01cc5-1787319075921-1787319557601-198f4f4968228e24.json",
+      "qualification_report_sha256": "f0fbca2f2a13c854f8c68f93932dbda74c4a3151e703ccb3ac43e156bdb258d9",
+      "records_path": "/workspaces/bot05/data/normalized/h1-btc-2841b3f01cc5-1787319075921-1787319557601/records/198f4f4968228e2494b281fd462f7074e2464feee3d98b5482cb1f4a8913747f.jsonl",
+      "records_sha256": "39a0178d5f48d94019dbef4ba7993adc4ce12783efeac9da9f9760563942ef11",
+      "segment_id": "198f4f4968228e2494b281fd462f7074e2464feee3d98b5482cb1f4a8913747f",
+      "trade_count": 10185
+    },
+    {
+      "dataset_id": "h1-btc-3cc5e8c255d6-1787319557601-1787319900000",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-3cc5e8c255d6-1787319557601-1787319900000/manifests/f1dd2d6fcf22e511665b8644cb634d26205b72b60cf0b6a88c7da6f62c892f57.json",
+      "manifest_sha256": "2798b41a18744adf93f8a2c9a0cd034a83b4a9724daa72c1fcc7bbc7028bdb63",
+      "qualification_report_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-3cc5e8c255d6-1787319557601-1787319900000-f1dd2d6fcf22e511.json",
+      "qualification_report_sha256": "f1364a361098a09ea2640e8bcdefff5fac685bd4bba429e27543676ad3397e7c",
+      "records_path": "/workspaces/bot05/data/normalized/h1-btc-3cc5e8c255d6-1787319557601-1787319900000/records/f1dd2d6fcf22e511665b8644cb634d26205b72b60cf0b6a88c7da6f62c892f57.jsonl",
+      "records_sha256": "d5ac07ccd8e69ec447da8a48fb138685d655f1507898af45eddba6146e70ffae",
+      "segment_id": "f1dd2d6fcf22e511665b8644cb634d26205b72b60cf0b6a88c7da6f62c892f57",
+      "trade_count": 6692
+    }
+  ],
+  "start_utc": "2026-08-21T13:30:00.000Z"
+}

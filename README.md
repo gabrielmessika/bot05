@@ -29,6 +29,8 @@ Le lot initial fournit :
   des chaînes H1 et rejets legacy séparés ;
 - un store normalisé append-only, content-addressed et reproductible, dont la
   promotion exige un rapport de qualification checksumé ;
+- un moteur D2 de bougies 1m/5m, gaps explicites, Opening Drive causal,
+  percentiles historiques exclusifs, pivots confirmés et parité OHLCV ;
 - un rapport versionnable, sans appel réseau.
 
 Les données HyperBot partagées sont classées H1 dans BOT05, jamais H2. Les
@@ -84,6 +86,23 @@ Les calendriers utilisés par une expérience sont des fichiers TOML stricts et
 versionnés par leur SHA-256. Une date hors de leur plage déclarée retourne un
 état inconnu ou un rejet explicite ; BOT05 ne prolonge jamais implicitement le
 calendrier de l'année précédente.
+
+## Audit causal BTC 13:30–13:45 UTC
+
+Une fois les trois qualifications locales présentes, les commandes suivantes
+vérifient leur couverture puis dérivent l'Opening Drive sans accès réseau :
+
+```bash
+uv run python -m bot05.data.report \
+  --config config/research_btc_open_qualified.toml
+uv run python scripts/audit_opening_drive_features.py
+```
+
+Le second script vérifie à nouveau les manifests, records et rapports de
+qualification, construit 1m et 5m, compare les 5m directes au rollup des 1m et
+publie un rapport immuable sous `reports/features/`. La parité officielle H0
+reste explicitement en attente tant qu'une source checksummée commune n'est pas
+disponible.
 
 ## Données
 
