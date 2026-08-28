@@ -142,6 +142,8 @@ class StoredSegment:
     source: str
     evidence_tier: str
     source_raw_sha256: str
+    source_manifest_sha256: str
+    source_period: TimeRange
 
     def as_data_asset(self, evidence: QualificationEvidence | None = None) -> DataAsset:
         """Expose usable normalized coverage to the local-first planner."""
@@ -190,6 +192,7 @@ class StoredSegment:
                 "duplicate_count",
                 "reject_count",
                 "coverage",
+                "audit",
             }
             if set(report) != expected_keys:
                 raise AppendOnlyStoreError("qualification report keys mismatch")
@@ -217,6 +220,14 @@ class StoredSegment:
                     "qualification report does not prove a clean segment"
                 )
             report_coverage = report.get("coverage")
+            audit = report.get("audit")
+            if (
+                not isinstance(audit, dict)
+                or audit.get("source_manifest_sha256") != self.source_manifest_sha256
+            ):
+                raise AppendOnlyStoreError(
+                    "qualification audit does not match source manifest"
+                )
             expected_coverage = [
                 {"start_ms": item.start_ms, "end_ms": item.end_ms}
                 for item in evidence.coverage
@@ -233,12 +244,12 @@ class StoredSegment:
                     "qualification evidence coverage does not match its report"
                 )
             if any(
-                item.start_ms < self.coverage.start_ms
-                or item.end_ms > self.coverage.end_ms
+                item.start_ms < self.source_period.start_ms
+                or item.end_ms > self.source_period.end_ms
                 for item in evidence.coverage
             ):
                 raise AppendOnlyStoreError(
-                    "qualified coverage escapes normalized record bounds"
+                    "qualified coverage escapes source provenance bounds"
                 )
             qualification = Qualification.QUALIFIED
             coverage = evidence.coverage
@@ -319,6 +330,10 @@ class AppendOnlyStore:
             "evidence_tier": provenance.evidence_tier,
             "source_raw_sha256": provenance.raw_sha256,
             "source_manifest_sha256": provenance.manifest_sha256,
+            "source_period": {
+                "start_ms": _timestamp_ms(provenance.period_start),
+                "end_ms": _timestamp_ms(provenance.period_end),
+            },
             "adapter_version": provenance.adapter_version,
             "code_version": provenance.code_version,
             "config_sha256": provenance.config_sha256,
@@ -370,6 +385,11 @@ class AppendOnlyStore:
             source=provenance.source,
             evidence_tier=provenance.evidence_tier,
             source_raw_sha256=provenance.raw_sha256,
+            source_manifest_sha256=provenance.manifest_sha256,
+            source_period=TimeRange(
+                _timestamp_ms(provenance.period_start),
+                _timestamp_ms(provenance.period_end),
+            ),
         )
 
     def read_records(self, segment: StoredSegment) -> tuple[DomainRecord, ...]:

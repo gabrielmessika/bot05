@@ -4,9 +4,10 @@
 
 **Spécification :** [`PLAN.md`](PLAN.md)
 
-**État global :** D0/T0, D1A, D1B et D1C livrés ; la qualification
-événementielle des candidats locaux précède D2. Aucune capacité d'ordre et
-aucun appel réseau dans les lots livrés.
+**État global :** D0/T0, D1A, D1B, D1C et T1 livrés ; un premier segment H1
+réel est qualifié et réutilisé par le planner. Les segments adjacents de
+l'ouverture US précèdent D2. Aucune capacité d'ordre et aucun appel réseau dans
+les lots livrés.
 
 ## 1. Rôle de ce document
 
@@ -53,7 +54,7 @@ Statuts utilisés : `À faire`, `En cours`, `Terminé`, `Bloqué`.
 | Lot | Portée | Dépend de | Statut | Gate |
 |---|---|---|---|---|
 | T0 | packaging, config stricte, absence de live/secrets | D0 | Terminé | pytest + ruff + mypy verts |
-| T1 | provenance, lecture seule, checksums, gaps et déterminisme | D1A–D1C | En cours | sources inchangées, report bit-identique |
+| T1 | provenance, lecture seule, checksums, gaps et déterminisme | D1A–D1C | Terminé | sources inchangées, report bit-identique |
 | T2 | DST, jours fériés, bougies, lookahead et pivots | D1B–D2 | En cours | calendrier couvert ; features/pivots attendent D2 |
 | T3 | transitions stratégie, refus risque, exact-once | D3 | À faire | invariants long/short et fail-closed |
 | T4 | intrabar, gaps, fees, slippage, funding, latence | D4 | À faire | central et stress couverts |
@@ -133,11 +134,12 @@ datasets actuellement indexés.
 
 ## 7. Ordre de travail immédiat
 
-1. Auditer avec D1C la couverture événementielle des marchés et sessions cibles,
-   en commençant par un segment borné et utile.
-2. Publier les rapports de qualification et le manifest de gaps ; seulement
-   alors proposer un fetch H0/H1 public limité au reliquat.
-3. Livrer D2 puis D3 sur fixtures synthétiques avant tout calcul de PnL.
+1. Qualifier les segments BTC adjacents qui complètent l'opening drive US du
+   21 août 2026 de 13:30 à 13:45 UTC.
+2. Livrer D2 : bougies 1m/5m, gaps explicites et parité sur cette fenêtre H1.
+3. Étendre ensuite la qualification aux marchés/session prioritaires ; seulement
+   alors proposer un fetch H0/H1 public limité au reliquat prouvé.
+4. Livrer D3 sur fixtures synthétiques avant tout calcul de PnL.
 
 ## 8. Lot livré — D1B / T2 calendrier
 
@@ -280,9 +282,9 @@ source opérateur et ne seront pas utilisées pour une conclusion de recherche.
 ## 11. Preuves de validation
 
 - `uv sync` : réussi, lockfile créé, package `bot05==0.1.0` installé ;
-- `uv run pytest` : **57 tests réussis** ;
+- `uv run pytest` : **59 tests réussis** ;
 - `uv run ruff check .` : **réussi** ;
-- `uv run mypy src` : **réussi en mode strict**, 15 fichiers source ;
+- `uv run mypy src` : **réussi en mode strict**, 16 fichiers source ;
 - D1C couvre H0 causal, chaîne/séquence/checksums H1, limites L, source gzip en
   lecture seule, doublons, rejets séparés, import bit-identique, idempotence,
   corruption du store et gate de qualification vers le planner ;
@@ -302,3 +304,51 @@ source opérateur et ne seront pas utilisées pour une conclusion de recherche.
   normalized et derived restent ignorés hors `.gitkeep`. Le format de segment
   normalisé v1 est prêt sous `data/normalized/`, mais aucune donnée réelle n'y a
   été écrite pendant D1C.
+
+## 13. Première qualification réelle H1 — fermeture T1
+
+### Segment et périmètre
+
+Le segment HyperBot
+`2026-08-21-000618.jsonl.gz` a été choisi car il recouvre une portion utile de
+l'ouverture US BTC, du 21 août 2026 à 13:31:15.921 UTC jusqu'à
+13:39:17.601 UTC. L'audit lit toute la source, mais le store BOT05 conserve
+uniquement BTC `trades` et `bbo` dans cette fenêtre.
+
+### Preuves observées
+
+- SHA-256 brut vérifié :
+  `2841b3f01cc5ebf232ca82b7318effad4cbcba4d9db5739e3cbf55a5a03fdb2c` ;
+- manifest source vérifié, chaîne continue de la séquence `81319971` à
+  `81450743`, soit **130 773 records source** ;
+- **15 802 records BTC normalisés** : 10 185 trades et 5 617 BBO ;
+- zéro rejet, zéro doublon et zéro gap critique ;
+- gap BBO maximal : **288 ms**, sous le cap préenregistré de 15 secondes ;
+- rapport de qualification SHA-256 :
+  `f0fbca2f2a13c854f8c68f93932dbda74c4a3151e703ccb3ac43e156bdb258d9` ;
+- deux exécutions produisent le même segment, le même rapport et le même hash.
+
+Le rapport versionné est sous `reports/data_quality/qualifications/`. Les 19 Mo
+de records normalisés restent locaux et ignorés par Git sous
+`data/normalized/`. Les sources HyperBot n'ont pas été modifiées.
+
+### Réintégration local-first et gaps
+
+`src/bot05/data/inventory.py` redécouvre une qualification BOT05 seulement si
+les checksums du rapport, du manifest normalisé, des records, des rejets, du
+brut HyperBot et de son manifest sont encore valides. Le planner réutilise alors
+l'asset H1 pour BTC trades/BBO ; il ne le reclasse jamais H2.
+
+Le rapport post-qualification recense 64 assets, dont un asset BOT05 qualifié,
+sans problème d'inventaire. Son SHA-256 est
+`46dcf754640c2eb8ab1217bd56cb568198e66e4f333aefb243a1b69a810ca32e`.
+Le nombre de plages remote reste inchangé car les candidats locaux non encore
+qualifiés bloquaient déjà ces fetches ; la différence matérielle est que cette
+fenêtre BTC apparaît désormais dans `reusable_dataset_ids`.
+
+### Limite causale
+
+Cette tranche ne couvre pas à elle seule les trois bougies de l'opening drive
+13:30–13:45 UTC. Elle valide le pipeline T1 et une portion de données, pas un
+signal, un backtest ou une hypothèse de rendement. Les segments adjacents sont
+requis avant la parité D2.

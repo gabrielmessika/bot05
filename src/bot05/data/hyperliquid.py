@@ -14,6 +14,7 @@ from typing import cast
 from bot05.data.normalizer import (
     NormalizationError,
     NormalizedRecord,
+    OutOfScopeRecord,
     SourceIntegrityError,
     SourceRow,
     decode_json_object,
@@ -117,8 +118,14 @@ class HyperbotH1Adapter:
     provenance: DatasetProvenance
     expected_sequence: int | None = None
     expected_previous_sha256: str | None = None
+    allowed_markets: frozenset[str] | None = None
+    allowed_channels: frozenset[str] | None = None
+    start_exchange_ms: int | None = None
+    end_exchange_ms: int | None = None
     _next_sequence: int | None = None
     _previous_sha256: str | None = None
+    _first_record_sha256: str | None = None
+    _validated_count: int = 0
 
     def __post_init__(self) -> None:
         if self.provenance.evidence_tier != "H1":
@@ -130,8 +137,39 @@ class HyperbotH1Adapter:
             and _SHA256.fullmatch(self.expected_previous_sha256) is None
         ):
             raise ValueError("expected_previous_sha256 must be a SHA-256 digest")
+        if self.allowed_markets is not None and not self.allowed_markets:
+            raise ValueError("allowed_markets must not be empty")
+        if self.allowed_channels is not None and not self.allowed_channels:
+            raise ValueError("allowed_channels must not be empty")
+        if (self.start_exchange_ms is None) != (self.end_exchange_ms is None):
+            raise ValueError("both exchange-time bounds must be supplied")
+        if (
+            self.start_exchange_ms is not None
+            and self.end_exchange_ms is not None
+            and (
+                self.start_exchange_ms < 0
+                or self.start_exchange_ms >= self.end_exchange_ms
+            )
+        ):
+            raise ValueError("exchange-time filter must be positive and non-empty")
         self._next_sequence = self.expected_sequence
         self._previous_sha256 = self.expected_previous_sha256
+
+    @property
+    def next_sequence(self) -> int | None:
+        return self._next_sequence
+
+    @property
+    def last_record_sha256(self) -> str | None:
+        return self._previous_sha256
+
+    @property
+    def first_record_sha256(self) -> str | None:
+        return self._first_record_sha256
+
+    @property
+    def validated_count(self) -> int:
+        return self._validated_count
 
     def _validated_payload(self, row: SourceRow) -> tuple[Mapping[str, object], str]:
         record = decode_json_object(row)
@@ -197,6 +235,9 @@ class HyperbotH1Adapter:
             raise SourceIntegrityError(f"negative recorded time at row {row.index}")
         self._next_sequence = sequence + 1
         self._previous_sha256 = record_sha256
+        if self._first_record_sha256 is None:
+            self._first_record_sha256 = record_sha256
+        self._validated_count += 1
         if record.get("event_type") != "PublicMarketDataEvent":
             raise NormalizationError(
                 "unsupported_event_type",
@@ -247,6 +288,16 @@ class HyperbotH1Adapter:
         market = _string(payload, "coin")
         exchange_ms = _integer(payload, "exchange_ts_ms")
         receive_ms = _integer(payload, "receive_ts_ms")
+        if self.allowed_markets is not None and market not in self.allowed_markets:
+            raise OutOfScopeRecord
+        if self.allowed_channels is not None and channel not in self.allowed_channels:
+            raise OutOfScopeRecord
+        if (
+            self.start_exchange_ms is not None
+            and self.end_exchange_ms is not None
+            and not self.start_exchange_ms <= exchange_ms < self.end_exchange_ms
+        ):
+            raise OutOfScopeRecord
         inner_raw = _string(payload, "payload_json")
         try:
             inner_value = json.loads(inner_raw)

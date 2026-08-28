@@ -138,6 +138,7 @@ def test_zero_reject_segment_becomes_qualified_bot05_asset(tmp_path: Path) -> No
                 "critical_gap_count": 0,
                 "duplicate_count": 0,
                 "reject_count": 0,
+                "audit": {"source_manifest_sha256": segment.source_manifest_sha256},
                 "coverage": [
                     {
                         "start_ms": qualified_coverage[0].start_ms,
@@ -208,6 +209,7 @@ def test_qualification_report_cannot_hide_a_critical_gap(tmp_path: Path) -> None
                 "critical_gap_count": 1,
                 "duplicate_count": 0,
                 "reject_count": 0,
+                "audit": {"source_manifest_sha256": segment.source_manifest_sha256},
                 "coverage": [
                     {
                         "start_ms": coverage[0].start_ms,

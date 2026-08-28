@@ -21,7 +21,7 @@ from bot05.data.contracts import (
 from bot05.data.inventory import discover_local_inventory
 from bot05.data.planner import plan_inventory
 
-REPORT_SCHEMA_VERSION = 2
+REPORT_SCHEMA_VERSION = 3
 
 
 class ReportExistsError(RuntimeError):
@@ -96,8 +96,13 @@ def build_report(loaded: LoadedConfig) -> dict[str, object]:
     """Build a deterministic report from configuration and local metadata."""
 
     config = loaded.config
+    project_root = loaded.source_path.parent.parent
+    qualification_root = project_root / "reports" / "data_quality" / "qualifications"
     inventory = discover_local_inventory(
-        config.data.hyperbot_root, config.data.trident_root
+        config.data.hyperbot_root,
+        config.data.trident_root,
+        bot05_data_root=config.data.local_data_dir,
+        qualification_root=qualification_root,
     )
     coverage = TimeRange(
         _milliseconds(config.coverage.start_utc),
@@ -129,6 +134,8 @@ def build_report(loaded: LoadedConfig) -> dict[str, object]:
             "network_performed": False,
             "hyperbot_root": str(config.data.hyperbot_root),
             "trident_root": str(config.data.trident_root),
+            "bot05_data_root": str(config.data.local_data_dir),
+            "qualification_root": str(qualification_root),
         },
         "policy": {
             "shared_hyperbot_tier": "H1",

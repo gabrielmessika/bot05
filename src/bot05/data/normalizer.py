@@ -20,6 +20,10 @@ class SourceIntegrityError(ValueError):
     """Raised when source bytes or their append-only chain cannot be trusted."""
 
 
+class OutOfScopeRecord(Exception):
+    """An intact source record excluded by a preregistered import scope."""
+
+
 class NormalizationError(ValueError):
     """A source record is intact but cannot enter the BOT05 domain."""
 
@@ -121,12 +125,18 @@ def iter_jsonl_rows(
     path: Path,
     *,
     expected_sha256: str,
+    expected_content_sha256: str | None = None,
     max_record_bytes: int = 16 * 1024 * 1024,
 ) -> Iterator[SourceRow]:
     """Verify the complete immutable source, then stream exact JSONL records."""
 
     if _SHA256.fullmatch(expected_sha256) is None:
         raise SourceIntegrityError("expected source checksum is invalid")
+    if (
+        expected_content_sha256 is not None
+        and _SHA256.fullmatch(expected_content_sha256) is None
+    ):
+        raise SourceIntegrityError("expected content checksum is invalid")
     actual_sha256 = file_sha256(path)
     if actual_sha256 != expected_sha256:
         raise SourceIntegrityError(
@@ -137,6 +147,7 @@ def iter_jsonl_rows(
         raise ValueError("max_record_bytes must be positive")
 
     opener = gzip.open if path.suffix == ".gz" else Path.open
+    content_digest = hashlib.sha256()
     try:
         with opener(path, "rb") as handle:
             for index, raw in enumerate(handle, start=1):
@@ -145,9 +156,15 @@ def iter_jsonl_rows(
                         f"source record exceeds {max_record_bytes} bytes at "
                         f"{path}:{index}"
                     )
+                content_digest.update(raw)
                 yield SourceRow(index, raw, hashlib.sha256(raw).hexdigest())
     except (gzip.BadGzipFile, EOFError) as exc:
         raise SourceIntegrityError(f"invalid gzip source: {path}") from exc
+    if (
+        expected_content_sha256 is not None
+        and content_digest.hexdigest() != expected_content_sha256
+    ):
+        raise SourceIntegrityError(f"content checksum mismatch for {path}")
 
 
 def source_row_from_mapping(index: int, payload: Mapping[str, object]) -> SourceRow:
@@ -204,6 +221,8 @@ def normalize_rows(
                 continue
             seen_records.add(encoded)
             normalized.append(item)
+        except OutOfScopeRecord:
+            continue
         except NormalizationError as exc:
             rejects.append(
                 RejectedRecord(

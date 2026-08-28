@@ -475,7 +475,174 @@ def _discover_trident_candles(
     return assets, issues
 
 
-def discover_local_inventory(hyperbot_root: Path, trident_root: Path) -> LocalInventory:
+def _qualification_ranges(value: object) -> tuple[TimeRange, ...]:
+    if not isinstance(value, list):
+        raise ValueError("qualification coverage must be an array")
+    ranges: list[TimeRange] = []
+    for raw in value:
+        if not isinstance(raw, dict) or set(raw) != {"start_ms", "end_ms"}:
+            raise ValueError("qualification coverage entry is invalid")
+        start = raw.get("start_ms")
+        end = raw.get("end_ms")
+        if type(start) is not int or type(end) is not int:
+            raise ValueError("qualification coverage bounds must be integers")
+        ranges.append(TimeRange(start, end))
+    if not ranges or tuple(sorted(ranges)) != tuple(ranges):
+        raise ValueError("qualification coverage must be non-empty and sorted")
+    return tuple(ranges)
+
+
+def _resolved_child(root: Path, relative: object, name: str) -> Path:
+    if not isinstance(relative, str) or not relative:
+        raise ValueError(f"{name} path must be a non-empty string")
+    path = (root / relative).resolve()
+    try:
+        path.relative_to(root.resolve())
+    except ValueError as exc:
+        raise ValueError(f"{name} path escapes its dataset root") from exc
+    return path
+
+
+def _discover_bot05_qualifications(
+    data_root: Path,
+    qualification_root: Path,
+    hyperbot_root: Path,
+) -> tuple[list[DataAsset], list[InventoryIssue]]:
+    assets: list[DataAsset] = []
+    issues: list[InventoryIssue] = []
+    if not qualification_root.is_dir():
+        return assets, issues
+    normalized_root = (data_root / "normalized").resolve()
+    hyperbot_resolved = hyperbot_root.resolve()
+    for report_path in sorted(qualification_root.glob("*.json")):
+        try:
+            report_digest = _read_sidecar_digest(report_path)
+            if report_digest is None or _sha256_file(report_path) != report_digest:
+                raise ValueError("qualification report checksum is invalid")
+            document = cast(
+                Mapping[str, object], json.loads(report_path.read_text("utf-8"))
+            )
+            if (
+                document.get("schema_version") != 1
+                or document.get("kind") != "bot05_dataset_qualification"
+                or document.get("qualified") is not True
+                or document.get("critical_gap_count") != 0
+                or document.get("duplicate_count") != 0
+                or document.get("reject_count") != 0
+            ):
+                raise ValueError("qualification report is not a clean promotion")
+            dataset_id = document.get("dataset_id")
+            segment_id = document.get("segment_id")
+            if not isinstance(dataset_id, str) or not re.fullmatch(
+                r"[A-Za-z0-9][A-Za-z0-9._:-]{0,127}", dataset_id
+            ):
+                raise ValueError("qualification dataset_id is invalid")
+            if not isinstance(segment_id, str) or not re.fullmatch(
+                r"[a-f0-9]{64}", segment_id
+            ):
+                raise ValueError("qualification segment_id is invalid")
+            dataset_root = (normalized_root / dataset_id).resolve()
+            dataset_root.relative_to(normalized_root)
+            manifest_path = (
+                dataset_root / "manifests" / f"{segment_id}.json"
+            ).resolve()
+            manifest = cast(
+                Mapping[str, object], json.loads(manifest_path.read_text("utf-8"))
+            )
+            if (
+                manifest.get("schema_version") != 1
+                or manifest.get("kind") != "bot05_normalized_segment"
+                or manifest.get("dataset_id") != dataset_id
+                or manifest.get("segment_id") != segment_id
+                or manifest.get("record_count") in {None, 0}
+                or manifest.get("reject_count") != 0
+                or manifest.get("records_sha256") != document.get("records_sha256")
+                or manifest.get("source_raw_sha256")
+                != document.get("source_raw_sha256")
+            ):
+                raise ValueError("normalized manifest disagrees with qualification")
+            records_path = _resolved_child(
+                dataset_root, manifest.get("records_file"), "records"
+            )
+            rejects_path = _resolved_child(
+                dataset_root, manifest.get("rejects_file"), "rejects"
+            )
+            if (
+                not records_path.is_file()
+                or _sha256_file(records_path) != manifest.get("records_sha256")
+                or not rejects_path.is_file()
+                or _sha256_file(rejects_path) != manifest.get("rejects_sha256")
+            ):
+                raise ValueError("normalized store checksum is invalid")
+            audit = document.get("audit")
+            if not isinstance(audit, dict):
+                raise ValueError("qualification audit is missing")
+            source_path_raw = audit.get("source_path")
+            source_manifest_raw = audit.get("source_manifest_path")
+            if not isinstance(source_path_raw, str) or not isinstance(
+                source_manifest_raw, str
+            ):
+                raise ValueError("qualification source paths are invalid")
+            source_path = Path(source_path_raw).resolve()
+            source_manifest = Path(source_manifest_raw).resolve()
+            source_path.relative_to(hyperbot_resolved)
+            source_manifest.relative_to(hyperbot_resolved)
+            if _sha256_file(source_path) != document.get(
+                "source_raw_sha256"
+            ) or _sha256_file(source_manifest) != audit.get("source_manifest_sha256"):
+                raise ValueError("qualified shared source checksum changed")
+            market = audit.get("market")
+            channels = audit.get("channels")
+            if not isinstance(market, str) or not market:
+                raise ValueError("qualification market is invalid")
+            if not isinstance(channels, list) or not all(
+                isinstance(item, str) and item for item in channels
+            ):
+                raise ValueError("qualification channels are invalid")
+            normalized_channels = tuple(
+                "l2" if item == "l2Book" else item for item in cast(list[str], channels)
+            )
+            manifest_markets = manifest.get("markets")
+            manifest_channels = manifest.get("channels")
+            if manifest_markets != [market] or set(normalized_channels) != set(
+                cast(list[str], manifest_channels)
+                if isinstance(manifest_channels, list)
+                else []
+            ):
+                raise ValueError("qualified scope disagrees with normalized manifest")
+            assets.append(
+                DataAsset(
+                    dataset_id=f"bot05-qualified-{segment_id[:16]}",
+                    source_project=SourceProject.BOT05,
+                    tier=EvidenceTier.HYPERLIQUID_ARCHIVE,
+                    path=manifest_path,
+                    markets=(market,),
+                    channels=normalized_channels,
+                    coverage=_qualification_ranges(document.get("coverage")),
+                    provenance_sha256=_sha256_file(manifest_path),
+                    qualification=Qualification.QUALIFIED,
+                    quality_flags=(
+                        "bot05_normalized_append_only",
+                        "qualified_by_checksummed_report",
+                        f"qualification_report_sha256_{report_digest}",
+                        "shared_hyperbot_not_bot05_h2",
+                    ),
+                )
+            )
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            issues.append(
+                InventoryIssue(str(report_path), f"invalid qualification: {exc}")
+            )
+    return assets, issues
+
+
+def discover_local_inventory(
+    hyperbot_root: Path,
+    trident_root: Path,
+    *,
+    bot05_data_root: Path | None = None,
+    qualification_root: Path | None = None,
+) -> LocalInventory:
     """Discover metadata without modifying or fully hashing shared large files."""
 
     hyperbot_assets, hyperbot_issues = _discover_hyperbot_replays(hyperbot_root)
@@ -484,12 +651,30 @@ def discover_local_inventory(hyperbot_root: Path, trident_root: Path) -> LocalIn
         hyperbot_root, trident_root
     )
     candle_assets, candle_issues = _discover_trident_candles(trident_root)
+    bot05_assets: list[DataAsset] = []
+    bot05_issues: list[InventoryIssue] = []
+    if bot05_data_root is not None and qualification_root is not None:
+        bot05_assets, bot05_issues = _discover_bot05_qualifications(
+            bot05_data_root, qualification_root, hyperbot_root
+        )
     assets = sorted(
-        (*hyperbot_assets, *export_assets, *legacy_assets, *candle_assets),
+        (
+            *bot05_assets,
+            *hyperbot_assets,
+            *export_assets,
+            *legacy_assets,
+            *candle_assets,
+        ),
         key=lambda item: item.dataset_id,
     )
     issues = sorted(
-        (*hyperbot_issues, *export_issues, *legacy_issues, *candle_issues),
+        (
+            *bot05_issues,
+            *hyperbot_issues,
+            *export_issues,
+            *legacy_issues,
+            *candle_issues,
+        ),
         key=lambda item: (item.source, item.reason),
     )
     return LocalInventory(assets=tuple(assets), issues=tuple(issues))

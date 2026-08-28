@@ -55,6 +55,31 @@ Le moteur D1C est livré, mais aucune archive partagée volumineuse n'est import
 automatiquement. Un import reste `candidate` jusqu'à l'audit événementiel de sa
 couverture et la publication d'un rapport de qualification checksumé.
 
+## Qualification H1 bornée
+
+La commande suivante relit et valide intégralement un segment partagé, tout en
+ne normalisant que le marché et les canaux explicitement demandés :
+
+```bash
+uv run python scripts/qualify_hyperbot_segment.py \
+  --source-manifest /workspaces/hyperbot/data/server-fetches/EXAMPLE/payload/data/raw/collector/public-market-data/manifest.json \
+  --segment 2026-08-21-000618.jsonl.gz \
+  --market BTC \
+  --channels trades bbo
+```
+
+Il n'y a aucun appel réseau. Une chaîne, séquence ou checksum invalide bloque le
+batch. La qualification exige aussi zéro rejet/doublon/gap critique et un BBO
+continu sous le cap configuré. Les records normalisés restent ignorés par Git ;
+seuls les petits rapports et leurs sidecars sont publiables.
+
+Après qualification, le plan local-first est régénéré sans écraser la baseline :
+
+```bash
+uv run python scripts/plan_data_acquisition.py \
+  --config config/research_post_qualification.toml
+```
+
 Les calendriers utilisés par une expérience sont des fichiers TOML stricts et
 versionnés par leur SHA-256. Une date hors de leur plage déclarée retourne un
 état inconnu ou un rejet explicite ; BOT05 ne prolonge jamais implicitement le

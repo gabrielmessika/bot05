@@ -1,0 +1,3811 @@
+{
+  "assets": [
+    {
+      "channels": [
+        "trades",
+        "bbo"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787319557601,
+          "end_utc": "2026-08-21T13:39:17.601Z",
+          "start_ms": 1787319075921,
+          "start_utc": "2026-08-21T13:31:15.921Z"
+        }
+      ],
+      "dataset_id": "bot05-qualified-198f4f4968228e24",
+      "markets": [
+        "BTC"
+      ],
+      "path": "/workspaces/bot05/data/normalized/h1-btc-2841b3f01cc5-1787319075921-1787319557601/manifests/198f4f4968228e2494b281fd462f7074e2464feee3d98b5482cb1f4a8913747f.json",
+      "provenance_sha256": "9844e172a6e8d15fa97fb5972f509f457592af0c64e79b56d5780d8c065c955c",
+      "qualification": "qualified",
+      "quality_flags": [
+        "bot05_normalized_append_only",
+        "qualified_by_checksummed_report",
+        "qualification_report_sha256_f0fbca2f2a13c854f8c68f93932dbda74c4a3151e703ccb3ac43e156bdb258d9",
+        "shared_hyperbot_not_bot05_h2"
+      ],
+      "source_project": "bot05",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "l2",
+        "bbo",
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787592402165,
+          "end_utc": "2026-08-24T17:26:42.165Z",
+          "start_ms": 1787591859228,
+          "start_utc": "2026-08-24T17:17:39.228Z"
+        }
+      ],
+      "dataset_id": "hyperbot-raw-export-19dda432df94d59c",
+      "markets": [
+        "BTC",
+        "ETH",
+        "HYPE",
+        "SOL",
+        "PUMP",
+        "ZEC",
+        "XRP",
+        "LIT",
+        "KAITO",
+        "CRV",
+        "WLD",
+        "XMR",
+        "TAO",
+        "ADA",
+        "LINK",
+        "PAXG",
+        "xyz:SKHX",
+        "xyz:CL",
+        "xyz:BRENTOIL",
+        "xyz:SPCX",
+        "xyz:SP500",
+        "xyz:XYZ100",
+        "xyz:SILVER",
+        "xyz:GOLD"
+      ],
+      "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260824T185943Z-0c12f125/export/manifest.json",
+      "provenance_sha256": "19dda432df94d59ce7151d30c103834f2ac98b0613443acfcfb614e0fcf10708",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "physical_segments_present",
+        "manifest_declared_market_subscription",
+        "recorded_time_coverage_only",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_event_level_market_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "l2",
+        "bbo",
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1786924800000,
+          "end_utc": "2026-08-17T00:00:00.000Z",
+          "start_ms": 1786838400000,
+          "start_utc": "2026-08-16T00:00:00.000Z"
+        }
+      ],
+      "dataset_id": "hyperbot-raw-export-1e3acf51e5245c0b",
+      "markets": [
+        "BTC",
+        "ETH",
+        "HYPE",
+        "SOL",
+        "PUMP",
+        "ZEC",
+        "XRP",
+        "LIT",
+        "KAITO",
+        "CRV",
+        "WLD",
+        "XMR",
+        "TAO",
+        "ADA",
+        "LINK",
+        "PAXG",
+        "xyz:SKHX",
+        "xyz:CL",
+        "xyz:BRENTOIL",
+        "xyz:SPCX",
+        "xyz:SP500",
+        "xyz:XYZ100",
+        "xyz:SILVER",
+        "xyz:GOLD"
+      ],
+      "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260817T071924Z-71b8699d/export/manifest.json",
+      "provenance_sha256": "1e3acf51e5245c0bbca7c40ad604ab912211e00531c72c5241ef32e39bff2a99",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "physical_segments_present",
+        "manifest_declared_market_subscription",
+        "recorded_time_coverage_only",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_event_level_market_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "l2",
+        "bbo",
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787356800000,
+          "end_utc": "2026-08-22T00:00:00.000Z",
+          "start_ms": 1786838400000,
+          "start_utc": "2026-08-16T00:00:00.000Z"
+        }
+      ],
+      "dataset_id": "hyperbot-raw-export-55f51e99051fa1ce",
+      "markets": [
+        "BTC",
+        "ETH",
+        "HYPE",
+        "SOL",
+        "PUMP",
+        "ZEC",
+        "XRP",
+        "LIT",
+        "KAITO",
+        "CRV",
+        "WLD",
+        "XMR",
+        "TAO",
+        "ADA",
+        "LINK",
+        "PAXG",
+        "xyz:SKHX",
+        "xyz:CL",
+        "xyz:BRENTOIL",
+        "xyz:SPCX",
+        "xyz:SP500",
+        "xyz:XYZ100",
+        "xyz:SILVER",
+        "xyz:GOLD"
+      ],
+      "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/export/manifest.json",
+      "provenance_sha256": "55f51e99051fa1cecfe1b58c221c6401d821f8c5caf7c6b4b25ddf4422d7d22c",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "physical_segments_present",
+        "manifest_declared_market_subscription",
+        "recorded_time_coverage_only",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_event_level_market_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "l2",
+        "bbo",
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787788800000,
+          "end_utc": "2026-08-27T00:00:00.000Z",
+          "start_ms": 1787616000000,
+          "start_utc": "2026-08-25T00:00:00.000Z"
+        }
+      ],
+      "dataset_id": "hyperbot-raw-export-6c3d9d9c74898090",
+      "markets": [
+        "BTC",
+        "ETH",
+        "HYPE",
+        "SOL",
+        "PUMP",
+        "ZEC",
+        "XRP",
+        "LIT",
+        "KAITO",
+        "CRV",
+        "WLD",
+        "XMR",
+        "TAO",
+        "ADA",
+        "LINK",
+        "PAXG",
+        "xyz:SKHX",
+        "xyz:CL",
+        "xyz:BRENTOIL",
+        "xyz:SPCX",
+        "xyz:SP500",
+        "xyz:XYZ100",
+        "xyz:SILVER",
+        "xyz:GOLD"
+      ],
+      "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260827T155143Z-74396a1c/export/manifest.json",
+      "provenance_sha256": "6c3d9d9c748980904e085b09743f32c89b490d44ee5d7646924ef2877b03e118",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "physical_segments_present",
+        "manifest_declared_market_subscription",
+        "recorded_time_coverage_only",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_event_level_market_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "l2",
+        "bbo",
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787875200000,
+          "end_utc": "2026-08-28T00:00:00.000Z",
+          "start_ms": 1787788800000,
+          "start_utc": "2026-08-27T00:00:00.000Z"
+        }
+      ],
+      "dataset_id": "hyperbot-raw-export-9f0c805521989a16",
+      "markets": [
+        "BTC",
+        "ETH",
+        "HYPE",
+        "SOL",
+        "PUMP",
+        "ZEC",
+        "XRP",
+        "LIT",
+        "KAITO",
+        "CRV",
+        "WLD",
+        "XMR",
+        "TAO",
+        "ADA",
+        "LINK",
+        "PAXG",
+        "xyz:SKHX",
+        "xyz:CL",
+        "xyz:BRENTOIL",
+        "xyz:SPCX",
+        "xyz:SP500",
+        "xyz:XYZ100",
+        "xyz:SILVER",
+        "xyz:GOLD"
+      ],
+      "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260828T151428Z-d5b8ac26/export/manifest.json",
+      "provenance_sha256": "9f0c805521989a16e2e7deee1a5b9298d308eead6375bbfff75622017d3ddf35",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "physical_segments_present",
+        "manifest_declared_market_subscription",
+        "recorded_time_coverage_only",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_event_level_market_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "l2",
+        "bbo",
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787443200000,
+          "end_utc": "2026-08-23T00:00:00.000Z",
+          "start_ms": 1787356800000,
+          "start_utc": "2026-08-22T00:00:00.000Z"
+        }
+      ],
+      "dataset_id": "hyperbot-raw-export-cf8b2f8ef85bf557",
+      "markets": [
+        "BTC",
+        "ETH",
+        "HYPE",
+        "SOL",
+        "PUMP",
+        "ZEC",
+        "XRP",
+        "LIT",
+        "KAITO",
+        "CRV",
+        "WLD",
+        "XMR",
+        "TAO",
+        "ADA",
+        "LINK",
+        "PAXG",
+        "xyz:SKHX",
+        "xyz:CL",
+        "xyz:BRENTOIL",
+        "xyz:SPCX",
+        "xyz:SP500",
+        "xyz:XYZ100",
+        "xyz:SILVER",
+        "xyz:GOLD"
+      ],
+      "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260823T210904Z-4defbd11/export/manifest.json",
+      "provenance_sha256": "cf8b2f8ef85bf557c5d5d478819c3b33347a0f1ff794f3e9fc4ce641e67cf4c0",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "physical_segments_present",
+        "manifest_declared_market_subscription",
+        "recorded_time_coverage_only",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_event_level_market_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "l2",
+        "bbo",
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787594866713,
+          "end_utc": "2026-08-24T18:07:46.713Z",
+          "start_ms": 1787593972923,
+          "start_utc": "2026-08-24T17:52:52.923Z"
+        }
+      ],
+      "dataset_id": "hyperbot-raw-export-f9a17bd75b64c05d",
+      "markets": [
+        "BTC",
+        "ETH",
+        "HYPE",
+        "SOL",
+        "PUMP",
+        "ZEC",
+        "XRP",
+        "LIT",
+        "KAITO",
+        "CRV",
+        "WLD",
+        "XMR",
+        "TAO",
+        "ADA",
+        "LINK",
+        "PAXG",
+        "xyz:SKHX",
+        "xyz:CL",
+        "xyz:BRENTOIL",
+        "xyz:SPCX",
+        "xyz:SP500",
+        "xyz:XYZ100",
+        "xyz:SILVER",
+        "xyz:GOLD"
+      ],
+      "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260824T190342Z-f462a46a/export/manifest.json",
+      "provenance_sha256": "f9a17bd75b64c05d822c584afd96e65e75303b9ad97413578e0e71bc81000a6b",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "physical_segments_present",
+        "manifest_declared_market_subscription",
+        "recorded_time_coverage_only",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_event_level_market_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1786924800000,
+          "end_utc": "2026-08-17T00:00:00.000Z",
+          "start_ms": 1786838400000,
+          "start_utc": "2026-08-16T00:00:00.000Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-066f73578f7b77c7",
+      "markets": [
+        "HYPE"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-16-HYPE-e939de69a823c209.json",
+      "provenance_sha256": "066f73578f7b77c78481299ac7ec603ad12ff867be4b1bcc7c158b1a28791d53",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787594348225,
+          "end_utc": "2026-08-24T17:59:08.225Z",
+          "start_ms": 1787594309432,
+          "start_utc": "2026-08-24T17:58:29.432Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-10d25b4cb497b1c9",
+      "markets": [
+        "BTC"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260824T190342Z-f462a46a/2026-08-24-BTC-25924b22ef805835.json",
+      "provenance_sha256": "10d25b4cb497b1c955f9d52430044c74c9ec194e29a1e97f37bb55ea62f2cd0b",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1786924800000,
+          "end_utc": "2026-08-17T00:00:00.000Z",
+          "start_ms": 1786838399726,
+          "start_utc": "2026-08-15T23:59:59.726Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-14dbb7b4cb1a4e8b",
+      "markets": [
+        "BTC"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-16-BTC-0d270fa458ff17d6.json",
+      "provenance_sha256": "14dbb7b4cb1a4e8b8a11781021d3ce0e41d5e305a3a33463caca06e0654b067e",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787184000000,
+          "end_utc": "2026-08-20T00:00:00.000Z",
+          "start_ms": 1787097599810,
+          "start_utc": "2026-08-18T23:59:59.810Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-1527f5b7bbe7e5b7",
+      "markets": [
+        "HYPE"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-19-HYPE-ed927ca959a4ddd8.json",
+      "provenance_sha256": "1527f5b7bbe7e5b7e1c6df0d97e717d5e2f15a80d406f675d26a8f586811b1cf",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787356800000,
+          "end_utc": "2026-08-22T00:00:00.000Z",
+          "start_ms": 1787270399673,
+          "start_utc": "2026-08-20T23:59:59.673Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-2198a0799724fd22",
+      "markets": [
+        "ETH"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-21-ETH-49ab765eaf7630b8.json",
+      "provenance_sha256": "2198a0799724fd2201d833eaf9fe88cda046b3f373378a2873bf076307efec10",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787184000000,
+          "end_utc": "2026-08-20T00:00:00.000Z",
+          "start_ms": 1787097600000,
+          "start_utc": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-28e144c64429fe1a",
+      "markets": [
+        "ETH"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-19-ETH-3de1e70bf2a74e47.json",
+      "provenance_sha256": "28e144c64429fe1a2925783489e2f1b1db9862b0e67ecc23554793882d596767",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787011200000,
+          "end_utc": "2026-08-18T00:00:00.000Z",
+          "start_ms": 1786924800000,
+          "start_utc": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-2b9ab971f9df310d",
+      "markets": [
+        "BTC"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-17-BTC-79fd55c756837fc2.json",
+      "provenance_sha256": "2b9ab971f9df310d01b06ced0bdfe9f270137ddafbffb0113a7d657af2069477",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787011200000,
+          "end_utc": "2026-08-18T00:00:00.000Z",
+          "start_ms": 1786924799892,
+          "start_utc": "2026-08-16T23:59:59.892Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-355720feaa69419a",
+      "markets": [
+        "HYPE"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-17-HYPE-feea1e69ee78a825.json",
+      "provenance_sha256": "355720feaa69419a6b41f5f5e8a7cdf0932c0c8d13aec79f265e8503bd056a81",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787443200000,
+          "end_utc": "2026-08-23T00:00:00.000Z",
+          "start_ms": 1787356799615,
+          "start_utc": "2026-08-21T23:59:59.615Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-36589fd37a013671",
+      "markets": [
+        "BTC"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260823T210904Z-4defbd11/2026-08-22-BTC-fe53ec5434bde7aa.json",
+      "provenance_sha256": "36589fd37a0136715bc38f8a259b41abe9b96cd5402d5c3ce2982150e295102e",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1786924800000,
+          "end_utc": "2026-08-17T00:00:00.000Z",
+          "start_ms": 1786838400000,
+          "start_utc": "2026-08-16T00:00:00.000Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-3a9ad3bac480cc3d",
+      "markets": [
+        "BTC"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/2026-08-16-BTC-47242c22d572ab8a.json",
+      "provenance_sha256": "3a9ad3bac480cc3dd6caf558b15443a3e0617072e05656b4397f689667636fe2",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787097600000,
+          "end_utc": "2026-08-19T00:00:00.000Z",
+          "start_ms": 1787011199984,
+          "start_utc": "2026-08-17T23:59:59.984Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-3b84aa014d07d6d6",
+      "markets": [
+        "BTC"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-18-BTC-61b3ec83ae0429e7.json",
+      "provenance_sha256": "3b84aa014d07d6d6ae3a848f0d2d3341c9c14637a9c841c11a49314b263fc9a7",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1786924800000,
+          "end_utc": "2026-08-17T00:00:00.000Z",
+          "start_ms": 1786838400000,
+          "start_utc": "2026-08-16T00:00:00.000Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-4308bf87a4e96bac",
+      "markets": [
+        "BTC"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/2026-08-16-BTC-bba904003a2bc233.json",
+      "provenance_sha256": "4308bf87a4e96bac995e97c5058e78e26c49cfc2ce85f35b78ac52c9b051b1b6",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787591911244,
+          "end_utc": "2026-08-24T17:18:31.244Z",
+          "start_ms": 1787591878949,
+          "start_utc": "2026-08-24T17:17:58.949Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-46b97406b06f2509",
+      "markets": [
+        "BTC"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260824T185943Z-0c12f125/2026-08-24-BTC-0e25aad53d16db22.json",
+      "provenance_sha256": "46b97406b06f25091889ca0e37608e5ab588031c836a54c1126937d061fb767c",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787270400000,
+          "end_utc": "2026-08-21T00:00:00.000Z",
+          "start_ms": 1787183999735,
+          "start_utc": "2026-08-19T23:59:59.735Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-4a2e9a2177474ec7",
+      "markets": [
+        "ETH"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-20-ETH-1689aee660c8d3fd.json",
+      "provenance_sha256": "4a2e9a2177474ec7e1ee60d715144be2b803cd049d501e8d0cb839a6360213c1",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787356800000,
+          "end_utc": "2026-08-22T00:00:00.000Z",
+          "start_ms": 1787270399673,
+          "start_utc": "2026-08-20T23:59:59.673Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-4b329752d2ba8a45",
+      "markets": [
+        "HYPE"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-21-HYPE-2e3325647cf604be.json",
+      "provenance_sha256": "4b329752d2ba8a452c100aa0cf554336e3fea1be48269e858445ea493b7813b1",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787097600000,
+          "end_utc": "2026-08-19T00:00:00.000Z",
+          "start_ms": 1787011200000,
+          "start_utc": "2026-08-18T00:00:00.000Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-8607f22cf244f1e1",
+      "markets": [
+        "HYPE"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-18-HYPE-5dd1388aecfe7895.json",
+      "provenance_sha256": "8607f22cf244f1e1e539969903f7e03b9e115ac42d24b4f3f58805bc861b83c7",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787270400000,
+          "end_utc": "2026-08-21T00:00:00.000Z",
+          "start_ms": 1787183999735,
+          "start_utc": "2026-08-19T23:59:59.735Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-8b3c0793b254b012",
+      "markets": [
+        "HYPE"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-20-HYPE-ad0fdb0ded2716c5.json",
+      "provenance_sha256": "8b3c0793b254b0129134bedf36a536139c699704e65fe0bd8d280d99251c54e2",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787184000000,
+          "end_utc": "2026-08-20T00:00:00.000Z",
+          "start_ms": 1787097599810,
+          "start_utc": "2026-08-18T23:59:59.810Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-96a850b9e40eaad7",
+      "markets": [
+        "BTC"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-19-BTC-31ac1dc4069e495b.json",
+      "provenance_sha256": "96a850b9e40eaad71c4f437e6195410a7f117257af97899b657febfe1e50a2a0",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787270400000,
+          "end_utc": "2026-08-21T00:00:00.000Z",
+          "start_ms": 1787184000000,
+          "start_utc": "2026-08-20T00:00:00.000Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-9b340e40fd6463b2",
+      "markets": [
+        "SOL"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-20-SOL-4cbf8bb36e89aba5.json",
+      "provenance_sha256": "9b340e40fd6463b254d87ebf4e7db430ba661b596a981c1436ad52e0a958704f",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787097600000,
+          "end_utc": "2026-08-19T00:00:00.000Z",
+          "start_ms": 1787011199917,
+          "start_utc": "2026-08-17T23:59:59.917Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-9bde11b6d453e778",
+      "markets": [
+        "ETH"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-18-ETH-686ec2e3e3050c79.json",
+      "provenance_sha256": "9bde11b6d453e7789e59e1ec6c4cb1dc49576383eadc457fdcca79735daea256",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787011200000,
+          "end_utc": "2026-08-18T00:00:00.000Z",
+          "start_ms": 1786924800000,
+          "start_utc": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-9ee9c0ab933e33ab",
+      "markets": [
+        "SOL"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-17-SOL-a468ea828160ff8b.json",
+      "provenance_sha256": "9ee9c0ab933e33ab34f204f76c62bec0cfbb7a9393612255a7c0cdcf17ea5d5b",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787788800000,
+          "end_utc": "2026-08-27T00:00:00.000Z",
+          "start_ms": 1787702399722,
+          "start_utc": "2026-08-25T23:59:59.722Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-a4609ea6615379e1",
+      "markets": [
+        "BTC"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260827T155143Z-74396a1c/2026-08-26-BTC-b69b18765f0c97f1.json",
+      "provenance_sha256": "a4609ea6615379e1ae5f46cdbd8c1dee10b558d9bf0213983617cb44cad89862",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787270400000,
+          "end_utc": "2026-08-21T00:00:00.000Z",
+          "start_ms": 1787183999735,
+          "start_utc": "2026-08-19T23:59:59.735Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-a4bd7d7b85f09a87",
+      "markets": [
+        "BTC"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-20-BTC-27f832be662ddc10.json",
+      "provenance_sha256": "a4bd7d7b85f09a87e9cbbc126a51999950b65dc227d972874308623f134eafba",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787702400000,
+          "end_utc": "2026-08-26T00:00:00.000Z",
+          "start_ms": 1787615999718,
+          "start_utc": "2026-08-24T23:59:59.718Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-bea8980c1f1468c8",
+      "markets": [
+        "BTC"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260827T155143Z-74396a1c/2026-08-25-BTC-4a3e3d7262188a74.json",
+      "provenance_sha256": "bea8980c1f1468c8fcba73d0e1bdb2d5de55fb0117d217aad080604920cdd8bf",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1786924800000,
+          "end_utc": "2026-08-17T00:00:00.000Z",
+          "start_ms": 1786838399926,
+          "start_utc": "2026-08-15T23:59:59.926Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-c3acbe6e70481b42",
+      "markets": [
+        "SOL"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-16-SOL-c488e9fb1a3bf605.json",
+      "provenance_sha256": "c3acbe6e70481b426f78d64467ad2e899d4fa5700bb8609ad43d101c26d32b10",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787356800000,
+          "end_utc": "2026-08-22T00:00:00.000Z",
+          "start_ms": 1787270399673,
+          "start_utc": "2026-08-20T23:59:59.673Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-c85a95fa53a4dea9",
+      "markets": [
+        "SOL"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-21-SOL-c2ad0ac4585e3669.json",
+      "provenance_sha256": "c85a95fa53a4dea951524bdd2230fcb09be022174c57508eb6d29fc304f33736",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787097600000,
+          "end_utc": "2026-08-19T00:00:00.000Z",
+          "start_ms": 1787011199917,
+          "start_utc": "2026-08-17T23:59:59.917Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-d4fe6fbc02de39c8",
+      "markets": [
+        "SOL"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-18-SOL-c6318dbff6d2afd9.json",
+      "provenance_sha256": "d4fe6fbc02de39c892b243b3d7f70610fe45476378e6993856cdbead61024144",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1786924800000,
+          "end_utc": "2026-08-17T00:00:00.000Z",
+          "start_ms": 1786838399726,
+          "start_utc": "2026-08-15T23:59:59.726Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-d5b2fbbcab41dc60",
+      "markets": [
+        "BTC"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/2026-08-16-BTC-d042c2c002498295.json",
+      "provenance_sha256": "d5b2fbbcab41dc6061470b549e615353e01c9324f8b6f750651d3e56433f8125",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787356800000,
+          "end_utc": "2026-08-22T00:00:00.000Z",
+          "start_ms": 1787270399673,
+          "start_utc": "2026-08-20T23:59:59.673Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-dacee71d3f19ca7c",
+      "markets": [
+        "BTC"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-21-BTC-a71f9df308194b12.json",
+      "provenance_sha256": "dacee71d3f19ca7cd83600097f31614697c9be3193769075d403f58d0f026197",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787184000000,
+          "end_utc": "2026-08-20T00:00:00.000Z",
+          "start_ms": 1787097600000,
+          "start_utc": "2026-08-19T00:00:00.000Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-e6c19dd3f1ec6024",
+      "markets": [
+        "SOL"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-19-SOL-7dc0437aced42375.json",
+      "provenance_sha256": "e6c19dd3f1ec6024165a1e0e38c078a2937924d3e6f022f757d48ff00a3381ce",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1787011200000,
+          "end_utc": "2026-08-18T00:00:00.000Z",
+          "start_ms": 1786924800000,
+          "start_utc": "2026-08-17T00:00:00.000Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-eac0fa58026d7d32",
+      "markets": [
+        "ETH"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-17-ETH-a4db8ba8da97dc52.json",
+      "provenance_sha256": "eac0fa58026d7d32a3973d8e5e5bbeb6af5eeb9e4e2b27145b7bfbb6d5f00b54",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades",
+        "bbo",
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1786924800000,
+          "end_utc": "2026-08-17T00:00:00.000Z",
+          "start_ms": 1786838399926,
+          "start_utc": "2026-08-15T23:59:59.926Z"
+        }
+      ],
+      "dataset_id": "hyperbot-replay-f2228faeadb172c9",
+      "markets": [
+        "ETH"
+      ],
+      "path": "/workspaces/hyperbot/data/replay_datasets/fetch-20260822T070249Z-5d551f5b/2026-08-16-ETH-667c252faa6a063b.json",
+      "provenance_sha256": "f2228faeadb172c984c2ee3ba2e775928fd982f571b8217f6baf3f186cee0161",
+      "qualification": "candidate",
+      "quality_flags": [
+        "shared_read_only",
+        "source_declared_tier_A",
+        "shared_hyperbot_not_bot05_h2",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "hyperbot",
+      "tier": "H1"
+    },
+    {
+      "channels": [
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061661296,
+          "end_utc": "2026-04-01T16:41:01.296Z",
+          "start_ms": 1775037039202,
+          "start_utc": "2026-04-01T09:50:39.202Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-1223bc912db24a4f",
+      "markets": [
+        "BTC"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/trades/BTC/2026-04-01.jsonl",
+      "provenance_sha256": "1223bc912db24a4f9c847ef19df92fd51b3b454747c863f92d0ee70667527d91",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061661224,
+          "end_utc": "2026-04-01T16:41:01.224Z",
+          "start_ms": 1775037022146,
+          "start_utc": "2026-04-01T09:50:22.146Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-2cb109b3c2e25b9e",
+      "markets": [
+        "ETH"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/trades/ETH/2026-04-01.jsonl",
+      "provenance_sha256": "2cb109b3c2e25b9ed1b4294ee099354f13235238f9b274814fff1fe18cc3732f",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061660958,
+          "end_utc": "2026-04-01T16:41:00.958Z",
+          "start_ms": 1775038975670,
+          "start_utc": "2026-04-01T10:22:55.670Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-330674af1bae062d",
+      "markets": [
+        "NEAR"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/l2/NEAR/2026-04-01.jsonl",
+      "provenance_sha256": "330674af1bae062de1f0607c4028ccb8fda9ef33ede0e96343bb8ea87a9a8bae",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061660958,
+          "end_utc": "2026-04-01T16:41:00.958Z",
+          "start_ms": 1775038975670,
+          "start_utc": "2026-04-01T10:22:55.670Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-3b079f0529785f4f",
+      "markets": [
+        "SUI"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/l2/SUI/2026-04-01.jsonl",
+      "provenance_sha256": "3b079f0529785f4f9e076981faee3f158511f97b0b65b6c6fe9655830e0617b9",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061660958,
+          "end_utc": "2026-04-01T16:41:00.958Z",
+          "start_ms": 1775037040544,
+          "start_utc": "2026-04-01T09:50:40.544Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-3e757c9b743d395f",
+      "markets": [
+        "BTC"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/l2/BTC/2026-04-01.jsonl",
+      "provenance_sha256": "3e757c9b743d395f13ad0e69625ec3fdab054b75ba3b8b2ae4de486326d9caa9",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061651547,
+          "end_utc": "2026-04-01T16:40:51.547Z",
+          "start_ms": 1775038682928,
+          "start_utc": "2026-04-01T10:18:02.928Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-3efb075502c3f6f0",
+      "markets": [
+        "DOGE"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/trades/DOGE/2026-04-01.jsonl",
+      "provenance_sha256": "3efb075502c3f6f03d4873915c2980a1fe16d5835aa593d379f7e02254e790b7",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061660958,
+          "end_utc": "2026-04-01T16:41:00.958Z",
+          "start_ms": 1775038975670,
+          "start_utc": "2026-04-01T10:22:55.670Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-417942dd5f3fc184",
+      "markets": [
+        "OP"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/l2/OP/2026-04-01.jsonl",
+      "provenance_sha256": "417942dd5f3fc1841b4ab96adabf1cc7a37610961b864a3b6bc4ab38ba4a91a8",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061627742,
+          "end_utc": "2026-04-01T16:40:27.742Z",
+          "start_ms": 1775038724013,
+          "start_utc": "2026-04-01T10:18:44.013Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-47e72e5362dae2c6",
+      "markets": [
+        "NEAR"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/trades/NEAR/2026-04-01.jsonl",
+      "provenance_sha256": "47e72e5362dae2c61cc86ca5f1ba953924020ecfbe7555cf2465c67b633af0da",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061660958,
+          "end_utc": "2026-04-01T16:41:00.958Z",
+          "start_ms": 1775038975670,
+          "start_utc": "2026-04-01T10:22:55.670Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-4d7acc43a42f0f9c",
+      "markets": [
+        "HYPE"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/l2/HYPE/2026-04-01.jsonl",
+      "provenance_sha256": "4d7acc43a42f0f9c534e35bcc937e6829abf942abca5fa45ea9bad44c400d7db",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061660958,
+          "end_utc": "2026-04-01T16:41:00.958Z",
+          "start_ms": 1775038975670,
+          "start_utc": "2026-04-01T10:22:55.670Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-53e1c7206677a0b2",
+      "markets": [
+        "XRP"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/l2/XRP/2026-04-01.jsonl",
+      "provenance_sha256": "53e1c7206677a0b2bf2e5c9d5e9ca9d4673743e4851c19b06b0438a66e3f8a05",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061652397,
+          "end_utc": "2026-04-01T16:40:52.397Z",
+          "start_ms": 1775038547253,
+          "start_utc": "2026-04-01T10:15:47.253Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-548ea887ab6c694a",
+      "markets": [
+        "SUI"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/trades/SUI/2026-04-01.jsonl",
+      "provenance_sha256": "548ea887ab6c694a44815c65a75811befe796cd4db67054ea1abc3b87dee7d18",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061657001,
+          "end_utc": "2026-04-01T16:40:57.001Z",
+          "start_ms": 1775038794097,
+          "start_utc": "2026-04-01T10:19:54.097Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-55ae4d8e1995ce65",
+      "markets": [
+        "XRP"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/trades/XRP/2026-04-01.jsonl",
+      "provenance_sha256": "55ae4d8e1995ce65b4e59cbeb3fef088adc0e8101f809278e961d0553ffcca71",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061660958,
+          "end_utc": "2026-04-01T16:41:00.958Z",
+          "start_ms": 1775038975670,
+          "start_utc": "2026-04-01T10:22:55.670Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-58a2fd1e1ec623a1",
+      "markets": [
+        "LINK"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/l2/LINK/2026-04-01.jsonl",
+      "provenance_sha256": "58a2fd1e1ec623a192f6d4d266f880a93cc2caac161da26b183524a71e93285c",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061660958,
+          "end_utc": "2026-04-01T16:41:00.958Z",
+          "start_ms": 1775037041054,
+          "start_utc": "2026-04-01T09:50:41.054Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-5a71eb04368bc590",
+      "markets": [
+        "ETH"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/l2/ETH/2026-04-01.jsonl",
+      "provenance_sha256": "5a71eb04368bc590467ae679027df93f8651f8698e683efe2c5ac343d6236cf2",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061646426,
+          "end_utc": "2026-04-01T16:40:46.426Z",
+          "start_ms": 1775038613805,
+          "start_utc": "2026-04-01T10:16:53.805Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-63fc648740be7452",
+      "markets": [
+        "ARB"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/trades/ARB/2026-04-01.jsonl",
+      "provenance_sha256": "63fc648740be7452dc19aed279ee81cd34e6ddc4456d89f2d038dbfed32f9487",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061660958,
+          "end_utc": "2026-04-01T16:41:00.958Z",
+          "start_ms": 1775038975670,
+          "start_utc": "2026-04-01T10:22:55.670Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-6fca347e58f9f162",
+      "markets": [
+        "AVAX"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/l2/AVAX/2026-04-01.jsonl",
+      "provenance_sha256": "6fca347e58f9f162a693095c5a29ff8976a5b1f096d6d28f0783f7a0af69ed70",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061649809,
+          "end_utc": "2026-04-01T16:40:49.809Z",
+          "start_ms": 1775038628744,
+          "start_utc": "2026-04-01T10:17:08.744Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-82b5c05fea156d8e",
+      "markets": [
+        "AVAX"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/trades/AVAX/2026-04-01.jsonl",
+      "provenance_sha256": "82b5c05fea156d8ea80e8728ca1a3fccee2e213e8cdc27020837fe337a3e18e2",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061660958,
+          "end_utc": "2026-04-01T16:41:00.958Z",
+          "start_ms": 1775037041054,
+          "start_utc": "2026-04-01T09:50:41.054Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-9818b93f04527eaf",
+      "markets": [
+        "SOL"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/l2/SOL/2026-04-01.jsonl",
+      "provenance_sha256": "9818b93f04527eaf40ddcfa114bad0926fa31b7fd111bc7503e6b2a81f909d0d",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061661024,
+          "end_utc": "2026-04-01T16:41:01.024Z",
+          "start_ms": 1775037024269,
+          "start_utc": "2026-04-01T09:50:24.269Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-a8a5b27f772a4641",
+      "markets": [
+        "SOL"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/trades/SOL/2026-04-01.jsonl",
+      "provenance_sha256": "a8a5b27f772a46414263ba15c6a5cb19f36224d82e642db70934903bdd672da5",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061656789,
+          "end_utc": "2026-04-01T16:40:56.789Z",
+          "start_ms": 1775038182705,
+          "start_utc": "2026-04-01T10:09:42.705Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-bb8dbc4f15ac4e09",
+      "markets": [
+        "OP"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/trades/OP/2026-04-01.jsonl",
+      "provenance_sha256": "bb8dbc4f15ac4e090a16fe5d9da8aa82babf3c8505671aa894a2908c59d73120",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061650358,
+          "end_utc": "2026-04-01T16:40:50.358Z",
+          "start_ms": 1775038634953,
+          "start_utc": "2026-04-01T10:17:14.953Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-d97b95f3e666450e",
+      "markets": [
+        "LINK"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/trades/LINK/2026-04-01.jsonl",
+      "provenance_sha256": "d97b95f3e666450eab37d3de302a8253f10fc2acbb0c34013ac2e58a2cb25e35",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061660958,
+          "end_utc": "2026-04-01T16:41:00.958Z",
+          "start_ms": 1775038975670,
+          "start_utc": "2026-04-01T10:22:55.670Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-da190d456bbf51ab",
+      "markets": [
+        "DOGE"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/l2/DOGE/2026-04-01.jsonl",
+      "provenance_sha256": "da190d456bbf51ab403a71a9a808ae81a66b7c7ccca5476b66f82b7146e253cb",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "l2"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061660958,
+          "end_utc": "2026-04-01T16:41:00.958Z",
+          "start_ms": 1775038975670,
+          "start_utc": "2026-04-01T10:22:55.670Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-e9b32e1c4d4f7188",
+      "markets": [
+        "ARB"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/l2/ARB/2026-04-01.jsonl",
+      "provenance_sha256": "e9b32e1c4d4f718864d4bc8d02029e5a08eb313deff3eae764ef1bbfe2de9333",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    },
+    {
+      "channels": [
+        "trades"
+      ],
+      "coverage": [
+        {
+          "end_ms": 1775061661024,
+          "end_utc": "2026-04-01T16:41:01.024Z",
+          "start_ms": 1775038944171,
+          "start_utc": "2026-04-01T10:22:24.171Z"
+        }
+      ],
+      "dataset_id": "trident-legacy-efe1efd34214068a",
+      "markets": [
+        "HYPE"
+      ],
+      "path": "/workspaces/trident/data/gbot_archive/trades/HYPE/2026-04-01.jsonl",
+      "provenance_sha256": "efe1efd34214068a34504efa073a697998c937cf6ca918b33ddae4b23a0719f6",
+      "qualification": "candidate",
+      "quality_flags": [
+        "legacy_research_only",
+        "shared_read_only",
+        "requires_bot05_schema_and_gap_qualification"
+      ],
+      "source_project": "trident",
+      "tier": "L"
+    }
+  ],
+  "configuration": {
+    "bot05_data_root": "/workspaces/bot05/data",
+    "code_sha256": "d39c33da0ad01ab1a301a8dfefaa44e4aeee8082861fa21f30c501a410763611",
+    "hyperbot_root": "/workspaces/hyperbot",
+    "local_first": true,
+    "network_performed": false,
+    "path": "/workspaces/bot05/config/research_post_qualification.toml",
+    "qualification_root": "/workspaces/bot05/reports/data_quality/qualifications",
+    "remote_fetch_enabled": false,
+    "sha256": "fac99338b9c6d23ac99a4ec5c50910f996e6908172df19c88b84e77d4f20c090",
+    "trident_root": "/workspaces/trident"
+  },
+  "inventory_summary": {
+    "asset_count": 64,
+    "issue_count": 0,
+    "source_counts": {
+      "bot05": 1,
+      "hyperbot": 39,
+      "trident": 24
+    },
+    "tier_counts": {
+      "H1": 40,
+      "L": 24
+    }
+  },
+  "issues": [],
+  "kind": "bot05_local_first_acquisition_plan",
+  "plan_summary": {
+    "action_counts": {
+      "qualify_local_remote_disabled": 35,
+      "remote_fetch_disabled": 7
+    },
+    "remote_fetch_range_count": 112,
+    "requirement_count": 42
+  },
+  "policy": {
+    "candidate_overlap_blocks_remote_fetch_until_qualified": true,
+    "shared_hyperbot_can_be_h2": false,
+    "shared_hyperbot_tier": "H1",
+    "trident_default_tier": "L"
+  },
+  "requirements": [
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "trades",
+      "derivations": [],
+      "market": "xyz:SILVER",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "bbo",
+      "derivations": [],
+      "market": "xyz:SILVER",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "l2",
+      "derivations": [],
+      "market": "xyz:SILVER",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "candles_1m",
+      "derivations": [
+        "candles_1m_from_trades"
+      ],
+      "market": "xyz:SILVER",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "candles_5m",
+      "derivations": [
+        "candles_5m_from_trades"
+      ],
+      "market": "xyz:SILVER",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "remote_fetch_disabled",
+      "channel": "market_context",
+      "derivations": [],
+      "market": "xyz:SILVER",
+      "qualification_dataset_ids": [],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1786838400000,
+          "start_utc": "2026-08-16T00:00:00.000Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "trades",
+      "derivations": [],
+      "market": "HYPE",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-066f73578f7b77c7",
+        "hyperbot-replay-1527f5b7bbe7e5b7",
+        "hyperbot-replay-355720feaa69419a",
+        "hyperbot-replay-4b329752d2ba8a45",
+        "hyperbot-replay-8607f22cf244f1e1",
+        "hyperbot-replay-8b3c0793b254b012"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "bbo",
+      "derivations": [],
+      "market": "HYPE",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-066f73578f7b77c7",
+        "hyperbot-replay-1527f5b7bbe7e5b7",
+        "hyperbot-replay-355720feaa69419a",
+        "hyperbot-replay-4b329752d2ba8a45",
+        "hyperbot-replay-8607f22cf244f1e1",
+        "hyperbot-replay-8b3c0793b254b012"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "l2",
+      "derivations": [],
+      "market": "HYPE",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-066f73578f7b77c7",
+        "hyperbot-replay-1527f5b7bbe7e5b7",
+        "hyperbot-replay-355720feaa69419a",
+        "hyperbot-replay-4b329752d2ba8a45",
+        "hyperbot-replay-8607f22cf244f1e1",
+        "hyperbot-replay-8b3c0793b254b012"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "candles_1m",
+      "derivations": [
+        "candles_1m_from_trades"
+      ],
+      "market": "HYPE",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-066f73578f7b77c7",
+        "hyperbot-replay-1527f5b7bbe7e5b7",
+        "hyperbot-replay-355720feaa69419a",
+        "hyperbot-replay-4b329752d2ba8a45",
+        "hyperbot-replay-8607f22cf244f1e1",
+        "hyperbot-replay-8b3c0793b254b012"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "candles_5m",
+      "derivations": [
+        "candles_5m_from_trades"
+      ],
+      "market": "HYPE",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-066f73578f7b77c7",
+        "hyperbot-replay-1527f5b7bbe7e5b7",
+        "hyperbot-replay-355720feaa69419a",
+        "hyperbot-replay-4b329752d2ba8a45",
+        "hyperbot-replay-8607f22cf244f1e1",
+        "hyperbot-replay-8b3c0793b254b012"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "remote_fetch_disabled",
+      "channel": "market_context",
+      "derivations": [],
+      "market": "HYPE",
+      "qualification_dataset_ids": [],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1786838400000,
+          "start_utc": "2026-08-16T00:00:00.000Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "trades",
+      "derivations": [],
+      "market": "xyz:SP500",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "bbo",
+      "derivations": [],
+      "market": "xyz:SP500",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "l2",
+      "derivations": [],
+      "market": "xyz:SP500",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "candles_1m",
+      "derivations": [
+        "candles_1m_from_trades"
+      ],
+      "market": "xyz:SP500",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "candles_5m",
+      "derivations": [
+        "candles_5m_from_trades"
+      ],
+      "market": "xyz:SP500",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "remote_fetch_disabled",
+      "channel": "market_context",
+      "derivations": [],
+      "market": "xyz:SP500",
+      "qualification_dataset_ids": [],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1786838400000,
+          "start_utc": "2026-08-16T00:00:00.000Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "trades",
+      "derivations": [],
+      "market": "xyz:GOLD",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "bbo",
+      "derivations": [],
+      "market": "xyz:GOLD",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "l2",
+      "derivations": [],
+      "market": "xyz:GOLD",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "candles_1m",
+      "derivations": [
+        "candles_1m_from_trades"
+      ],
+      "market": "xyz:GOLD",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "candles_5m",
+      "derivations": [
+        "candles_5m_from_trades"
+      ],
+      "market": "xyz:GOLD",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "remote_fetch_disabled",
+      "channel": "market_context",
+      "derivations": [],
+      "market": "xyz:GOLD",
+      "qualification_dataset_ids": [],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1786838400000,
+          "start_utc": "2026-08-16T00:00:00.000Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "trades",
+      "derivations": [],
+      "market": "BTC",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-10d25b4cb497b1c9",
+        "hyperbot-replay-14dbb7b4cb1a4e8b",
+        "hyperbot-replay-2b9ab971f9df310d",
+        "hyperbot-replay-36589fd37a013671",
+        "hyperbot-replay-3a9ad3bac480cc3d",
+        "hyperbot-replay-3b84aa014d07d6d6",
+        "hyperbot-replay-4308bf87a4e96bac",
+        "hyperbot-replay-46b97406b06f2509",
+        "hyperbot-replay-96a850b9e40eaad7",
+        "hyperbot-replay-a4bd7d7b85f09a87",
+        "hyperbot-replay-bea8980c1f1468c8",
+        "hyperbot-replay-d5b2fbbcab41dc60",
+        "hyperbot-replay-dacee71d3f19ca7c"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787615999718,
+          "end_utc": "2026-08-24T23:59:59.718Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": [
+        "bot05-qualified-198f4f4968228e24"
+      ]
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "bbo",
+      "derivations": [],
+      "market": "BTC",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-10d25b4cb497b1c9",
+        "hyperbot-replay-14dbb7b4cb1a4e8b",
+        "hyperbot-replay-2b9ab971f9df310d",
+        "hyperbot-replay-36589fd37a013671",
+        "hyperbot-replay-3b84aa014d07d6d6",
+        "hyperbot-replay-46b97406b06f2509",
+        "hyperbot-replay-96a850b9e40eaad7",
+        "hyperbot-replay-a4bd7d7b85f09a87",
+        "hyperbot-replay-bea8980c1f1468c8",
+        "hyperbot-replay-d5b2fbbcab41dc60",
+        "hyperbot-replay-dacee71d3f19ca7c"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787615999718,
+          "end_utc": "2026-08-24T23:59:59.718Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": [
+        "bot05-qualified-198f4f4968228e24"
+      ]
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "l2",
+      "derivations": [],
+      "market": "BTC",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-10d25b4cb497b1c9",
+        "hyperbot-replay-14dbb7b4cb1a4e8b",
+        "hyperbot-replay-2b9ab971f9df310d",
+        "hyperbot-replay-36589fd37a013671",
+        "hyperbot-replay-3a9ad3bac480cc3d",
+        "hyperbot-replay-3b84aa014d07d6d6",
+        "hyperbot-replay-4308bf87a4e96bac",
+        "hyperbot-replay-46b97406b06f2509",
+        "hyperbot-replay-96a850b9e40eaad7",
+        "hyperbot-replay-a4bd7d7b85f09a87",
+        "hyperbot-replay-bea8980c1f1468c8",
+        "hyperbot-replay-d5b2fbbcab41dc60",
+        "hyperbot-replay-dacee71d3f19ca7c"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787615999718,
+          "end_utc": "2026-08-24T23:59:59.718Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "candles_1m",
+      "derivations": [
+        "candles_1m_from_trades"
+      ],
+      "market": "BTC",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-10d25b4cb497b1c9",
+        "hyperbot-replay-14dbb7b4cb1a4e8b",
+        "hyperbot-replay-2b9ab971f9df310d",
+        "hyperbot-replay-36589fd37a013671",
+        "hyperbot-replay-3a9ad3bac480cc3d",
+        "hyperbot-replay-3b84aa014d07d6d6",
+        "hyperbot-replay-4308bf87a4e96bac",
+        "hyperbot-replay-46b97406b06f2509",
+        "hyperbot-replay-96a850b9e40eaad7",
+        "hyperbot-replay-a4bd7d7b85f09a87",
+        "hyperbot-replay-bea8980c1f1468c8",
+        "hyperbot-replay-d5b2fbbcab41dc60",
+        "hyperbot-replay-dacee71d3f19ca7c"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787615999718,
+          "end_utc": "2026-08-24T23:59:59.718Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": [
+        "bot05-qualified-198f4f4968228e24"
+      ]
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "candles_5m",
+      "derivations": [
+        "candles_5m_from_trades"
+      ],
+      "market": "BTC",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-10d25b4cb497b1c9",
+        "hyperbot-replay-14dbb7b4cb1a4e8b",
+        "hyperbot-replay-2b9ab971f9df310d",
+        "hyperbot-replay-36589fd37a013671",
+        "hyperbot-replay-3a9ad3bac480cc3d",
+        "hyperbot-replay-3b84aa014d07d6d6",
+        "hyperbot-replay-4308bf87a4e96bac",
+        "hyperbot-replay-46b97406b06f2509",
+        "hyperbot-replay-96a850b9e40eaad7",
+        "hyperbot-replay-a4bd7d7b85f09a87",
+        "hyperbot-replay-bea8980c1f1468c8",
+        "hyperbot-replay-d5b2fbbcab41dc60",
+        "hyperbot-replay-dacee71d3f19ca7c"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787615999718,
+          "end_utc": "2026-08-24T23:59:59.718Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": [
+        "bot05-qualified-198f4f4968228e24"
+      ]
+    },
+    {
+      "action": "remote_fetch_disabled",
+      "channel": "market_context",
+      "derivations": [],
+      "market": "BTC",
+      "qualification_dataset_ids": [],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1786838400000,
+          "start_utc": "2026-08-16T00:00:00.000Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "trades",
+      "derivations": [],
+      "market": "ETH",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-2198a0799724fd22",
+        "hyperbot-replay-28e144c64429fe1a",
+        "hyperbot-replay-4a2e9a2177474ec7",
+        "hyperbot-replay-9bde11b6d453e778",
+        "hyperbot-replay-eac0fa58026d7d32",
+        "hyperbot-replay-f2228faeadb172c9"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "bbo",
+      "derivations": [],
+      "market": "ETH",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-2198a0799724fd22",
+        "hyperbot-replay-28e144c64429fe1a",
+        "hyperbot-replay-4a2e9a2177474ec7",
+        "hyperbot-replay-9bde11b6d453e778",
+        "hyperbot-replay-eac0fa58026d7d32",
+        "hyperbot-replay-f2228faeadb172c9"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "l2",
+      "derivations": [],
+      "market": "ETH",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-2198a0799724fd22",
+        "hyperbot-replay-28e144c64429fe1a",
+        "hyperbot-replay-4a2e9a2177474ec7",
+        "hyperbot-replay-9bde11b6d453e778",
+        "hyperbot-replay-eac0fa58026d7d32",
+        "hyperbot-replay-f2228faeadb172c9"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "candles_1m",
+      "derivations": [
+        "candles_1m_from_trades"
+      ],
+      "market": "ETH",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-2198a0799724fd22",
+        "hyperbot-replay-28e144c64429fe1a",
+        "hyperbot-replay-4a2e9a2177474ec7",
+        "hyperbot-replay-9bde11b6d453e778",
+        "hyperbot-replay-eac0fa58026d7d32",
+        "hyperbot-replay-f2228faeadb172c9"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "candles_5m",
+      "derivations": [
+        "candles_5m_from_trades"
+      ],
+      "market": "ETH",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-2198a0799724fd22",
+        "hyperbot-replay-28e144c64429fe1a",
+        "hyperbot-replay-4a2e9a2177474ec7",
+        "hyperbot-replay-9bde11b6d453e778",
+        "hyperbot-replay-eac0fa58026d7d32",
+        "hyperbot-replay-f2228faeadb172c9"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "remote_fetch_disabled",
+      "channel": "market_context",
+      "derivations": [],
+      "market": "ETH",
+      "qualification_dataset_ids": [],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1786838400000,
+          "start_utc": "2026-08-16T00:00:00.000Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "trades",
+      "derivations": [],
+      "market": "SOL",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-9b340e40fd6463b2",
+        "hyperbot-replay-9ee9c0ab933e33ab",
+        "hyperbot-replay-c3acbe6e70481b42",
+        "hyperbot-replay-c85a95fa53a4dea9",
+        "hyperbot-replay-d4fe6fbc02de39c8",
+        "hyperbot-replay-e6c19dd3f1ec6024"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "bbo",
+      "derivations": [],
+      "market": "SOL",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-9b340e40fd6463b2",
+        "hyperbot-replay-9ee9c0ab933e33ab",
+        "hyperbot-replay-c3acbe6e70481b42",
+        "hyperbot-replay-c85a95fa53a4dea9",
+        "hyperbot-replay-d4fe6fbc02de39c8",
+        "hyperbot-replay-e6c19dd3f1ec6024"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "l2",
+      "derivations": [],
+      "market": "SOL",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-9b340e40fd6463b2",
+        "hyperbot-replay-9ee9c0ab933e33ab",
+        "hyperbot-replay-c3acbe6e70481b42",
+        "hyperbot-replay-c85a95fa53a4dea9",
+        "hyperbot-replay-d4fe6fbc02de39c8",
+        "hyperbot-replay-e6c19dd3f1ec6024"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "candles_1m",
+      "derivations": [
+        "candles_1m_from_trades"
+      ],
+      "market": "SOL",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-9b340e40fd6463b2",
+        "hyperbot-replay-9ee9c0ab933e33ab",
+        "hyperbot-replay-c3acbe6e70481b42",
+        "hyperbot-replay-c85a95fa53a4dea9",
+        "hyperbot-replay-d4fe6fbc02de39c8",
+        "hyperbot-replay-e6c19dd3f1ec6024"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "qualify_local_remote_disabled",
+      "channel": "candles_5m",
+      "derivations": [
+        "candles_5m_from_trades"
+      ],
+      "market": "SOL",
+      "qualification_dataset_ids": [
+        "hyperbot-raw-export-19dda432df94d59c",
+        "hyperbot-raw-export-1e3acf51e5245c0b",
+        "hyperbot-raw-export-55f51e99051fa1ce",
+        "hyperbot-raw-export-cf8b2f8ef85bf557",
+        "hyperbot-raw-export-f9a17bd75b64c05d",
+        "hyperbot-replay-9b340e40fd6463b2",
+        "hyperbot-replay-9ee9c0ab933e33ab",
+        "hyperbot-replay-c3acbe6e70481b42",
+        "hyperbot-replay-c85a95fa53a4dea9",
+        "hyperbot-replay-d4fe6fbc02de39c8",
+        "hyperbot-replay-e6c19dd3f1ec6024"
+      ],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787591859228,
+          "end_utc": "2026-08-24T17:17:39.228Z",
+          "start_ms": 1787443200000,
+          "start_utc": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "end_ms": 1787593972923,
+          "end_utc": "2026-08-24T17:52:52.923Z",
+          "start_ms": 1787592402165,
+          "start_utc": "2026-08-24T17:26:42.165Z"
+        },
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1787594866713,
+          "start_utc": "2026-08-24T18:07:46.713Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    },
+    {
+      "action": "remote_fetch_disabled",
+      "channel": "market_context",
+      "derivations": [],
+      "market": "SOL",
+      "qualification_dataset_ids": [],
+      "remote_fetch_ranges": [
+        {
+          "end_ms": 1787616000000,
+          "end_utc": "2026-08-25T00:00:00.000Z",
+          "start_ms": 1786838400000,
+          "start_utc": "2026-08-16T00:00:00.000Z"
+        }
+      ],
+      "required_coverage": {
+        "end_ms": 1787616000000,
+        "end_utc": "2026-08-25T00:00:00.000Z",
+        "start_ms": 1786838400000,
+        "start_utc": "2026-08-16T00:00:00.000Z"
+      },
+      "reusable_dataset_ids": []
+    }
+  ],
+  "schema_version": 3
+}
