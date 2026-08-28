@@ -1,11 +1,12 @@
 # BOT05 — plan de développement et suivi
 
-**Dernière mise à jour :** 27 août 2026
+**Dernière mise à jour :** 28 août 2026
 
 **Spécification :** [`PLAN.md`](PLAN.md)
 
-**État global :** D0/T0, D1A et D1B livrés ; D1C est le prochain lot. Aucune
-capacité d'ordre et aucun appel réseau dans les lots livrés.
+**État global :** D0/T0, D1A, D1B et D1C livrés ; la qualification
+événementielle des candidats locaux précède D2. Aucune capacité d'ordre et
+aucun appel réseau dans les lots livrés.
 
 ## 1. Rôle de ce document
 
@@ -38,7 +39,7 @@ Statuts utilisés : `À faire`, `En cours`, `Terminé`, `Bloqué`.
 | D0 | dépôt, règles, packaging, config sûre, suivi | Terminé | package installable, aucun chemin live, commandes qualité vertes |
 | D1A | inventaire local-first HyperBot/TRIDENT et plan de gaps | Terminé | rapport déterministe, aucune lecture massive ni requête réseau |
 | D1B | contrats marché/candle/trade, calendrier et provenance | Terminé | modèles immuables, DST/holidays et checksums couverts |
-| D1C | store append-only et adaptateurs H0/H1/L | À faire | import bit-identique, rejets séparés, sources inchangées |
+| D1C | store append-only et adaptateurs H0/H1/L | Terminé | import bit-identique, rejets séparés, sources inchangées |
 | D2 | bougies 1m/5m et features causales | À faire | aucune fuite, gaps explicites, parité officielle |
 | D3 | stratégie v0 et superviseur de risque | À faire | machine d'état exact-once et fail-closed |
 | D4 | replay déterministe et coûts | À faire | modèles conservateur/central/stress reproductibles |
@@ -132,11 +133,11 @@ datasets actuellement indexés.
 
 ## 7. Ordre de travail immédiat
 
-1. Implémenter D1C : store append-only et adaptateurs checksumés des candidats
-   utiles uniquement.
-2. Auditer la couverture événementielle des marchés et sessions cibles.
-3. Générer un manifest de gaps ; seulement alors autoriser un fetch H0/H1 public.
-4. Livrer D2 puis D3 sur fixtures synthétiques avant tout calcul de PnL.
+1. Auditer avec D1C la couverture événementielle des marchés et sessions cibles,
+   en commençant par un segment borné et utile.
+2. Publier les rapports de qualification et le manifest de gaps ; seulement
+   alors proposer un fetch H0/H1 public limité au reliquat.
+3. Livrer D2 puis D3 sur fixtures synthétiques avant tout calcul de PnL.
 
 ## 8. Lot livré — D1B / T2 calendrier
 
@@ -182,7 +183,68 @@ holiday, demi-session, ouverture hors plage externe, horizon dépassant une
 fermeture anticipée, bascule XYZ externe/interne, date hors version, temps local
 inexistant/ambigu et construction causale des trois bougies 5 minutes clôturées.
 
-## 9. Décisions techniques
+## 9. Lot livré — D1C / T1 partiel
+
+### Normalisation checksum-first
+
+- `src/bot05/data/normalizer.py` vérifie le SHA-256 complet d'une source JSONL
+  ou JSONL gzip avant de la lire, conserve l'index et le checksum exact de
+  chaque ligne et sépare les rejets sémantiques des erreurs d'intégrité ;
+- les doublons bit-à-bit du domaine sont refusés avec un motif stable au lieu
+  d'être insérés silencieusement ;
+- une erreur de checksum, de chaîne ou de séquence H1 interrompt tout le batch,
+  alors qu'un record intact mais incompatible est conservé dans le flux de
+  rejets auditables.
+
+### Adaptateurs bornés
+
+- H0 adapte les réponses publiques `candleSnapshot` 1m/5m, contrôle les bornes,
+  la clôture causale, le marché, l'intervalle et les décimales sous forme de
+  chaînes ; aucun transport HTTP n'est présent ;
+- H1 valide indépendamment les enveloppes HyperBot v2, les hashes payload et
+  record, la chaîne, la séquence, le contexte d'horloge exchange et les
+  timestamps avant d'adapter trades, BBO et L2 ; aucun import runtime HyperBot
+  n'a été ajouté ;
+- L adapte les trades JSONL TRIDENT en documentant l'hypothèse
+  `received_at = exchange_time`. Les lignes L2 legacy ne contenant pas les
+  tailles au meilleur bid/ask sont rejetées explicitement : BOT05 ne fabrique
+  pas un `BookSnapshot` à partir des seules profondeurs à 10 bps.
+
+### Store append-only
+
+- les records normalisés, rejets et manifests sont séparés sous un segment
+  content-addressed ; chaque fichier est créé exclusivement et une répétition
+  identique est idempotente ;
+- le manifest v1 porte les checksums source, records et rejets, versions
+  d'adaptateur/code/config, marchés, canaux, types et bornes observées ;
+- toute corruption post-écriture est détectée à la lecture ;
+- un segment normalisé reste `candidate`, même avec zéro rejet. Il ne devient
+  `qualified` qu'avec un rapport JSON checksumé lié au dataset, au segment, au
+  brut et aux records, déclarant zéro gap critique, doublon et rejet et une
+  couverture contenue dans les bornes observées.
+
+### Limites et prochaine preuve
+
+- aucun gros fichier HyperBot/TRIDENT n'a encore été importé dans BOT05 ; cette
+  livraison qualifie le moteur et ses fixtures, pas les datasets réels ;
+- la couverture min/max d'un segment n'est jamais assimilée implicitement à une
+  continuité ; le prochain travail est de produire les rapports événementiels
+  checksummés sur des segments locaux bornés ;
+- aucun nouveau rapport de gaps ni appel réseau n'a été produit dans D1C.
+
+## 10. Décisions techniques
+
+### 2026-08-28 — normalisé ne signifie pas qualifié
+
+L'absence de rejet de schéma prouve seulement que les records ont été adaptés.
+La réutilisation par le planner exige en plus un rapport de qualification
+checksumé prouvant la couverture déclarée et l'absence de gap critique.
+
+### 2026-08-28 — L2 legacy incomplet rejeté
+
+Les snapshots TRIDENT fournissant meilleur bid/ask et profondeur à 10 bps sans
+taille au top ne sont pas convertis en `BookSnapshot`. Ils restent des rejets L
+auditables et ne peuvent pas valider une exécution.
 
 ### 2026-08-27 — séparation spécification / exécution
 
@@ -215,12 +277,15 @@ Le moteur est générique, mais une expérience doit fournir un fichier calendri
 checksumé avec plage de validité. Les fixtures de tests ne constituent pas une
 source opérateur et ne seront pas utilisées pour une conclusion de recherche.
 
-## 10. Preuves de validation
+## 11. Preuves de validation
 
 - `uv sync` : réussi, lockfile créé, package `bot05==0.1.0` installé ;
-- `uv run pytest` : **45 tests réussis** ;
+- `uv run pytest` : **57 tests réussis** ;
 - `uv run ruff check .` : **réussi** ;
-- `uv run mypy src` : **réussi en mode strict**, 11 fichiers source ;
+- `uv run mypy src` : **réussi en mode strict**, 15 fichiers source ;
+- D1C couvre H0 causal, chaîne/séquence/checksums H1, limites L, source gzip en
+  lecture seule, doublons, rejets séparés, import bit-identique, idempotence,
+  corruption du store et gate de qualification vers le planner ;
 - rapport JSON : `reports/data_quality/initial_local_coverage.json` ;
 - SHA-256 du rapport :
   `096af9241b895f70e581d5e12110a74326898a77e08f00314f7dc447d516ab27` ;
@@ -228,10 +293,12 @@ source opérateur et ne seront pas utilisées pour une conclusion de recherche.
   `36cd9ffe4c4ae5c86734ad94330d683c4d80eb613134ed7cd1a4f838629000d9` ;
 - seconde génération : **identique**, même SHA-256, aucune baseline écrasée.
 
-## 11. Impact opérationnel
+## 12. Impact opérationnel
 
 - **Trading :** impossible ; aucun gateway ni dépendance d'exchange.
-- **Réseau :** aucun appel effectué ou implémenté dans D0/D1A/D1B.
+- **Réseau :** aucun appel effectué ou implémenté dans D0/D1A/D1B/D1C.
 - **Données partagées :** lecture seule ; aucun fichier HyperBot/TRIDENT modifié.
 - **Stockage BOT05 :** seuls petits manifests/rapports sont versionnables ; raw,
-  normalized et derived restent ignorés hors `.gitkeep`.
+  normalized et derived restent ignorés hors `.gitkeep`. Le format de segment
+  normalisé v1 est prêt sous `data/normalized/`, mais aucune donnée réelle n'y a
+  été écrite pendant D1C.

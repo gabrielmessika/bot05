@@ -25,6 +25,10 @@ Le lot initial fournit :
 - un inventaire en lecture seule des datasets utiles d'HyperBot et TRIDENT ;
 - un plan d'acquisition qui distingue données réutilisables, données locales à
   qualifier et intervalles réellement absents ;
+- des adaptateurs checksum-first H0/H1/L sans transport réseau, avec validation
+  des chaînes H1 et rejets legacy séparés ;
+- un store normalisé append-only, content-addressed et reproductible, dont la
+  promotion exige un rapport de qualification checksumé ;
 - un rapport versionnable, sans appel réseau.
 
 Les données HyperBot partagées sont classées H1 dans BOT05, jamais H2. Les
@@ -46,6 +50,10 @@ Le dernier script ne contacte pas Hyperliquid. Il lit les métadonnées et petit
 manifests locaux, puis écrit le rapport configuré sous `reports/data_quality/`.
 La fenêtre initiale est un smoke de qualification, pas un échantillon destiné à
 conclure sur la rentabilité.
+
+Le moteur D1C est livré, mais aucune archive partagée volumineuse n'est importée
+automatiquement. Un import reste `candidate` jusqu'à l'audit événementiel de sa
+couverture et la publication d'un rapport de qualification checksumé.
 
 Les calendriers utilisés par une expérience sont des fichiers TOML stricts et
 versionnés par leur SHA-256. Une date hors de leur plage déclarée retourne un
