@@ -1,13 +1,13 @@
 # BOT05 — plan de développement et suivi
 
-**Dernière mise à jour :** 28 août 2026
+**Dernière mise à jour :** 29 août 2026
 
 **Spécification :** [`PLAN.md`](PLAN.md)
 
-**État global :** D0/T0, D1A, D1B, D1C et T1 livrés ; D2/T2 en cours. Les trois
-segments H1 de l'ouverture US BTC sont qualifiés, les bougies/features causales
-sont implémentées et auditées sur 13:30–13:45 UTC. La parité H0 officielle et
-l'historique de 20 sessions restent à fournir. Aucune capacité d'ordre et aucun
+**État global :** D0/T0, D1A, D1B, D1C, T1, D3 et T3 livrés. Le code D2/T2 est
+prêt mais ses preuves externes sont bloquées par les données locales : zéro
+asset H0 et seulement cinq dates historiques candidates avant la cible, contre
+vingt requises. D4 est le prochain lot de code. Aucune capacité d'ordre et aucun
 appel réseau dans les lots livrés.
 
 ## 1. Rôle de ce document
@@ -42,8 +42,8 @@ Statuts utilisés : `À faire`, `En cours`, `Terminé`, `Bloqué`.
 | D1A | inventaire local-first HyperBot/TRIDENT et plan de gaps | Terminé | rapport déterministe, aucune lecture massive ni requête réseau |
 | D1B | contrats marché/candle/trade, calendrier et provenance | Terminé | modèles immuables, DST/holidays et checksums couverts |
 | D1C | store append-only et adaptateurs H0/H1/L | Terminé | import bit-identique, rejets séparés, sources inchangées |
-| D2 | bougies 1m/5m et features causales | En cours | aucune fuite, gaps explicites, parité officielle |
-| D3 | stratégie v0 et superviseur de risque | À faire | machine d'état exact-once et fail-closed |
+| D2 | bougies 1m/5m et features causales | Bloqué | aucune fuite, gaps explicites, parité officielle |
+| D3 | stratégie v0 et superviseur de risque | Terminé | machine d'état exact-once et fail-closed |
 | D4 | replay déterministe et coûts | À faire | modèles conservateur/central/stress reproductibles |
 | D5 | qualification des datasets et études par marché | À faire | rapports séparés U/H0/H1/H2/L, limites publiées |
 | D6 | ablations, walk-forward et OOS verrouillé | À faire | toutes variantes publiées, holdout non réoptimisé |
@@ -56,8 +56,8 @@ Statuts utilisés : `À faire`, `En cours`, `Terminé`, `Bloqué`.
 |---|---|---|---|---|
 | T0 | packaging, config stricte, absence de live/secrets | D0 | Terminé | pytest + ruff + mypy verts |
 | T1 | provenance, lecture seule, checksums, gaps et déterminisme | D1A–D1C | Terminé | sources inchangées, report bit-identique |
-| T2 | DST, jours fériés, bougies, lookahead et pivots | D1B–D2 | En cours | calendrier couvert ; features/pivots attendent D2 |
-| T3 | transitions stratégie, refus risque, exact-once | D3 | À faire | invariants long/short et fail-closed |
+| T2 | DST, jours fériés, bougies, lookahead et pivots | D1B–D2 | Bloqué | code couvert ; parité H0 externe indisponible |
+| T3 | transitions stratégie, refus risque, exact-once | D3 | Terminé | invariants long/short et fail-closed |
 | T4 | intrabar, gaps, fees, slippage, funding, latence | D4 | À faire | central et stress couverts |
 | T5 | intégration dataset → signal → replay → rapport | D2–D5 | À faire | répétition bit-identique et audit des coûts |
 | T6 | walk-forward, bootstrap, ablations et holdout | D6 | À faire | contrôles faux positifs et concentration |
@@ -135,13 +135,14 @@ datasets actuellement indexés.
 
 ## 7. Ordre de travail immédiat
 
-1. Obtenir une source H0 officielle checksummée commune à la fenêtre BTC pour
-   fermer la parité D2, sans activer de fetch tant que le gap n'est pas prouvé.
-2. Qualifier au moins 20 sessions BTC comparables antérieures pour exercer les
-   seuils roulants q50/q75 et les niveaux de liquidité sur données réelles.
-3. Étendre ensuite la qualification aux marchés/session prioritaires ; seulement
-   alors proposer un fetch H0/H1 public limité au reliquat prouvé.
-4. Livrer D3 sur fixtures synthétiques avant tout calcul de PnL.
+1. Livrer D4 : replay déterministe, ordre intrabar explicite, coûts et modèles
+   conservateur/central/stress sur fixtures synthétiques.
+2. Si une acquisition publique est autorisée, limiter H0 et l'historique BTC au
+   déficit exact publié par l'audit D2 ; `remote_fetch_enabled` reste `false`.
+3. Qualifier éventuellement les cinq fenêtres H1 candidates locales comme
+   smoke supplémentaire, sans prétendre qu'elles satisfont le minimum de vingt.
+4. Étendre ensuite la qualification aux marchés/session prioritaires avant tout
+   calcul de PnL ou sélection portefeuille.
 
 ## 8. Lot livré — D1B / T2 calendrier
 
@@ -256,6 +257,26 @@ Un percentile causal porte le marché, la session et son instant `as_of`. Il ne
 peut pas être appliqué à un autre marché/session, et la valeur courante reste
 strictement exclue des 60 observations historiques.
 
+### 2026-08-29 — D2 bloqué par une preuve de déficit, pas par le code
+
+L'audit metadata-only ne trouve aucun asset H0 officiel sur la fenêtre commune.
+Avant le 21 août, seulement cinq dates H1 ont leurs fichiers physiques et un gap
+de manifest inférieur au cap de 15 secondes ; cette borne haute inclut le
+week-end et reste donc quinze sessions sous le minimum causal de vingt.
+
+### 2026-08-29 — stratégie fonctionnelle et risque sans effet de bord
+
+La stratégie est un réducteur de snapshots immuables : une candle identique est
+idempotente, une révision ou un gap invalide le setup et un état terminal ne
+peut pas réentrer. Le superviseur de risque est pur ; l'application de sa
+décision et la clôture de position retournent un nouveau ledger explicite.
+
+### 2026-08-29 — aucune limite risque implicite
+
+Tous les caps quantitatifs du `RiskLimits` sont obligatoires et leur hash est
+porté par chaque décision. Le code ne choisit donc pas silencieusement un cap de
+spread, slippage, levier ou staleness non enregistré.
+
 ### 2026-08-28 — L2 legacy incomplet rejeté
 
 Les snapshots TRIDENT fournissant meilleur bid/ask et profondeur à 10 bps sans
@@ -296,9 +317,9 @@ source opérateur et ne seront pas utilisées pour une conclusion de recherche.
 ## 11. Preuves de validation
 
 - `uv sync` : réussi, lockfile créé, package `bot05==0.1.0` installé ;
-- `uv run pytest` : **74 tests réussis** ;
+- `uv run pytest` : **92 tests réussis** ;
 - `uv run ruff check .` : **réussi** ;
-- `uv run mypy src` : **réussi en mode strict**, 20 fichiers source ;
+- `uv run mypy src` : **réussi en mode strict**, 25 fichiers source ;
 - D1C couvre H0 causal, chaîne/séquence/checksums H1, limites L, source gzip en
   lecture seule, doublons, rejets séparés, import bit-identique, idempotence,
   corruption du store et gate de qualification vers le planner ;
@@ -313,6 +334,8 @@ source opérateur et ne seront pas utilisées pour une conclusion de recherche.
   les pivots 2-left/2-right et les niveaux de session précédente complets ;
 - SHA-256 courant du code dans les rapports D2 :
   `fbc38fa53b8bae67e99b5fa4a777aceff1c69f56d82cc5a6b25c7760b12369eb`.
+- D3 couvre 18 tests dédiés de stratégie/risque ; SHA-256 du code D3 :
+  `c333a4ee6e816904239045fb15a9a0564a4709a9999e7ccdbadd339c27d28ae2`.
 
 ## 12. Impact opérationnel
 
@@ -429,8 +452,72 @@ ne constituent ni backtest ni preuve d'edge. Le SHA-256 du rapport est
 
 ### Gate restant
 
-D2 demeure `En cours` : aucune candle H0 officielle checksummée n'est présente
+D2 demeure `Bloqué` : aucune candle H0 officielle checksummée n'est présente
 sur cette fenêtre, donc la parité externe n'est pas revendiquée. Les filtres
 q50/q75 restent aussi indisponibles sur données réelles tant que 20 sessions
 comparables antérieures ne sont pas qualifiées. Aucun résultat de rendement et
 aucune capacité d'ordre n'ont été ajoutés.
+
+## 15. Audit des gates D2 et livraison D3/T3
+
+### Déficit local D2 prouvé
+
+`scripts/audit_d2_data_gates.py` inspecte uniquement l'inventaire BOT05 et le
+manifest HyperBot déjà checksumé, sans lire les gros segments ni contacter le
+réseau. Le rapport immuable
+`reports/data_quality/d2_local_data_gates_2026-08-21.json` établit :
+
+- zéro asset H0 officiel chevauchant 13:30–13:45 UTC ;
+- zéro session antérieure déjà qualifiée ;
+- cinq dates H1 au maximum avec fichiers présents et gaps metadata sous 15 s,
+  du 16 au 20 août inclus ;
+- un déficit minimal de quinze par rapport aux vingt historiques requis, avant
+  même de retirer le dimanche 16 ou de valider un calendrier de production.
+
+Ces fenêtres restent `manifest-only` et ne sont pas promues. Le SHA-256 du
+rapport est
+`8f6e1fd89c955ccd349050971f3093c8172ee674000938b1990ac59cf1138193`.
+D2/T2 passent donc à `Bloqué` jusqu'à disponibilité d'une source H0 commune et
+d'un historique suffisant ; aucun fetch n'est inféré de ce constat.
+
+### Machine d'état Strategy v0
+
+`src/bot05/strategy/` fournit des contrats gelés et un réducteur couvrant
+`waiting_open → drive_complete → waiting_pullback → waiting_confirmation →
+intent|expired|invalidated` :
+
+- le filtre de drive, la confirmation et la target sont verrouillés dans un
+  `StrategySpec` checksumé ;
+- les confirmations breakout, engulf et midpoint reclaim sont distinctes et
+  symétriques long/short ;
+- touch et confirmation peuvent partager la même candle clôturée ;
+- franchissement de l'origine, gap, révision, changement d'intervalle,
+  lookahead, prix stale ou entrée au-delà du stop invalident fail-closed ;
+- les targets fixes 1R/2R sont structurelles ; la target de liquidité est le
+  niveau antérieur intact le plus proche, connu strictement avant `t0` ;
+- le premier prix exécutable causal produit un seul `TradeIntent`. Ses retries
+  sont idempotents et aucun état terminal ne peut réentrer ;
+- l'intent porte les hashes de données/configuration, les versions calendrier
+  et code, les timestamps, prix, stop, target et motif de sélection.
+
+### Superviseur de risque pur
+
+`src/bot05/risk/` refuse dans un ordre stable : scope/ledger incohérent, intent
+dupliqué, gap ou stale, horloge/session ambiguë, marché ou définition invalide,
+oracle interne requis, spread/slippage/divergence hors cap, position existante,
+limites journalières/cooldown, ordre orphelin, fill inconnu, divergence de
+position, perte de flux, risque de taille, levier et reward/risk net insuffisant.
+
+Le risque de position inclut les coûts de perte attendus. Les limites sont
+obligatoires et content-addressed. `apply_risk_decision` et
+`close_risk_position` mettent à jour un ledger immuable, avec traitement
+exact-once des intents et perte journalière en R. Aucun gateway ou module
+d'exécution n'a été introduit.
+
+### Tests de sortie
+
+Les 18 tests D3/T3 couvrent long/short, trois confirmations, trois targets,
+trois filtres, touch/confirmation simultanés, expiry, gap, révision, niveaux
+futurs, absence de target, lookahead/stale/gap d'entrée, exact-once, tous les
+codes de refus risque, ledger, cooldown et perte quotidienne. D3/T3 sont
+`Terminé`; aucun résultat de rendement n'est calculé.

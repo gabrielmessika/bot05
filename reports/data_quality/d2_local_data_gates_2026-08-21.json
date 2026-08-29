@@ -1,0 +1,131 @@
+{
+  "config_sha256": "f64d828ce18514bb91b7c9d7250b46b6dedb58cef8af2e0d08f411861bbb9247",
+  "kind": "bot05_d2_local_data_gate_audit",
+  "market": "BTC",
+  "network_performed": false,
+  "official_h0_gate": {
+    "dataset_ids": [],
+    "overlapping_asset_count": 0,
+    "ready": false
+  },
+  "rolling_history_gate": {
+    "calendar_eligibility_status": "not_evaluated",
+    "candidate_integrity_status": "manifest_only_pending_event_audit",
+    "candidate_upper_bound": 5,
+    "candidate_windows": [
+      {
+        "all_segment_files_present": true,
+        "date": "2026-08-16",
+        "end_utc": "2026-08-16T13:45:00.000Z",
+        "max_manifest_time_gap_ms": 5,
+        "segment_count": 2,
+        "segments": [
+          {
+            "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-16-000247.jsonl.gz",
+            "storage_sha256": "c4423199634c7d4a2d3b5d1a722e12f790cebfa28c545ce2086629bdddf5c4ea"
+          },
+          {
+            "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-16-000248.jsonl.gz",
+            "storage_sha256": "b8d0720d01091c1f303568c5a9c587934cafb3d5d5ee017b479eb6920f4794ed"
+          }
+        ],
+        "start_utc": "2026-08-16T13:30:00.000Z",
+        "weekday": false
+      },
+      {
+        "all_segment_files_present": true,
+        "date": "2026-08-17",
+        "end_utc": "2026-08-17T13:45:00.000Z",
+        "max_manifest_time_gap_ms": 0,
+        "segment_count": 3,
+        "segments": [
+          {
+            "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-17-000293.jsonl.gz",
+            "storage_sha256": "2116dcddec74f02178549571d7ae6dc6cf7a484f85a391ca18c71292ab3a12bd"
+          },
+          {
+            "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-17-000294.jsonl.gz",
+            "storage_sha256": "f5e97bded51346cbb046ef1c53770d8dc9efa9003eb9f88f9b85a4899934b4a0"
+          },
+          {
+            "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-17-000295.jsonl.gz",
+            "storage_sha256": "4ff9a1b86fc6f2355c2de8492ea405ff556f419908beee10bd9e03a5473d30c1"
+          }
+        ],
+        "start_utc": "2026-08-17T13:30:00.000Z",
+        "weekday": true
+      },
+      {
+        "all_segment_files_present": true,
+        "date": "2026-08-18",
+        "end_utc": "2026-08-18T13:45:00.000Z",
+        "max_manifest_time_gap_ms": 0,
+        "segment_count": 2,
+        "segments": [
+          {
+            "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-18-000352.jsonl.gz",
+            "storage_sha256": "7dc56fd8c09bf4d1ad4e028d1c6a4b036d814c096d80435b6356f18520cb06ff"
+          },
+          {
+            "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-18-000353.jsonl.gz",
+            "storage_sha256": "6c5b69fa802ba0f9a7a90c29a109a3193e6bc094909857fc8e2b1df6707a645d"
+          }
+        ],
+        "start_utc": "2026-08-18T13:30:00.000Z",
+        "weekday": true
+      },
+      {
+        "all_segment_files_present": true,
+        "date": "2026-08-19",
+        "end_utc": "2026-08-19T13:45:00.000Z",
+        "max_manifest_time_gap_ms": 0,
+        "segment_count": 2,
+        "segments": [
+          {
+            "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000413.jsonl.gz",
+            "storage_sha256": "7da4127faca4a2602718cd0c4859e45d3c02898d3b4688bd5138d6695d745d15"
+          },
+          {
+            "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000414.jsonl.gz",
+            "storage_sha256": "3e3493e4d1b5a4954e4870c4cd541946ced674531317cf1698addd74cf244e24"
+          }
+        ],
+        "start_utc": "2026-08-19T13:30:00.000Z",
+        "weekday": true
+      },
+      {
+        "all_segment_files_present": true,
+        "date": "2026-08-20",
+        "end_utc": "2026-08-20T13:45:00.000Z",
+        "max_manifest_time_gap_ms": 0,
+        "segment_count": 2,
+        "segments": [
+          {
+            "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-20-000516.jsonl.gz",
+            "storage_sha256": "757e713fc996439d80261ba4accd46a5665381ffa815ba414b6bf2a05da51080"
+          },
+          {
+            "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-20-000517.jsonl.gz",
+            "storage_sha256": "6cd7572af1cf8dbb051e2ff8afdf6ac973280c641742afd89650bf432a9c0c43"
+          }
+        ],
+        "start_utc": "2026-08-20T13:30:00.000Z",
+        "weekday": true
+      }
+    ],
+    "minimum_shortfall": 15,
+    "qualified_prior_date_count": 0,
+    "ready": false,
+    "required_prior_sessions": 20,
+    "upper_bound_includes_weekends": true
+  },
+  "schema_version": 1,
+  "script_sha256": "d681d809b7a05e36eefa50ab728424d3543e170de2d60fd8f44d9525e0459dc8",
+  "source_manifest": {
+    "integrity_scope": "manifest_only_no_segment_rehash",
+    "path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/manifest.json",
+    "sha256": "b4845c57672eb9d2909f9c2e0727cc1b13de5a1ec2c337e6fe98ddd4260c328c"
+  },
+  "target_end_utc": "2026-08-21T13:45:00.000Z",
+  "target_start_utc": "2026-08-21T13:30:00.000Z"
+}

@@ -31,6 +31,8 @@ Le lot initial fournit :
   promotion exige un rapport de qualification checksumé ;
 - un moteur D2 de bougies 1m/5m, gaps explicites, Opening Drive causal,
   percentiles historiques exclusifs, pivots confirmés et parité OHLCV ;
+- une stratégie v0 exacte-once sur snapshots immuables et un superviseur de
+  risque pur, sans gateway d'exécution ;
 - un rapport versionnable, sans appel réseau.
 
 Les données HyperBot partagées sont classées H1 dans BOT05, jamais H2. Les
@@ -103,6 +105,17 @@ qualification, construit 1m et 5m, compare les 5m directes au rollup des 1m et
 publie un rapport immuable sous `reports/features/`. La parité officielle H0
 reste explicitement en attente tant qu'une source checksummée commune n'est pas
 disponible.
+
+L'absence locale de H0 et d'un historique de vingt sessions est publiée sans
+fetch réseau :
+
+```bash
+uv run python scripts/audit_d2_data_gates.py
+```
+
+Le rapport distingue strictement les fenêtres `manifest-only` des datasets
+qualifiés. Cette limite de données bloque la fermeture D2, mais pas les tests
+synthétiques de la stratégie et du risque D3.
 
 ## Données
 
