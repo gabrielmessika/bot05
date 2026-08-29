@@ -4,11 +4,11 @@
 
 **Spécification :** [`PLAN.md`](PLAN.md)
 
-**État global :** D0/T0, D1A, D1B, D1C, T1, D3 et T3 livrés. Le code D2/T2 est
-prêt mais ses preuves externes sont bloquées par les données locales : zéro
-asset H0 et seulement cinq dates historiques candidates avant la cible, contre
-vingt requises. D4 est le prochain lot de code. Aucune capacité d'ordre et aucun
-appel réseau dans les lots livrés.
+**État global :** D0/T0, D1A, D1B, D1C, T1, D3/T3 et D4/T4 livrés. Les chaînes
+D2/T2 et D5/T5 sont couvertes sur fixtures, mais leurs preuves externes sont
+bloquées par les données locales : zéro asset H0 et seulement cinq dates
+historiques candidates avant la cible, contre vingt requises. Aucune capacité
+d'ordre et aucun appel réseau dans les lots livrés.
 
 ## 1. Rôle de ce document
 
@@ -44,8 +44,8 @@ Statuts utilisés : `À faire`, `En cours`, `Terminé`, `Bloqué`.
 | D1C | store append-only et adaptateurs H0/H1/L | Terminé | import bit-identique, rejets séparés, sources inchangées |
 | D2 | bougies 1m/5m et features causales | Bloqué | aucune fuite, gaps explicites, parité officielle |
 | D3 | stratégie v0 et superviseur de risque | Terminé | machine d'état exact-once et fail-closed |
-| D4 | replay déterministe et coûts | À faire | modèles conservateur/central/stress reproductibles |
-| D5 | qualification des datasets et études par marché | À faire | rapports séparés U/H0/H1/H2/L, limites publiées |
+| D4 | replay déterministe et coûts | Terminé | modèles conservateur/central/stress reproductibles |
+| D5 | qualification des datasets et études par marché | Bloqué | code livré ; historique multi-marché qualifié absent |
 | D6 | ablations, walk-forward et OOS verrouillé | À faire | toutes variantes publiées, holdout non réoptimisé |
 | D7 | collector et runner shadow publics | À faire | zéro signature, observabilité et procédures incident |
 | D8 | canary éventuel | Bloqué | décision utilisateur et gates de `PLAN.md` requises |
@@ -58,8 +58,8 @@ Statuts utilisés : `À faire`, `En cours`, `Terminé`, `Bloqué`.
 | T1 | provenance, lecture seule, checksums, gaps et déterminisme | D1A–D1C | Terminé | sources inchangées, report bit-identique |
 | T2 | DST, jours fériés, bougies, lookahead et pivots | D1B–D2 | Bloqué | code couvert ; parité H0 externe indisponible |
 | T3 | transitions stratégie, refus risque, exact-once | D3 | Terminé | invariants long/short et fail-closed |
-| T4 | intrabar, gaps, fees, slippage, funding, latence | D4 | À faire | central et stress couverts |
-| T5 | intégration dataset → signal → replay → rapport | D2–D5 | À faire | répétition bit-identique et audit des coûts |
+| T4 | intrabar, gaps, fees, slippage, funding, latence | D4 | Terminé | central et stress couverts |
+| T5 | intégration dataset → signal → replay → rapport | D2–D5 | Bloqué | fixtures vertes ; preuve multi-marché absente |
 | T6 | walk-forward, bootstrap, ablations et holdout | D6 | À faire | contrôles faux positifs et concentration |
 | T7 | shadow, stale, reprise, divergence et kill path | D7 | À faire | 60 sessions/30 signaux avant toute proposition |
 
@@ -135,8 +135,8 @@ datasets actuellement indexés.
 
 ## 7. Ordre de travail immédiat
 
-1. Livrer D4 : replay déterministe, ordre intrabar explicite, coûts et modèles
-   conservateur/central/stress sur fixtures synthétiques.
+1. Qualifier les sources U/H0/H1/H2 par marché nécessaires aux rapports D5,
+   sans agréger les étages de preuve.
 2. Si une acquisition publique est autorisée, limiter H0 et l'historique BTC au
    déficit exact publié par l'audit D2 ; `remote_fetch_enabled` reste `false`.
 3. Qualifier éventuellement les cinq fenêtres H1 candidates locales comme
@@ -521,3 +521,121 @@ trois filtres, touch/confirmation simultanés, expiry, gap, révision, niveaux
 futurs, absence de target, lookahead/stale/gap d'entrée, exact-once, tous les
 codes de refus risque, ledger, cooldown et perte quotidienne. D3/T3 sont
 `Terminé`; aucun résultat de rendement n'est calculé.
+
+## 16. Lot livré — D4 / T4
+
+### Contrats et coûts explicites
+
+`src/bot05/replay/` ajoute une simulation de recherche pure, sans créer le
+package `bot05.execution` interdit par le garde-fou de sécurité. Chaque run
+consomme un `TradeIntent` et une `RiskDecision` acceptée et correspondante. Sa
+configuration immuable fixe quantité, tick, pas de taille, latences, staleness,
+horizon, slippage, multiplicateur de frais et version du code ; elle est
+content-addressed.
+
+Les frais sont des snapshots effectifs datés par marché. Ils enregistrent tier,
+maker/taker de base, growth mode, `deployerFeeScale`, remises, builder fee,
+taux effectifs et checksum source. Le moteur ne devine pas une formule HIP-3 à
+partir d'informations partielles : les taux effectifs doivent provenir d'une
+source qualifiée. Un changement de snapshot entre entrée et sortie est appliqué
+à chaque fill. Le funding est traversé uniquement aux frontières strictement
+postérieures à l'entrée et antérieures ou égales à la sortie.
+
+### Quatre modèles de replay
+
+- `ohlc_conservative` entre au next-open vérifié, arrondit contre la position,
+  paie taker à l'entrée et à la sortie, applique le slippage fixe, traite les
+  gaps au prix d'ouverture défavorable et donne priorité au stop quand stop et
+  target apparaissent dans la même bougie ;
+- `ohlc_optimistic` conserve une collision favorable et zéro slippage comme
+  plafond informatif seulement ;
+- `trade_bbo_central` attend la latence après la décision risque, balaie tous
+  les niveaux nécessaires pour la taille, exécute les stops en taker et ne
+  crédite un target maker qu'après ACK, repos et trade-through strict dans le
+  bon sens d'agression ; un simple touch ne remplit pas ;
+- `trade_bbo_stress` verrouille les frais à 1,5×, les latences à 2× et ajoute le
+  slippage p95 défavorable aux exécutions marketables. L'impact et les gaps
+  restent ceux du carnet réellement fourni.
+
+Une profondeur insuffisante n'est jamais extrapolée. Une donnée stale, un trou
+de flux pendant la position, une séquence ambiguë, l'absence de frais effectifs
+ou de liquidité de sortie retourne un résultat fail-closed sans fabriquer de
+PnL.
+
+### Résultats et rapports
+
+Les résultats immuables séparent fills, rôles maker/taker, niveaux consommés,
+latence, slippage, frais, funding, PnL brut/net et PnL en R. Le `run_id` couvre
+intent, limites risque, configuration, schedule de frais et hash des événements
+de replay. Les rapports JSON canoniques et Markdown calculent taux de réussite,
+frais, funding, PnL et drawdown, écrivent un sidecar SHA-256 et refusent
+d'écraser une publication différente.
+
+### Tests de sortie et limites
+
+Les 15 nouveaux scénarios couvrent long/short, collision stop/TP, gap au stop ou
+à l'entrée, trou de bougie, stale transport, arrondis tick/taille, impact
+multi-niveaux, profondeur insuffisante, funding à la frontière, changement de
+frais, target touché mais non rempli, trade-through post-ACK, stop retardé,
+latence/slippage/frais stress, perte de flux et répétition bit-identique. La
+suite complète comptait 107 tests au jalon D4 ; pytest, ruff et mypy strict
+passaient.
+
+D4/T4 sont `Terminé` sur fixtures synthétiques. Aucun replay historique par
+marché, résultat de rendement ou preuve d'exécution live n'est revendiqué : ces
+travaux relèvent de D5 et restent contraints par les gates de données D2.
+
+## 17. Code livré — D5 / T5, preuves externes bloquées
+
+### Préenregistrement et séparation des preuves
+
+`src/bot05/studies/` ajoute un `ExperimentSpec` immuable et checksumé qui fixe
+avant les résultats l'univers, les sessions, StrategySpecs, quatre modèles de
+replay, horizons MFE/MAE 15/30/60/120, calendriers, configuration et version du
+code. Le sélecteur portefeuille reste refusé pendant D5.
+
+Chaque `StudyDataset` manifeste explicitement marché canonique, instrument
+source, étage U/H0/H1/H2/L, qualification, canaux, période, nombre de records,
+gaps critiques, transformations et trois checksums. Un rapport économique est
+mono-marché, mono-session, mono-modèle et mono-étage : mélanger H1 et H2, un
+dataset candidat ou un dataset avec gap critique est refusé.
+
+La politique codée autorise U pour la structure alpha, H0 pour le smoke et la
+parité de signal, H1 pour le replay historique, H2 pour la preuve causale et L
+pour la pré-recherche seulement. H0, L et U ne peuvent pas publier de PnL
+d'exécution. Aucun rapport D5 ne permet une promotion ; GOLD, SILVER, SP500,
+HYPE et BTC sont primaires, ETH/SOL restent marqués comme contrôles.
+
+### Études par marché
+
+- entonnoir monotone session complète → éligible → drive → pullback →
+  confirmation → gate économique → trade, avec motif de rejet obligatoire ;
+- MFE/MAE directionnels en bps et R aux quatre horizons préenregistrés, avec
+  fenêtre incomplète explicite dès qu'une bougie manque ;
+- win rate, expectancy nette R/bps, profit factor, PnL brut/net, frais connus,
+  funding, slippage configuré, spread et impact BBO observés, drawdowns R/USD et
+  durée, durée de position, moyenne, médiane, dispersion, percentile 5, CVaR 5,
+  sorties stop/target/time et concentration des cinq meilleurs résultats ;
+- rapport JSON canonique, Markdown français et sidecar SHA-256 immuables ;
+- parité U/Hyperliquid OHLC par timestamp, avec écarts bps par champ et buckets
+  manquants. Ce rapport de parité ne fusionne aucun PnL.
+
+Le contrat `ReplayResult` D4 porte désormais explicitement marché, session et
+direction en plus de l'intent, afin d'interdire les agrégations de portée
+ambiguë. Les fills BBO conservent aussi benchmark top-of-book, spread et impact
+de profondeur séparément du slippage configuré. Aucun rapport D4 publié
+n'existait à migrer.
+
+### Intégration et gate restant
+
+Une intégration synthétique complète transforme des trades checksummés en
+bougies 5m, construit l'Opening Drive et le signal, obtient une décision risque,
+rejoue l'exécution avec frais, calcule MFE/MAE puis publie deux rapports
+bit-identiques. Les tests couvrent aussi parité complète/incomplète, H0/L sans
+preuve d'exécution, mélange d'étages, gaps critiques, contrôles de
+préenregistrement et métriques de drawdown.
+
+La suite compte 116 tests et pytest, ruff, format et mypy strict passent. D5/T5
+restent néanmoins `Bloqué` : aucun historique U/H0/H1/H2 qualifié suffisant ne
+permet encore les replays séparés GOLD, SILVER, SP500, HYPE, BTC et les contrôles
+ETH/SOL. Les fixtures valident le logiciel, pas l'edge ni la rentabilité.

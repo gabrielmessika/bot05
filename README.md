@@ -33,7 +33,12 @@ Le lot initial fournit :
   percentiles historiques exclusifs, pivots confirmés et parité OHLCV ;
 - une stratégie v0 exacte-once sur snapshots immuables et un superviseur de
   risque pur, sans gateway d'exécution ;
-- un rapport versionnable, sans appel réseau.
+- quatre modèles de replay déterministes OHLC/trades-BBO, avec impact, frais
+  versionnés, funding, latence et sorties fail-closed ;
+- des rapports de replay JSON/Markdown immuables et checksummés, sans appel
+  réseau ;
+- des études D5 mono-marché et mono-étage de preuve, avec entonnoirs, MFE/MAE,
+  métriques économiques descriptives et parité sous-jacent/Hyperliquid.
 
 Les données HyperBot partagées sont classées H1 dans BOT05, jamais H2. Les
 données TRIDENT sont classées L par défaut. Un chevauchement local non encore
