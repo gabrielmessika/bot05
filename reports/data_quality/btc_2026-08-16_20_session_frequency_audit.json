@@ -1,0 +1,150 @@
+{
+  "code_sha256": "ccc4ede3c249cd6a84bb61cffb894696b1d700a98e1f416ec534137cb936c5f4",
+  "combined_derived_records_sha256": "19da4ec9046a481fb132c1415ecb0eeabbf0765f2cab12c0b74a013e2d4dc936",
+  "combined_manifests_sha256": "01e71501f8defb27d1d5c252737b95067aca221802bf31341fb5599fd361abdf",
+  "evidence_tier": "H1",
+  "generated_from_local_data_only": true,
+  "kind": "bot05_local_btc_session_frequency_audit",
+  "market": "BTC",
+  "network_performed": false,
+  "observed_window_count": 5,
+  "official_h0_parity": {
+    "ready": false,
+    "reason": "no_local_checksummed_h0_common_window"
+  },
+  "opening_drive_valid_count": 0,
+  "operator_calendar_qualified": false,
+  "promotion_eligible": false,
+  "research_conclusion": "data_insufficient",
+  "rolling_filters": {
+    "locally_available_weekday_candidates": 4,
+    "minimum_required_prior_sessions": 20,
+    "ready": false,
+    "reason": "insufficient_prior_sessions_and_no_operator_calendar"
+  },
+  "schema_version": 1,
+  "script_sha256": "19212fa1c400dc5836aa9a878e0a870649d2cf9131966b48f8636096c9485a07",
+  "session_id": "us_cash_open",
+  "sessions": [
+    {
+      "bbo_count": 93764,
+      "calendar_status": "excluded_weekend_by_baseline",
+      "candles_1m": 240,
+      "candles_5m": 48,
+      "date": "2026-08-16",
+      "derived_record_count": 120945,
+      "max_bbo_gap_ms": 4442,
+      "opening_drive": {
+        "reason": "close_outside_outer_quartile",
+        "valid": false
+      },
+      "source_record_count": 121004,
+      "strategies_fixed_2r_drive_none": [],
+      "t0_utc": "2026-08-16T13:30:00.000Z",
+      "trade_count": 27181,
+      "trade_retransmission_count": 59,
+      "weekday_heuristic": false,
+      "window_report_path": "/workspaces/bot05/reports/data_quality/btc_2026-08-16_1300_1700_window.json",
+      "window_report_sha256": "522b33c5ee98d4e4416df237c4755aeb40860e98cfc00bbc4c4d38df54578350"
+    },
+    {
+      "bbo_count": 110179,
+      "calendar_status": "candidate_requires_operator_calendar",
+      "candles_1m": 240,
+      "candles_5m": 48,
+      "date": "2026-08-17",
+      "derived_record_count": 189033,
+      "max_bbo_gap_ms": 2887,
+      "opening_drive": {
+        "reason": "close_outside_outer_quartile",
+        "valid": false
+      },
+      "source_record_count": 189089,
+      "strategies_fixed_2r_drive_none": [],
+      "t0_utc": "2026-08-17T13:30:00.000Z",
+      "trade_count": 78854,
+      "trade_retransmission_count": 56,
+      "weekday_heuristic": true,
+      "window_report_path": "/workspaces/bot05/reports/data_quality/btc_2026-08-17_1300_1700_window.json",
+      "window_report_sha256": "74be56e86b2ee7fbc443885b739582c365b86d782a07450d84474a30c1358ed5"
+    },
+    {
+      "bbo_count": 111874,
+      "calendar_status": "candidate_requires_operator_calendar",
+      "candles_1m": 240,
+      "candles_5m": 48,
+      "date": "2026-08-18",
+      "derived_record_count": 189862,
+      "max_bbo_gap_ms": 3127,
+      "opening_drive": {
+        "reason": "close_outside_outer_quartile",
+        "valid": false
+      },
+      "source_record_count": 189887,
+      "strategies_fixed_2r_drive_none": [],
+      "t0_utc": "2026-08-18T13:30:00.000Z",
+      "trade_count": 77988,
+      "trade_retransmission_count": 25,
+      "weekday_heuristic": true,
+      "window_report_path": "/workspaces/bot05/reports/data_quality/btc_2026-08-18_1300_1700_window.json",
+      "window_report_sha256": "b02e03eb43e9543d5b35e840a5b75fbc133c2ffab0271f62c9b0d10aad33562a"
+    },
+    {
+      "bbo_count": 148690,
+      "calendar_status": "candidate_requires_operator_calendar",
+      "candles_1m": 240,
+      "candles_5m": 48,
+      "date": "2026-08-19",
+      "derived_record_count": 419853,
+      "max_bbo_gap_ms": 2032,
+      "opening_drive": {
+        "reason": "close_outside_outer_quartile",
+        "valid": false
+      },
+      "source_record_count": 419895,
+      "strategies_fixed_2r_drive_none": [],
+      "t0_utc": "2026-08-19T13:30:00.000Z",
+      "trade_count": 271163,
+      "trade_retransmission_count": 42,
+      "weekday_heuristic": true,
+      "window_report_path": "/workspaces/bot05/reports/data_quality/btc_2026-08-19_1300_1700_window.json",
+      "window_report_sha256": "7225e518109d45c98ad520828ce69a0050bb3cadf6887b84cbe7e21605f36f5a"
+    },
+    {
+      "bbo_count": 149366,
+      "calendar_status": "candidate_requires_operator_calendar",
+      "candles_1m": 240,
+      "candles_5m": 48,
+      "date": "2026-08-20",
+      "derived_record_count": 277789,
+      "max_bbo_gap_ms": 1417,
+      "opening_drive": {
+        "reason": "close_outside_outer_quartile",
+        "valid": false
+      },
+      "source_record_count": 277841,
+      "strategies_fixed_2r_drive_none": [],
+      "t0_utc": "2026-08-20T13:30:00.000Z",
+      "trade_count": 128423,
+      "trade_retransmission_count": 52,
+      "weekday_heuristic": true,
+      "window_report_path": "/workspaces/bot05/reports/data_quality/btc_2026-08-20_1300_1700_window.json",
+      "window_report_sha256": "34c7a97ad358e7eaac94a11da4d2dc6e0d14ea4953c3dfe8d4847847a03f586e"
+    }
+  ],
+  "summary_by_confirmation": {
+    "breakout_confirm": {
+      "confirmed_count": 0,
+      "intent_count": 0
+    },
+    "engulf_confirm": {
+      "confirmed_count": 0,
+      "intent_count": 0
+    },
+    "midpoint_reclaim": {
+      "confirmed_count": 0,
+      "intent_count": 0
+    }
+  },
+  "weekday_candidate_count": 4
+}

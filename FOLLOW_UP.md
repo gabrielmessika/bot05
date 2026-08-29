@@ -4,11 +4,13 @@
 
 **Spécification :** [`PLAN.md`](PLAN.md)
 
-**État global :** D0/T0, D1A, D1B, D1C, T1, D3/T3 et D4/T4 livrés. Les chaînes
-D2/T2 et D5/T5 sont couvertes sur fixtures, mais leurs preuves externes sont
-bloquées par les données locales : zéro asset H0 et seulement cinq dates
-historiques candidates avant la cible, contre vingt requises. Aucune capacité
-d'ordre et aucun appel réseau dans les lots livrés.
+**État global :** D0/T0, D1A, D1B, D1C, T1, D3/T3 et D4/T4 livrés. D5 dispose
+d'un premier smoke historique H1 complet sur une session BTC et de cinq fenêtres
+antérieures qualifiées, sans conclusion d'edge. Le code D6/T6 et le socle hors
+ligne D7/T7 sont livrés, mais leurs preuves restent bloquées : zéro asset H0,
+quatre dates ouvrées candidates contre vingt, aucun historique OOS long et
+aucune observation shadow continue autorisée. Aucune capacité d'ordre et aucun
+appel réseau.
 
 ## 1. Rôle de ce document
 
@@ -42,12 +44,12 @@ Statuts utilisés : `À faire`, `En cours`, `Terminé`, `Bloqué`.
 | D1A | inventaire local-first HyperBot/TRIDENT et plan de gaps | Terminé | rapport déterministe, aucune lecture massive ni requête réseau |
 | D1B | contrats marché/candle/trade, calendrier et provenance | Terminé | modèles immuables, DST/holidays et checksums couverts |
 | D1C | store append-only et adaptateurs H0/H1/L | Terminé | import bit-identique, rejets séparés, sources inchangées |
-| D2 | bougies 1m/5m et features causales | Bloqué | aucune fuite, gaps explicites, parité officielle |
+| D2 | bougies 1m/5m et features causales | Bloqué | code couvert ; H0 absent et 16 sessions antérieures manquent |
 | D3 | stratégie v0 et superviseur de risque | Terminé | machine d'état exact-once et fail-closed |
 | D4 | replay déterministe et coûts | Terminé | modèles conservateur/central/stress reproductibles |
-| D5 | qualification des datasets et études par marché | Bloqué | code livré ; historique multi-marché qualifié absent |
-| D6 | ablations, walk-forward et OOS verrouillé | À faire | toutes variantes publiées, holdout non réoptimisé |
-| D7 | collector et runner shadow publics | À faire | zéro signature, observabilité et procédures incident |
+| D5 | qualification des datasets et études par marché | Bloqué | premier smoke BTC livré ; historique multi-marché qualifié absent |
+| D6 | ablations, walk-forward et OOS verrouillé | Bloqué | code/tests livrés ; échantillon OOS absent |
+| D7 | collector et runner shadow publics | Bloqué | contrats hors ligne livrés ; transport et observations externes absents |
 | D8 | canary éventuel | Bloqué | décision utilisateur et gates de `PLAN.md` requises |
 
 ## 4. Lots de test
@@ -56,12 +58,12 @@ Statuts utilisés : `À faire`, `En cours`, `Terminé`, `Bloqué`.
 |---|---|---|---|---|
 | T0 | packaging, config stricte, absence de live/secrets | D0 | Terminé | pytest + ruff + mypy verts |
 | T1 | provenance, lecture seule, checksums, gaps et déterminisme | D1A–D1C | Terminé | sources inchangées, report bit-identique |
-| T2 | DST, jours fériés, bougies, lookahead et pivots | D1B–D2 | Bloqué | code couvert ; parité H0 externe indisponible |
+| T2 | DST, jours fériés, bougies, lookahead et pivots | D1B–D2 | Bloqué | code couvert ; parité H0 et calendrier opérateur indisponibles |
 | T3 | transitions stratégie, refus risque, exact-once | D3 | Terminé | invariants long/short et fail-closed |
 | T4 | intrabar, gaps, fees, slippage, funding, latence | D4 | Terminé | central et stress couverts |
-| T5 | intégration dataset → signal → replay → rapport | D2–D5 | Bloqué | fixtures vertes ; preuve multi-marché absente |
-| T6 | walk-forward, bootstrap, ablations et holdout | D6 | À faire | contrôles faux positifs et concentration |
-| T7 | shadow, stale, reprise, divergence et kill path | D7 | À faire | 60 sessions/30 signaux avant toute proposition |
+| T5 | intégration dataset → signal → replay → rapport | D2–D5 | Bloqué | smoke BTC réel vert ; preuve multi-marché absente |
+| T6 | walk-forward, bootstrap, ablations et holdout | D6 | Bloqué | tests verts ; aucun échantillon pour évaluer les gates |
+| T7 | shadow, stale, reprise, divergence et kill path | D7 | Bloqué | tests hors ligne verts ; 60 sessions/30 signaux absents |
 
 ## 5. Lot livré — D0 / T0
 
@@ -122,7 +124,9 @@ calcule donc les gaps sans les télécharger.
   replay BOT05 qualifié ; ils doivent être recherchés dans les segments locaux
   avant tout fetch ;
 - les candles TRIDENT 15m/30m/1h/2h ne remplacent pas les 1m/5m requises ;
-- aucun dataset local n'est encore marqué `qualified` par BOT05.
+- au jalon D1A, aucun dataset local n'était encore marqué `qualified` par
+  BOT05 ; les qualifications événementielles livrées depuis sont décrites aux
+  sections 18 et 21.
 
 ### Résultat initial
 
@@ -135,14 +139,16 @@ datasets actuellement indexés.
 
 ## 7. Ordre de travail immédiat
 
-1. Qualifier les sources U/H0/H1/H2 par marché nécessaires aux rapports D5,
-   sans agréger les étages de preuve.
-2. Si une acquisition publique est autorisée, limiter H0 et l'historique BTC au
-   déficit exact publié par l'audit D2 ; `remote_fetch_enabled` reste `false`.
-3. Qualifier éventuellement les cinq fenêtres H1 candidates locales comme
-   smoke supplémentaire, sans prétendre qu'elles satisfont le minimum de vingt.
+1. Acquérir ou qualifier U/H0/H1/H2 par marché sans agréger les étages de preuve.
+2. Si une acquisition publique est autorisée, limiter H0 et l'historique BTC aux
+   seize sessions antérieures encore manquantes ; `remote_fetch_enabled` reste
+   `false`.
+3. Fournir un calendrier opérateur, les frais, le funding et le contexte marché
+   historiques avant de transformer le smoke BTC en résultat économique
+   publiable.
 4. Étendre ensuite la qualification aux marchés/session prioritaires avant tout
-   calcul de PnL ou sélection portefeuille.
+   calcul OOS ou sélection portefeuille.
+5. Autoriser séparément un transport public avant toute observation D7 réelle.
 
 ## 8. Lot livré — D1B / T2 calendrier
 
@@ -228,13 +234,14 @@ inexistant/ambigu et construction causale des trois bougies 5 minutes clôturée
   brut et aux records, déclarant zéro gap critique, doublon et rejet et une
   couverture contenue dans les bornes observées.
 
-### Limites et prochaine preuve
+### Limites au jalon D1C
 
-- aucun gros fichier HyperBot/TRIDENT n'a encore été importé dans BOT05 ; cette
-  livraison qualifie le moteur et ses fixtures, pas les datasets réels ;
+- aucun gros fichier HyperBot/TRIDENT n'avait encore été importé dans BOT05 à
+  la clôture de D1C ; cette livraison qualifiait le moteur et ses fixtures, pas
+  encore les datasets réels ;
 - la couverture min/max d'un segment n'est jamais assimilée implicitement à une
-  continuité ; le prochain travail est de produire les rapports événementiels
-  checksummés sur des segments locaux bornés ;
+  continuité ; les rapports événementiels checksummés livrés ensuite conservent
+  cette règle ;
 - aucun nouveau rapport de gaps ni appel réseau n'a été produit dans D1C.
 
 ## 10. Décisions techniques
@@ -262,7 +269,9 @@ strictement exclue des 60 observations historiques.
 L'audit metadata-only ne trouve aucun asset H0 officiel sur la fenêtre commune.
 Avant le 21 août, seulement cinq dates H1 ont leurs fichiers physiques et un gap
 de manifest inférieur au cap de 15 secondes ; cette borne haute inclut le
-week-end et reste donc quinze sessions sous le minimum causal de vingt.
+week-end. L'audit événementiel ultérieur confirme cinq fenêtres propres mais
+seulement quatre candidates ouvrées, soit un déficit de seize sessions avant
+validation par calendrier opérateur.
 
 ### 2026-08-29 — stratégie fonctionnelle et risque sans effet de bord
 
@@ -316,10 +325,12 @@ source opérateur et ne seront pas utilisées pour une conclusion de recherche.
 
 ## 11. Preuves de validation
 
-- `uv sync` : réussi, lockfile créé, package `bot05==0.1.0` installé ;
-- `uv run pytest` : **92 tests réussis** ;
+- `uv sync --locked` : réussi, package `bot05==0.1.0` installé ;
+- `uv run pytest` : **134 tests réussis** ;
 - `uv run ruff check .` : **réussi** ;
-- `uv run mypy src` : **réussi en mode strict**, 25 fichiers source ;
+- `uv run ruff format --check .` : **réussi**, 91 fichiers conformes ;
+- `uv run mypy src` : **réussi en mode strict**, 47 fichiers source ;
+- `uv build` : sdist et wheel construits ;
 - D1C couvre H0 causal, chaîne/séquence/checksums H1, limites L, source gzip en
   lecture seule, doublons, rejets séparés, import bit-identique, idempotence,
   corruption du store et gate de qualification vers le planner ;
@@ -336,15 +347,21 @@ source opérateur et ne seront pas utilisées pour une conclusion de recherche.
   `fbc38fa53b8bae67e99b5fa4a777aceff1c69f56d82cc5a6b25c7760b12369eb`.
 - D3 couvre 18 tests dédiés de stratégie/risque ; SHA-256 du code D3 :
   `c333a4ee6e816904239045fb15a9a0564a4709a9999e7ccdbadd339c27d28ae2`.
+- les six fenêtres BTC, l'audit cinq dates, le smoke quatre modèles et le plan
+  post-qualification ont leurs sidecars valides ; les relances de l'audit, du
+  smoke et du planner sont bit-identiques ;
+- SHA-256 courant du package dans ces rapports :
+  `ccc4ede3c249cd6a84bb61cffb894696b1d700a98e1f416ec534137cb936c5f4`.
 
 ## 12. Impact opérationnel
 
 - **Trading :** impossible ; aucun gateway ni dépendance d'exchange.
-- **Réseau :** aucun appel effectué ou implémenté dans D0/D1A/D1B/D1C.
+- **Réseau :** aucun appel effectué ; aucun transport n'est implémenté jusqu'au
+  socle D7 inclus et `remote_fetch_enabled` reste `false`.
 - **Données partagées :** lecture seule ; aucun fichier HyperBot/TRIDENT modifié.
 - **Stockage BOT05 :** seuls petits manifests/rapports sont versionnables ; raw,
-  normalized et derived restent ignorés hors `.gitkeep`. Les trois segments BTC
-  normalisés occupent environ 33 Mo sous `data/normalized/` et sont
+  normalized et derived restent ignorés hors `.gitkeep`. Les fenêtres BTC
+  normalisées occupent environ 4 Go sous `data/normalized/` et sont
   reproductibles depuis les sources H1 en lecture seule.
 
 ## 13. Première qualification réelle H1 — fermeture T1
@@ -639,3 +656,130 @@ La suite compte 116 tests et pytest, ruff, format et mypy strict passent. D5/T5
 restent néanmoins `Bloqué` : aucun historique U/H0/H1/H2 qualifié suffisant ne
 permet encore les replays séparés GOLD, SILVER, SP500, HYPE, BTC et les contrôles
 ETH/SOL. Les fixtures valident le logiciel, pas l'edge ni la rentabilité.
+
+## 18. Premier smoke historique H1 BTC
+
+### Qualification multi-segments 13:00–17:00 UTC
+
+`scripts/qualify_hyperbot_window.py` résout et audite une fenêtre répartie sur
+plusieurs fichiers physiques. Chaque fichier garde son store et sa preuve
+immutables ; la qualification de fenêtre réaudite en plus les bornes et le
+heartbeat BBO combiné. `src/bot05/data/reader.py` revérifie manifests, sidecars,
+checksums, reports propres, records et identités de trades avant dérivation.
+
+La fenêtre BTC du 21 août 2026 couvre 22 segments HyperBot, environ 412 Mo de
+sources compressées lues sans modification :
+
+- 282 676 événements BTC source, dont 134 039 trades et 148 637 BBO ;
+- 25 retransmissions cohérentes du même `market × trade_id`, avec mêmes heure
+  exchange, sens, prix et taille ; la première réception est conservée ;
+- 282 651 événements dérivés, 134 014 trades uniques et zéro conflit d'identité ;
+- gap BBO maximal 1 831 ms, sous le cap préenregistré de 15 secondes ;
+- 240 bougies 1m et 48 bougies 5m, sans gap ;
+- SHA-256 de la qualification de fenêtre :
+  `6a22165bae0c33eb9e1d4c6bab9b6cf281b73c480d263012475b23783a2d3d6b` ;
+- SHA-256 des records dérivés :
+  `0f7cb88bb4809f6b07826f9d5413025b3f011ace844c6a3c63d08d2b13e004b5`.
+
+Un même `trade_id` portant des faits économiques contradictoires bloque le
+lecteur. La correction ne déduplique donc jamais deux transactions distinctes
+sur la seule proximité temporelle ou de prix.
+
+### Runner store → signal → risque → quatre replays
+
+`src/bot05/replay/historical.py` et `scripts/run_historical_smoke.py` chargent
+une configuration TOML stricte, exigent une fenêtre qualifiée couvrant les 30
+minutes avant `t0`, le signal maximal et les 120 minutes de position, puis
+réutilisent les contrats Strategy, Risk et Replay existants.
+
+Sur cette unique session, la variante préconfigurée `drive_none ×
+breakout_confirm × fixed_2r` produit un intent long : confirmation 14:25:00 UTC,
+observation du next-open à 14:25:00.669, référence 77 034, stop 76 256 et target
+78 590. La gate risque accepte avec un spread BBO observé de 0,1298 bps et un
+ratio net supposé de 1,6814.
+
+Les quatre modèles sortent au temps à 16:25 UTC :
+
+| Modèle | Statut | PnL net pour 0,001 BTC | PnL R |
+|---|---|---:|---:|
+| OHLC conservateur | closed/time | 0,0229000 | 0,02884 |
+| OHLC optimiste | closed/time | 0,0549000 | 0,07057 |
+| trades+BBO central | closed/time | 0,0529000 | 0,06791 |
+| trades+BBO stress | closed/time | -0,06365000 | -0,07781 |
+
+Le rapport JSON a pour SHA-256
+`4471b8dbc3743e4b7b2012c833ac3b781a8c052935aab59dc3e488875f5e4338`.
+Sa conclusion codée est `data_insufficient` et `promotion_eligible=false`.
+Les chiffres ne sont pas une estimation d'expectancy : une seule session est
+observée, H0 manque et les frais tier 0, le funding nul, le calendrier et la
+définition historique de marché sont des hypothèses explicites de smoke.
+
+## 19. Code livré — D6/T6, preuves OOS bloquées
+
+Le lot hors ligne fournit désormais :
+
+- la matrice complète et déterministe des 27 StrategySpecs
+  `3 drive filters × 3 confirmations × 3 targets` ;
+- les contrôles 0,382/0,5/0,618, zone 30–70 %, sans confirmation, drive naïf,
+  opens décalés ±30/60/120 minutes et pseudo-opens aléatoires à seed figée ;
+- un split chronologique groupé par journée, 50/20/30 après deux purges d'un
+  jour, ainsi qu'un walk-forward ancré d'au moins trois folds ;
+- un ledger OOS immuable qui refuse une seconde ouverture du même holdout ;
+- un bootstrap déterministe par blocs de journées avec intervalle 95 % ;
+- l'évaluation mécanique de toutes les gates 8.1, avec conclusion
+  `data_insufficient` prioritaire quand 100 trades OOS/30 par marché ou une
+  métrique obligatoire manquent.
+
+D6/T6 restent `Bloqué` au sens expérimental : aucune donnée locale ne permet de
+publier les variantes, choisir une spécification sur validation puis ouvrir un
+holdout une seule fois. Le code n'ouvre aucun holdout fictif.
+
+## 20. Socle hors ligne livré — D7/T7, observation externe bloquée
+
+`src/bot05/collector/` définit une spécification public-only sans
+authentification, les sept marchés, les canaux obligatoires et un réducteur de
+santé immuable. Il bloque déconnexion, stale, délai, horloge et gap de séquence ;
+un gap ne se ferme qu'avec la plage exacte manquante et son checksum.
+
+`src/bot05/shadow/` réutilise le `RiskSupervisor`, observe seulement un prix
+théoriquement exécutable dans un `BookSnapshot` public et ne possède aucune
+méthode d'envoi. Le ledger est exact-once. La réconciliation quotidienne compare
+les intent IDs shadow/replay ; une divergence ou une perte de flux avec position
+théorique verrouille un kill switch. La reconnexion ne le réarme pas : il faut
+un flux propre, une réconciliation exacte et une approbation humaine checksumée.
+La procédure est publiée dans `docs/SHADOW_INCIDENTS.md` et le reporter quotidien
+est append-only, bit-identique et déclare `orders_possible=false`.
+
+D7/T7 restent `Bloqué` opérationnellement : aucun transport réseau public n'est
+implémenté ou lancé sans autorisation et aucune des 60 sessions/30 signaux shadow
+requises n'existe. Aucun package `bot05.execution`, SDK exchange, secret ou
+capacité de signature n'a été ajouté.
+
+## 21. Qualification descriptive des cinq dates antérieures
+
+Les fenêtres BTC 13:00–17:00 UTC des 16 au 20 août ont été relues intégralement
+depuis le même export HyperBot H1 checksumé. Les cinq rapports sont qualifiés,
+sans gap critique ni appel réseau. Chaque fenêtre produit 240 bougies 1m et 48
+bougies 5m sans bucket absent ; les gaps BBO maximaux observés vont de 1 417 à
+4 442 ms, sous le cap préenregistré de 15 secondes.
+
+`scripts/audit_local_btc_sessions.py` revérifie les stores et sidecars avant de
+calculer la fréquence descriptive. Le rapport compte cinq fenêtres, dont quatre
+candidates ouvrées selon une heuristique de semaine qui ne remplace pas un
+calendrier opérateur. Sur ces quatre dates, l'Opening Drive est rejeté à chaque
+fois par `close_outside_outer_quartile`; aucune des trois confirmations ne peut
+donc produire d'intent dans la variante `drive_none × fixed_2r`.
+
+Le rapport a pour SHA-256
+`b91dc805deee07cbc8dd1953bfebe0cc2772cbe9f414e0fca10b0da6bb6455bc`.
+Sa conclusion reste `data_insufficient`, avec `promotion_eligible=false` : H0 et
+le calendrier opérateur manquent, quatre historiques ouvrés restent seize sous
+le minimum causal de vingt, et l'observation n'est ni un test OOS ni une preuve
+d'absence d'edge.
+
+Le planner local-first a ensuite été régénéré dans une nouvelle baseline, sans
+écraser les rapports antérieurs. Il découvre 168 assets, réutilise les segments
+BTC qualifiés avant de calculer les gaps et ne relève aucune erreur d'inventaire.
+Le fetch distant reste désactivé. Le SHA-256 du rapport
+`post_btc_history_qualification.json` est
+`a2e287f838a8998dbbb908c3430f5db7688aa44d598026e372859700c6f188b2`.

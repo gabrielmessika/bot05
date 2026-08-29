@@ -1,0 +1,51 @@
+{
+  "audit": {
+    "channel_metrics": {
+      "bbo": {
+        "first_exchange_ms": 1786895325577,
+        "last_exchange_ms": 1786897404689,
+        "max_inter_event_gap_ms": 2549,
+        "record_count": 13389
+      },
+      "trades": {
+        "first_exchange_ms": 1786895326929,
+        "last_exchange_ms": 1786897404140,
+        "max_inter_event_gap_ms": 11029,
+        "record_count": 6871
+      }
+    },
+    "channels": [
+      "trades",
+      "bbo"
+    ],
+    "coverage_basis": "continuous_hash_chain_plus_bbo_heartbeat",
+    "market": "BTC",
+    "max_heartbeat_gap_ms": 15000,
+    "source_content_sha256": "730d846d241505a8de7c4d8a1e0c1a386319f5749aadfce4a393e840437b1b0e",
+    "source_first_record_sha256": "d811710aa3c0d4ebff4db9d9ebaff9e531dcf5f207dbd2796d6e822b1d4eab7d",
+    "source_first_sequence": 33291195,
+    "source_last_record_sha256": "4800ec60e60ae5793f121053440e4b6b0f7c89cddd1e060fb5c4116790f9d82e",
+    "source_last_sequence": 33422499,
+    "source_manifest_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/manifest.json",
+    "source_manifest_sha256": "b4845c57672eb9d2909f9c2e0727cc1b13de5a1ec2c337e6fe98ddd4260c328c",
+    "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-16-000251.jsonl.gz",
+    "source_record_count": 131305,
+    "validated_record_count": 131305
+  },
+  "coverage": [
+    {
+      "end_ms": 1786897405055,
+      "start_ms": 1786895325475
+    }
+  ],
+  "critical_gap_count": 0,
+  "dataset_id": "h1-btc-deae25de17f0-1786895325475-1786897405055",
+  "duplicate_count": 0,
+  "kind": "bot05_dataset_qualification",
+  "qualified": true,
+  "records_sha256": "30f992b32ec6d768b94849575a93b38e5723755ee5e0278c8c62015e3defce53",
+  "reject_count": 0,
+  "schema_version": 1,
+  "segment_id": "196996544da116fab804b0b0d7797938e7a070680ce716ac8372b1fac525c0af",
+  "source_raw_sha256": "deae25de17f0e6036f73cecc3d274f5684b75a7a8ba549947e5f35fec10d64d1"
+}

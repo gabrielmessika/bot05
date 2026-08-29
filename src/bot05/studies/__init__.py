@@ -1,5 +1,16 @@
 """Evidence-separated per-market research studies."""
 
+from bot05.studies.ablations import (
+    AblationMatrix,
+    ControlKind,
+    ControlSpec,
+    build_ablation_matrix,
+)
+from bot05.studies.bootstrap import (
+    BootstrapInterval,
+    DayBlock,
+    bootstrap_expectancy,
+)
 from bot05.studies.contracts import (
     CONTROL_MARKETS,
     MFE_HORIZONS_MINUTES,
@@ -17,6 +28,14 @@ from bot05.studies.contracts import (
     allowed_purposes,
     calculate_excursions,
     market_role,
+)
+from bot05.studies.gates import (
+    GateResult,
+    GateStatus,
+    ResearchConclusion,
+    ResearchGateEvaluation,
+    ResearchGateInputs,
+    evaluate_research_gates,
 )
 from bot05.studies.metrics import (
     ExcursionMetrics,
@@ -43,12 +62,30 @@ from bot05.studies.reporting import (
     build_market_study_report,
     write_market_study_report,
 )
+from bot05.studies.validation import (
+    ChronologicalSplit,
+    DayAssignment,
+    HoldoutAccess,
+    HoldoutLedger,
+    SplitRole,
+    ValidationContractError,
+    WalkForwardFold,
+    build_anchored_walk_forward,
+    build_chronological_split,
+)
 
 __all__ = [
     "CONTROL_MARKETS",
+    "AblationMatrix",
+    "BootstrapInterval",
     "CandleParityMetrics",
     "CandleParityPoint",
     "CandleParityReport",
+    "ChronologicalSplit",
+    "ControlKind",
+    "ControlSpec",
+    "DayAssignment",
+    "DayBlock",
     "MFE_HORIZONS_MINUTES",
     "PRIMARY_MARKETS",
     "ExcursionHorizon",
@@ -57,6 +94,10 @@ __all__ = [
     "ExcursionMetrics",
     "EvidenceAssessment",
     "FunnelMetrics",
+    "GateResult",
+    "GateStatus",
+    "HoldoutAccess",
+    "HoldoutLedger",
     "MarketRole",
     "MarketStudyMetrics",
     "MarketStudyReport",
@@ -68,15 +109,26 @@ __all__ = [
     "StudyPurpose",
     "PerformanceMetrics",
     "ParityStatus",
+    "ResearchConclusion",
+    "ResearchGateEvaluation",
+    "ResearchGateInputs",
+    "SplitRole",
+    "ValidationContractError",
+    "WalkForwardFold",
     "allowed_purposes",
     "assess_evidence",
     "build_market_study_report",
     "build_candle_parity_report",
+    "build_ablation_matrix",
+    "bootstrap_expectancy",
+    "build_anchored_walk_forward",
+    "build_chronological_split",
     "calculate_excursions",
     "calculate_excursion_metrics",
     "calculate_funnel",
     "calculate_market_metrics",
     "calculate_performance",
+    "evaluate_research_gates",
     "market_role",
     "write_market_study_report",
     "write_candle_parity_report",

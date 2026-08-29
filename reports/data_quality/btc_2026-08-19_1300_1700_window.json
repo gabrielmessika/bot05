@@ -1,0 +1,433 @@
+{
+  "bbo_count": 148690,
+  "channels": [
+    "trades",
+    "bbo"
+  ],
+  "code_sha256": "ccc4ede3c249cd6a84bb61cffb894696b1d700a98e1f416ec534137cb936c5f4",
+  "config_sha256": "08a014bcb67439009a3554f69037e7d0c029c0e5f57ab38a1a2502b0fa36cfc9",
+  "coverage": [
+    {
+      "end_ms": 1787158800000,
+      "start_ms": 1787144400000
+    }
+  ],
+  "critical_gap_count": 0,
+  "derived_record_count": 419853,
+  "derived_records_sha256": "c3dba53320c1209b915492afa36449c875835bc237ee19f6f7f678574cb4fa34",
+  "derived_trade_count": 271163,
+  "duplicate_count": 0,
+  "end_utc": "2026-08-19T17:00:00.000Z",
+  "kind": "bot05_h1_window_qualification",
+  "market": "BTC",
+  "max_heartbeat_gap_ms": 15000,
+  "network_performed": false,
+  "observed_max_bbo_gap_ms": 2032,
+  "qualified": true,
+  "record_count": 419895,
+  "reject_count": 0,
+  "schema_version": 1,
+  "script_sha256": "aed3575417e6ce254cbb8061f9d7fa558acb9149826e7068e38596dd901ef78e",
+  "segments": [
+    {
+      "dataset_id": "h1-btc-670666255029-1787144400000-1787144985964",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-670666255029-1787144400000-1787144985964/manifests/e1470358f34254ef603ad6ce4f1f970d707e17e4af1fe4ed85665bbc2daa4e89.json",
+      "manifest_sha256": "a0cf9b621a1a27334043d78b52d7c3fa8a018ba7bee69044f96165092910f552",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-670666255029-1787144400000-1787144985964-e1470358f34254ef.json",
+      "qualification_sha256": "bfa9d0c17904a2a52df9bb57f5d2132cbe8664d3452039534c5bca5ed9fcfe1a",
+      "qualified": true,
+      "record_count": 7390,
+      "records_sha256": "8a40633ef712e9743a640fab7113bd96f6656307b238f4f6ae4c536c2f867e96",
+      "segment_id": "e1470358f34254ef603ad6ce4f1f970d707e17e4af1fe4ed85665bbc2daa4e89",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000411.jsonl.gz",
+      "source_storage_sha256": "6706662550299fb9e0ec66ecbe8bd34a2f517e4c726807e8b1112e4eedb0f1b0",
+      "window": {
+        "end_ms": 1787144985964,
+        "start_ms": 1787144400000
+      }
+    },
+    {
+      "dataset_id": "h1-btc-43db4b31510e-1787144985964-1787145976712",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-43db4b31510e-1787144985964-1787145976712/manifests/d55f264498506a8c61efe56ad2b1d4c4969a841d39ba7272e665b73325cf0179.json",
+      "manifest_sha256": "0565646a2e2ed23c7e43f31d01a18adaadd29726db29a6038ceff4df095eed23",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-43db4b31510e-1787144985964-1787145976712-d55f264498506a8c.json",
+      "qualification_sha256": "4db617812d71a3a1397449410e53cf8fa6acd8c9485e09c3338e789a84ede05f",
+      "qualified": true,
+      "record_count": 13904,
+      "records_sha256": "9431eab754865cf7da039b267053876fb4567d91436c9cb96d6232606fe5220c",
+      "segment_id": "d55f264498506a8c61efe56ad2b1d4c4969a841d39ba7272e665b73325cf0179",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000412.jsonl.gz",
+      "source_storage_sha256": "43db4b31510e33c8915f506944689dfa4999cf8c044215f69888637f20de190f",
+      "window": {
+        "end_ms": 1787145976712,
+        "start_ms": 1787144985964
+      }
+    },
+    {
+      "dataset_id": "h1-btc-7da4127faca4-1787145976712-1787146622376",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-7da4127faca4-1787145976712-1787146622376/manifests/e475f8b0377d263e4174812ccb6fd8febd1d0ad26538258a9faa3f2cf0ee0afb.json",
+      "manifest_sha256": "0c2e519ca278ba9175d25d8a472ee04973011774345f2ea2b947dde6e0a51d5b",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-7da4127faca4-1787145976712-1787146622376-e475f8b0377d263e.json",
+      "qualification_sha256": "ba7feeb58c156755249916647e4168537f8ddf5dd4d90777d902a71d7779f756",
+      "qualified": true,
+      "record_count": 17286,
+      "records_sha256": "ba57bceedf865316084716ba8412cfe8249e85f13411cc635b4f78195773a609",
+      "segment_id": "e475f8b0377d263e4174812ccb6fd8febd1d0ad26538258a9faa3f2cf0ee0afb",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000413.jsonl.gz",
+      "source_storage_sha256": "7da4127faca4a2602718cd0c4859e45d3c02898d3b4688bd5138d6695d745d15",
+      "window": {
+        "end_ms": 1787146622376,
+        "start_ms": 1787145976712
+      }
+    },
+    {
+      "dataset_id": "h1-btc-3e3493e4d1b5-1787146622376-1787147289780",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-3e3493e4d1b5-1787146622376-1787147289780/manifests/43eedb138d44a5eee4af778332e2a0e7ac6ce76d441d46b5ccd70bbd55076545.json",
+      "manifest_sha256": "e0b64bcfb5324ed69fd7dbbafbfe1306f61c4f0e30aa9b231f5e9422d986602a",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-3e3493e4d1b5-1787146622376-1787147289780-43eedb138d44a5ee.json",
+      "qualification_sha256": "dae0794f5e187a7068693eaaf92af2e303bde345b02e623129df8e8111b1296c",
+      "qualified": true,
+      "record_count": 15411,
+      "records_sha256": "1a6338535ed2b41ef57cb65a600e75cbef9fcf2a25d1251d1203c0e7d6c533c0",
+      "segment_id": "43eedb138d44a5eee4af778332e2a0e7ac6ce76d441d46b5ccd70bbd55076545",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000414.jsonl.gz",
+      "source_storage_sha256": "3e3493e4d1b5a4954e4870c4cd541946ced674531317cf1698addd74cf244e24",
+      "window": {
+        "end_ms": 1787147289780,
+        "start_ms": 1787146622376
+      }
+    },
+    {
+      "dataset_id": "h1-btc-c3a4d7fcfb69-1787147289794-1787147956500",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-c3a4d7fcfb69-1787147289794-1787147956500/manifests/e32ecd8882f51123088253dd6d08e221e8d1d11c3aa7b1848e7c691301e517e2.json",
+      "manifest_sha256": "44594b6ab236945040b44aff5c9b5b2119884942530fe0b49298f14f3f54a115",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-c3a4d7fcfb69-1787147289794-1787147956500-e32ecd8882f51123.json",
+      "qualification_sha256": "fdbab89f4be94af59eaec7ff30a0208678eddae3bccd4bf62bb642a72ad582b5",
+      "qualified": true,
+      "record_count": 15394,
+      "records_sha256": "96e0d73d0a70eba02b7dad2691abc92431ab341bc123d4984e667ccd4a7a753c",
+      "segment_id": "e32ecd8882f51123088253dd6d08e221e8d1d11c3aa7b1848e7c691301e517e2",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000415.jsonl.gz",
+      "source_storage_sha256": "c3a4d7fcfb69794e40b233d91db63eb023fbd757b4155633ba91b929058a061e",
+      "window": {
+        "end_ms": 1787147956500,
+        "start_ms": 1787147289794
+      }
+    },
+    {
+      "dataset_id": "h1-btc-32b5ba49080a-1787147956500-1787148611652",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-32b5ba49080a-1787147956500-1787148611652/manifests/2061e62ef9a77bcb08e5c5376a622e0901bc9371a12e80ffbbbb5f5dca205f74.json",
+      "manifest_sha256": "bd89de16799504f553868ebf57f23d03436670fc3aaa7b1f3e9a107a0109b6d3",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-32b5ba49080a-1787147956500-1787148611652-2061e62ef9a77bcb.json",
+      "qualification_sha256": "3d3fe80f786c2a441d3e9f871f000015a449a6eba35f5e3b0029b109330b7006",
+      "qualified": true,
+      "record_count": 20090,
+      "records_sha256": "f5308ecb07bef11a7b3fb4e095d0a8d74f480836aad9a3f74efe04ca848f7906",
+      "segment_id": "2061e62ef9a77bcb08e5c5376a622e0901bc9371a12e80ffbbbb5f5dca205f74",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000416.jsonl.gz",
+      "source_storage_sha256": "32b5ba49080a2638ab294380edd69a9aca1840c5959f63a24122aa8d368a1864",
+      "window": {
+        "end_ms": 1787148611652,
+        "start_ms": 1787147956500
+      }
+    },
+    {
+      "dataset_id": "h1-btc-fcf35df812fd-1787148611652-1787149333906",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-fcf35df812fd-1787148611652-1787149333906/manifests/a3d37c9c814c4b97fa40ffb5f7992cd40632369065e1ac05303312f348e4926a.json",
+      "manifest_sha256": "ec57d8ff0c31807654ab47b82339319b344f7c340ba379c7422b98d159b8dd5c",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-fcf35df812fd-1787148611652-1787149333906-a3d37c9c814c4b97.json",
+      "qualification_sha256": "b54a588f4fc2a55a550dad6fc36d448c554ab48cbcb1d7527fe4236efe55e716",
+      "qualified": true,
+      "record_count": 16993,
+      "records_sha256": "8ba818957a26e7ec72dba8bd94f6974c5472af4a9f094d6b384917cd5563dcb1",
+      "segment_id": "a3d37c9c814c4b97fa40ffb5f7992cd40632369065e1ac05303312f348e4926a",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000417.jsonl.gz",
+      "source_storage_sha256": "fcf35df812fd69176662fec6f70078a4b1b9e0a7f2f4ab85c1f08a32e31983f6",
+      "window": {
+        "end_ms": 1787149333906,
+        "start_ms": 1787148611652
+      }
+    },
+    {
+      "dataset_id": "h1-btc-02c4115a8880-1787149333906-1787150160258",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-02c4115a8880-1787149333906-1787150160258/manifests/7c529b286abbe31506c65712489971cafa5ec77dada82edefd2fb847a9a2bec5.json",
+      "manifest_sha256": "602be0c9c3f9dda0537ea293cfafac1e2bc999931adf0769b852d9cd251abf4e",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-02c4115a8880-1787149333906-1787150160258-7c529b286abbe315.json",
+      "qualification_sha256": "c05ddcdadc3df572202f2b4f6f62f4673f8a8b42e52887bfe14bb8c7fbd0d8cd",
+      "qualified": true,
+      "record_count": 13606,
+      "records_sha256": "7c37b2f1a6bd06911d250c3709bfefee54243ba5136ce456aee13dd5442e30c5",
+      "segment_id": "7c529b286abbe31506c65712489971cafa5ec77dada82edefd2fb847a9a2bec5",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000418.jsonl.gz",
+      "source_storage_sha256": "02c4115a888083899597c8cdb6d2ed656c0f15bb2fd3a5b5bfbaace29afe0dbc",
+      "window": {
+        "end_ms": 1787150160258,
+        "start_ms": 1787149333906
+      }
+    },
+    {
+      "dataset_id": "h1-btc-3c8496e79456-1787150160265-1787150981148",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-3c8496e79456-1787150160265-1787150981148/manifests/ca0c8d283e36041a8d378cff160c3f4271b19407794ebae63bac9025c1d1327a.json",
+      "manifest_sha256": "ec610fb4a3aa23c9dfafa21663bb1fe713454b1ef41ec25ca7b6fa3118ff0373",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-3c8496e79456-1787150160265-1787150981148-ca0c8d283e36041a.json",
+      "qualification_sha256": "d7b05a466ca783b977fc188f9020c480414aaf90bca6b9246261a81f2c07aa00",
+      "qualified": true,
+      "record_count": 13318,
+      "records_sha256": "a070568083d85ed8655355997c8348074eddae3c5d3c3dcfabdae954ff851eb4",
+      "segment_id": "ca0c8d283e36041a8d378cff160c3f4271b19407794ebae63bac9025c1d1327a",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000419.jsonl.gz",
+      "source_storage_sha256": "3c8496e79456b0f55d5571739da3ccc44d15dadf51677b961a213b2ee5f29822",
+      "window": {
+        "end_ms": 1787150981148,
+        "start_ms": 1787150160265
+      }
+    },
+    {
+      "dataset_id": "h1-btc-8ea481059e25-1787150981148-1787151477389",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-8ea481059e25-1787150981148-1787151477389/manifests/a6a8ce48e099415fb8239139b8f3153dff4786b63df6e81c1ef2843442fd5c6d.json",
+      "manifest_sha256": "ba8337de32fbcb41781322f7b19bf808bae011604123e53f69fcc006a9042cfd",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-8ea481059e25-1787150981148-1787151477389-a6a8ce48e099415f.json",
+      "qualification_sha256": "201bf6075e9fc08152db6165c70d7b61df4b97c5ca6cef203ba15bcfd89909d3",
+      "qualified": true,
+      "record_count": 20171,
+      "records_sha256": "cfb2c48357bb73c9044fa16bbc8330fd77b7ca3a26066e035f141f496cf78db6",
+      "segment_id": "a6a8ce48e099415fb8239139b8f3153dff4786b63df6e81c1ef2843442fd5c6d",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000420.jsonl.gz",
+      "source_storage_sha256": "8ea481059e251c3798a0b64a07430e236f8f3cfb0aa6d9cff942eca741f84db0",
+      "window": {
+        "end_ms": 1787151477389,
+        "start_ms": 1787150981148
+      }
+    },
+    {
+      "dataset_id": "h1-btc-71bfd828e3ec-1787151477396-1787151952182",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-71bfd828e3ec-1787151477396-1787151952182/manifests/d865a85a2b41eae882eb843b45519c87fcadd4e28cd0eb8b399148c5ed9db556.json",
+      "manifest_sha256": "9c07a2d749a98bb28326c925f98d4c344621528404ccf52053717c4dcbf021b0",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-71bfd828e3ec-1787151477396-1787151952182-d865a85a2b41eae8.json",
+      "qualification_sha256": "367ffe9e6992c38f03057e91a2816aa807c1ebf28af6a9d4fb5997ceb43e4c90",
+      "qualified": true,
+      "record_count": 20684,
+      "records_sha256": "a494e13c4dc9aeaf9fc6806dd526b7e5eb4a163752a22acac367056423bb0604",
+      "segment_id": "d865a85a2b41eae882eb843b45519c87fcadd4e28cd0eb8b399148c5ed9db556",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000421.jsonl.gz",
+      "source_storage_sha256": "71bfd828e3ecc272ac0d23568f7710df4823494400e3a9574e9e2b60b792f972",
+      "window": {
+        "end_ms": 1787151952182,
+        "start_ms": 1787151477396
+      }
+    },
+    {
+      "dataset_id": "h1-btc-2d381e87f733-1787151952182-1787152442266",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-2d381e87f733-1787151952182-1787152442266/manifests/c92e04aa7029ef751e580922d9309ff99354b4bb59aa85f6259229e235574b82.json",
+      "manifest_sha256": "451a46cd065f3d6b2ebea7856e90db23ccb77eff010b5dae20fef4d032d35853",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-2d381e87f733-1787151952182-1787152442266-c92e04aa7029ef75.json",
+      "qualification_sha256": "aed52c98765346989acf94194f037611ba93acbc75c9737c517c2ace4282888d",
+      "qualified": true,
+      "record_count": 18772,
+      "records_sha256": "17001a7a7da7e256a5d89c5ca578c4143a823451242397ad205727e4f2077794",
+      "segment_id": "c92e04aa7029ef751e580922d9309ff99354b4bb59aa85f6259229e235574b82",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000422.jsonl.gz",
+      "source_storage_sha256": "2d381e87f7336414ac7c50403bda3769fc811825d48637f3f1090b9acec9e003",
+      "window": {
+        "end_ms": 1787152442266,
+        "start_ms": 1787151952182
+      }
+    },
+    {
+      "dataset_id": "h1-btc-0c93d10ffb89-1787152442266-1787153011558",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-0c93d10ffb89-1787152442266-1787153011558/manifests/910c994065265059b429d7a8e45b61611d371a0ccb4c980f5347b7b735631985.json",
+      "manifest_sha256": "785e08822c91d101d44272d32c23e2a4b5ab8d02dded75bedd3f60257b42d7b8",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-0c93d10ffb89-1787152442266-1787153011558-910c994065265059.json",
+      "qualification_sha256": "575de22c11e342fda5f49d0e208b75ce8e393734fb3164a001a4fb99047439f2",
+      "qualified": true,
+      "record_count": 19833,
+      "records_sha256": "cad4ac995518c9362948ac2834620e41b0152193625508b4c4b4385a4406163c",
+      "segment_id": "910c994065265059b429d7a8e45b61611d371a0ccb4c980f5347b7b735631985",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000423.jsonl.gz",
+      "source_storage_sha256": "0c93d10ffb895bb5d39ada8aabc22838a3c3b9b58390dbf29beac0280b8684aa",
+      "window": {
+        "end_ms": 1787153011558,
+        "start_ms": 1787152442266
+      }
+    },
+    {
+      "dataset_id": "h1-btc-7448643ea825-1787153011558-1787153291729",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-7448643ea825-1787153011558-1787153291729/manifests/cd491c4912b98fac1c7f92f09ccacc56d5f33de5857845522ca8e647e2d96b4d.json",
+      "manifest_sha256": "dd93f741a638db1015a00e443aedffda517cfed6aa5afc33ff8755d456014f9c",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-7448643ea825-1787153011558-1787153291729-cd491c4912b98fac.json",
+      "qualification_sha256": "ccde8db6ab36059ed7d5a72c2032629661851dbca47559aadfe7c32da90d0d78",
+      "qualified": true,
+      "record_count": 35734,
+      "records_sha256": "7ed25eae189c86bfec16ccf4318a493d1c37e402188a0beb025ee566992fcce3",
+      "segment_id": "cd491c4912b98fac1c7f92f09ccacc56d5f33de5857845522ca8e647e2d96b4d",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000424.jsonl.gz",
+      "source_storage_sha256": "7448643ea825f1ad35a8c86e54a367f8203d0fbfa46bcea5fd21712f060decdd",
+      "window": {
+        "end_ms": 1787153291729,
+        "start_ms": 1787153011558
+      }
+    },
+    {
+      "dataset_id": "h1-btc-6b90a5c8529e-1787153291729-1787153626771",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-6b90a5c8529e-1787153291729-1787153626771/manifests/1d84ac969207cbfd0ee8be36aa487169eb24aa9d8bb85670903bfb3bfa0638a6.json",
+      "manifest_sha256": "e330db4c8ea6c569898532d529fba3d5209000fc0f825971df6fc4a73893b9f8",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-6b90a5c8529e-1787153291729-1787153626771-1d84ac969207cbfd.json",
+      "qualification_sha256": "ba420ed8fc1f0070a1749318ca0d2d41a05d29603953ac8bae1062808c14f4ed",
+      "qualified": true,
+      "record_count": 30213,
+      "records_sha256": "78f5f048a882ba1770fa233d9536be7d41bbaf871724b298ca4e67fe7e61a10d",
+      "segment_id": "1d84ac969207cbfd0ee8be36aa487169eb24aa9d8bb85670903bfb3bfa0638a6",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000425.jsonl.gz",
+      "source_storage_sha256": "6b90a5c8529e0041f829e187941656930c0710ea238135a4721240fbcb392abf",
+      "window": {
+        "end_ms": 1787153626771,
+        "start_ms": 1787153291729
+      }
+    },
+    {
+      "dataset_id": "h1-btc-36e396d9ed76-1787153626771-1787154073092",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-36e396d9ed76-1787153626771-1787154073092/manifests/401530c4090c43ad3ee470a2b363946de36ced1a36f9b3327d7b743f12869241.json",
+      "manifest_sha256": "2d5cc69b17e27bef4dc3d479db2ef047f35c8cb75fcc08f606104d80eff940ca",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-36e396d9ed76-1787153626771-1787154073092-401530c4090c43ad.json",
+      "qualification_sha256": "ff731993b8a3fa25476b7ec787fb6d47111b096b1f461cbe68af5853d7ea38a6",
+      "qualified": true,
+      "record_count": 21407,
+      "records_sha256": "e237e1570a4115aa8ffc38049b9dacf48609a2c0abad149511e894851cf196f8",
+      "segment_id": "401530c4090c43ad3ee470a2b363946de36ced1a36f9b3327d7b743f12869241",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000426.jsonl.gz",
+      "source_storage_sha256": "36e396d9ed762ce7ea26b57f784c6a11e503258e21fc68bf51f614d2faa0ec45",
+      "window": {
+        "end_ms": 1787154073092,
+        "start_ms": 1787153626771
+      }
+    },
+    {
+      "dataset_id": "h1-btc-77f6bbca19d1-1787154073092-1787154607229",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-77f6bbca19d1-1787154073092-1787154607229/manifests/a115f47fb60fe725a24e69cbb6ea085df4389de96334fe591521993988c7f330.json",
+      "manifest_sha256": "7a6d2a89233f81ef389b2d6566d6e0acae2c6316333dba8c7d191f112cfb12ee",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-77f6bbca19d1-1787154073092-1787154607229-a115f47fb60fe725.json",
+      "qualification_sha256": "aa0104b3409cf1faf570a1663602430382c62a1978d211938dd8086b1b06b895",
+      "qualified": true,
+      "record_count": 19796,
+      "records_sha256": "f11b9e87887a361b56870497fd8026f22420aa69592d0e00c16d16624a9df1a4",
+      "segment_id": "a115f47fb60fe725a24e69cbb6ea085df4389de96334fe591521993988c7f330",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000427.jsonl.gz",
+      "source_storage_sha256": "77f6bbca19d16784363a371e93dc5137c86c0bedafa87a45d74913e36ad1b215",
+      "window": {
+        "end_ms": 1787154607229,
+        "start_ms": 1787154073092
+      }
+    },
+    {
+      "dataset_id": "h1-btc-fb4f31c59e33-1787154607229-1787155232988",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-fb4f31c59e33-1787154607229-1787155232988/manifests/0d79f820b4a40fa6c679fe6e430fa8831a7883e7cbb46a498a9787b41952fc6f.json",
+      "manifest_sha256": "654a9b211ca3bf1b0161ae559d7fdcb8960d6454761fdcf7d3d478f429bfb1d2",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-fb4f31c59e33-1787154607229-1787155232988-0d79f820b4a40fa6.json",
+      "qualification_sha256": "cb00279b519bb2f592cb6898c4c71cc88786b5b3c08f56108af6b714500a5da6",
+      "qualified": true,
+      "record_count": 19932,
+      "records_sha256": "43e2854892078494583ff55620c22055257a28c563c8b9ace59169a41755ee27",
+      "segment_id": "0d79f820b4a40fa6c679fe6e430fa8831a7883e7cbb46a498a9787b41952fc6f",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000428.jsonl.gz",
+      "source_storage_sha256": "fb4f31c59e3305219df64deaf4efe548f8e555f56238cdab80882dca255a0b5a",
+      "window": {
+        "end_ms": 1787155232988,
+        "start_ms": 1787154607229
+      }
+    },
+    {
+      "dataset_id": "h1-btc-cef1b4922559-1787155232988-1787155796376",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-cef1b4922559-1787155232988-1787155796376/manifests/b2b4c71e590e4e1b706043232e75a5c87dde1c0ab48991ec6b2d95e58a0c3ac1.json",
+      "manifest_sha256": "98d251eddc5cd4574090ec2b5ea591fcff10ac6afac4147437c6ffb080f45386",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-cef1b4922559-1787155232988-1787155796376-b2b4c71e590e4e1b.json",
+      "qualification_sha256": "10ebe6184356760b2a4e418b8a8bdbdaa3325da2ffcd8b0cf6c284cb9f95ef91",
+      "qualified": true,
+      "record_count": 17396,
+      "records_sha256": "ae6d7288cd9207c35b4ea5345a76defc757a168aa3426b85b4029bdb42f9dece",
+      "segment_id": "b2b4c71e590e4e1b706043232e75a5c87dde1c0ab48991ec6b2d95e58a0c3ac1",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000429.jsonl.gz",
+      "source_storage_sha256": "cef1b492255993ff83d43ba56383dffb67eceb259da217ebd9701e518ef1bd9a",
+      "window": {
+        "end_ms": 1787155796376,
+        "start_ms": 1787155232988
+      }
+    },
+    {
+      "dataset_id": "h1-btc-89faddb92d1c-1787155796376-1787156522291",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-89faddb92d1c-1787155796376-1787156522291/manifests/e6ab103cb258f33e1dc6af9e59f6be96f0c527bc3d9ca8f32d107fbbfc6cffb8.json",
+      "manifest_sha256": "8aabc43d8f991dbc06e0f977e50a1c40b64a5010904f49c185831fbb40f138b3",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-89faddb92d1c-1787155796376-1787156522291-e6ab103cb258f33e.json",
+      "qualification_sha256": "e1e5578ab09e3b694ed38ba10976abc278b63f01aa433df519b56c073970083c",
+      "qualified": true,
+      "record_count": 16119,
+      "records_sha256": "db27a64960211c7edea9f824bf10f346584bc2391df0e7fec7eb622e45e5fe46",
+      "segment_id": "e6ab103cb258f33e1dc6af9e59f6be96f0c527bc3d9ca8f32d107fbbfc6cffb8",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000430.jsonl.gz",
+      "source_storage_sha256": "89faddb92d1c6151742ef06f00461e58e9dcd107f35a48b8b10804f37ce2c7c1",
+      "window": {
+        "end_ms": 1787156522291,
+        "start_ms": 1787155796376
+      }
+    },
+    {
+      "dataset_id": "h1-btc-c7a8c315ffda-1787156522291-1787157313377",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-c7a8c315ffda-1787156522291-1787157313377/manifests/7c000b90e82c1db32b72ed1b5ca071d4a4a3c586c510b9e71d95ffca866b200e.json",
+      "manifest_sha256": "0b87b345f70490258918de4f6e2c0e1dfb560cea071e46542a9b8fe461047151",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-c7a8c315ffda-1787156522291-1787157313377-7c000b90e82c1db3.json",
+      "qualification_sha256": "86f23511b271faf4895fa6f5006c9fa18dc32fdf2c23f6750f67a44bf7b2206e",
+      "qualified": true,
+      "record_count": 16331,
+      "records_sha256": "34571498b0d5f0b9c1367876186dd5e25a29fc692e2b4002304681642d3ff3e5",
+      "segment_id": "7c000b90e82c1db32b72ed1b5ca071d4a4a3c586c510b9e71d95ffca866b200e",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000431.jsonl.gz",
+      "source_storage_sha256": "c7a8c315ffda0eb7c6bb2598e7d3c72ac85b85d628b41e7008bc7d37e4a9d8c2",
+      "window": {
+        "end_ms": 1787157313377,
+        "start_ms": 1787156522291
+      }
+    },
+    {
+      "dataset_id": "h1-btc-e34906156025-1787157313448-1787158173168",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-e34906156025-1787157313448-1787158173168/manifests/b753ffc0b7a913b7cbb82e2b253e4d3f07d645e729e13e8bf36ae988e698aa03.json",
+      "manifest_sha256": "ff776892efe151d1889ac533fa78610b80d34927e94de088ebfa91f10c0a761f",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-e34906156025-1787157313448-1787158173168-b753ffc0b7a913b7.json",
+      "qualification_sha256": "c0229045b2fdc499ac22a9fba54145b1079e4e9d7ea488d0eff37682d89a6514",
+      "qualified": true,
+      "record_count": 17489,
+      "records_sha256": "0990aa4a0846bcb7686c5b6009ddfc788f329ca3039bc19cab0fbd8afacc6802",
+      "segment_id": "b753ffc0b7a913b7cbb82e2b253e4d3f07d645e729e13e8bf36ae988e698aa03",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000432.jsonl.gz",
+      "source_storage_sha256": "e34906156025339aac88c7afd634f7a691b7ec97c39e5313c30be552f65969c2",
+      "window": {
+        "end_ms": 1787158173168,
+        "start_ms": 1787157313448
+      }
+    },
+    {
+      "dataset_id": "h1-btc-8dbce783c998-1787158173168-1787158800000",
+      "manifest_path": "/workspaces/bot05/data/normalized/h1-btc-8dbce783c998-1787158173168-1787158800000/manifests/e6e3e8acb40756f847aecd651c67dc92e1f02b949ec7791a88c7b5306e1cd6d2.json",
+      "manifest_sha256": "0e8faad8b0ef634e206e14ea2f1df788de284ec7047f4e50c2288e7b9827f9bd",
+      "qualification_path": "/workspaces/bot05/reports/data_quality/qualifications/h1-btc-8dbce783c998-1787158173168-1787158800000-e6e3e8acb40756f8.json",
+      "qualification_sha256": "ae2da20245e160e106af5a62e5e38909093bff917cfbefe2df1a90cded5fea12",
+      "qualified": true,
+      "record_count": 12626,
+      "records_sha256": "e5ec9fc87ffa0a2c576557ea6952f342b0c50afd983c6123f86028e0df5e469c",
+      "segment_id": "e6e3e8acb40756f847aecd651c67dc92e1f02b949ec7791a88c7b5306e1cd6d2",
+      "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-19-000433.jsonl.gz",
+      "source_storage_sha256": "8dbce783c9986758a8f33c83107b5b24616bec31d9a5206d7b2581c57203bd42",
+      "window": {
+        "end_ms": 1787158800000,
+        "start_ms": 1787158173168
+      }
+    }
+  ],
+  "source_manifest_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/manifest.json",
+  "source_manifest_sha256": "b4845c57672eb9d2909f9c2e0727cc1b13de5a1ec2c337e6fe98ddd4260c328c",
+  "source_records_sha256": "f602b95c4ba93cd3dc487f67717d18785f6b7d2c73a9e6152a7dc693ebe0c1a8",
+  "source_trade_count": 271205,
+  "start_utc": "2026-08-19T13:00:00.000Z",
+  "trade_retransmission_count": 42,
+  "transformations": [
+    "retain_earliest_received_copy_per_consistent_market_trade_id"
+  ]
+}

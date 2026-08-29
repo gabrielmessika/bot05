@@ -86,6 +86,67 @@ class SegmentAudit:
         )
 
 
+def select_hyperbot_segment_windows(
+    manifest_path: Path,
+    requested: TimeRange,
+    *,
+    max_manifest_gap_ms: int = 15_000,
+) -> tuple[tuple[HyperbotSegmentSpec, TimeRange], ...]:
+    """Resolve the physical source segments needed for one bounded window."""
+
+    if max_manifest_gap_ms <= 0:
+        raise QualificationError("max manifest gap must be positive")
+    resolved_manifest = manifest_path.resolve()
+    try:
+        document = json.loads(resolved_manifest.read_bytes())
+    except (OSError, json.JSONDecodeError) as exc:
+        raise QualificationError(f"invalid source manifest: {manifest_path}") from exc
+    root = _mapping(document, "source manifest")
+    if (
+        root.get("manifest_schema_version") != 1
+        or root.get("stream") != "public-market-data"
+    ):
+        raise QualificationError("unsupported HyperBot source manifest")
+    raw_segments = root.get("segments")
+    if not isinstance(raw_segments, list):
+        raise QualificationError("source manifest segments must be an array")
+    names: list[tuple[int, str]] = []
+    for raw in cast(list[object], raw_segments):
+        item = _mapping(raw, "source segment")
+        name = _string(item, "path")
+        start_ms = _integer(item, "begin_recorded_at_ms")
+        end_ms = _integer(item, "end_recorded_at_ms") + 1
+        if start_ms < requested.end_ms and requested.start_ms < end_ms:
+            names.append((start_ms, name))
+    if not names:
+        raise QualificationError("no source segment overlaps requested window")
+    specs = tuple(
+        load_hyperbot_segment_spec(resolved_manifest, name) for _, name in sorted(names)
+    )
+    first_gap = max(0, specs[0].source_period.start_ms - requested.start_ms)
+    last_gap = max(0, requested.end_ms - specs[-1].source_period.end_ms)
+    internal_gaps = tuple(
+        max(0, right.source_period.start_ms - left.source_period.end_ms)
+        for left, right in zip(specs, specs[1:], strict=False)
+    )
+    if max((first_gap, last_gap, *internal_gaps), default=0) > max_manifest_gap_ms:
+        raise QualificationError("source manifest has a critical window gap")
+
+    result: list[tuple[HyperbotSegmentSpec, TimeRange]] = []
+    cursor = requested.start_ms
+    for spec in specs:
+        start_ms = max(requested.start_ms, spec.source_period.start_ms, cursor)
+        end_ms = min(requested.end_ms, spec.source_period.end_ms)
+        if start_ms >= end_ms:
+            continue
+        window = TimeRange(start_ms, end_ms)
+        result.append((spec, window))
+        cursor = end_ms
+    if not result:
+        raise QualificationError("requested window has no usable source partition")
+    return tuple(result)
+
+
 def _mapping(value: object, name: str) -> Mapping[str, object]:
     if not isinstance(value, dict):
         raise QualificationError(f"{name} must be an object")

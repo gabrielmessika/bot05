@@ -1,0 +1,51 @@
+{
+  "audit": {
+    "channel_metrics": {
+      "bbo": {
+        "first_exchange_ms": 1787328004423,
+        "last_exchange_ms": 1787328708435,
+        "max_inter_event_gap_ms": 834,
+        "record_count": 7392
+      },
+      "trades": {
+        "first_exchange_ms": 1787328006032,
+        "last_exchange_ms": 1787328708435,
+        "max_inter_event_gap_ms": 2947,
+        "record_count": 6925
+      }
+    },
+    "channels": [
+      "trades",
+      "bbo"
+    ],
+    "coverage_basis": "continuous_hash_chain_plus_bbo_heartbeat",
+    "market": "BTC",
+    "max_heartbeat_gap_ms": 15000,
+    "source_content_sha256": "6500088e641ea80303eb61f25e107620431bc3f616dd40487b2193b598e6ae28",
+    "source_first_record_sha256": "2534b311d51c43529d08da2933c3407ca02bb98269c74cc2a9a29be41a4041b4",
+    "source_first_sequence": 83168866,
+    "source_last_record_sha256": "932585144ff8ccde7069f9c2f4f4c1022f64bd1587cb3189b1a48cf16ef6d198",
+    "source_last_sequence": 83301070,
+    "source_manifest_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/manifest.json",
+    "source_manifest_sha256": "b4845c57672eb9d2909f9c2e0727cc1b13de5a1ec2c337e6fe98ddd4260c328c",
+    "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-21-000632.jsonl.gz",
+    "source_record_count": 132205,
+    "validated_record_count": 132205
+  },
+  "coverage": [
+    {
+      "end_ms": 1787328708862,
+      "start_ms": 1787328004411
+    }
+  ],
+  "critical_gap_count": 0,
+  "dataset_id": "h1-btc-bf9ba4f88cc4-1787328004411-1787328708862",
+  "duplicate_count": 0,
+  "kind": "bot05_dataset_qualification",
+  "qualified": true,
+  "records_sha256": "e3d1b7571a974e8a2c8e7dfa129c982d05f1490a72e9c8808360b59dbdfff250",
+  "reject_count": 0,
+  "schema_version": 1,
+  "segment_id": "94f8e5291b427102e64d72517f2912594160c5b63cdffb5b0b4c9cb3ba411755",
+  "source_raw_sha256": "bf9ba4f88cc41188a153cd963c1d270abfdcb60af66d3f0671df9baf51f30687"
+}

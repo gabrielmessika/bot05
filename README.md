@@ -38,7 +38,13 @@ Le lot initial fournit :
 - des rapports de replay JSON/Markdown immuables et checksummés, sans appel
   réseau ;
 - des études D5 mono-marché et mono-étage de preuve, avec entonnoirs, MFE/MAE,
-  métriques économiques descriptives et parité sous-jacent/Hyperliquid.
+  métriques économiques descriptives et parité sous-jacent/Hyperliquid ;
+- un runner historique explicite `store → features → stratégie → risque → quatre
+  replays`, dont les hypothèses non sourcées empêchent toute promotion ;
+- les contrats D6 de matrice 3×3×3, contrôles, splits purgés, walk-forward,
+  bootstrap par journées, holdout exact-once et gates mécaniques ;
+- les contrats D7 publics de santé collector, réparation de séquences, shadow
+  sans action, réconciliation, kill switch manuel et rapport quotidien.
 
 Les données HyperBot partagées sont classées H1 dans BOT05, jamais H2. Les
 données TRIDENT sont classées L par défaut. Un chevauchement local non encore
@@ -121,6 +127,57 @@ uv run python scripts/audit_d2_data_gates.py
 Le rapport distingue strictement les fenêtres `manifest-only` des datasets
 qualifiés. Cette limite de données bloque la fermeture D2, mais pas les tests
 synthétiques de la stratégie et du risque D3.
+
+## Qualification multi-segments et smoke historique
+
+Une fenêtre H1 entière est qualifiée par partitions physiques, avec réaudit du
+heartbeat BBO aux frontières et correction déclarée des retransmissions de
+trades cohérentes :
+
+```bash
+uv run python scripts/qualify_hyperbot_window.py \
+  --config config/research.toml \
+  --source-manifest /workspaces/hyperbot/data/server-fetches/EXAMPLE/payload/data/raw/collector/public-market-data/manifest.json \
+  --market BTC \
+  --start-utc 2026-08-21T13:00:00Z \
+  --end-utc 2026-08-21T17:00:00Z \
+  --output reports/data_quality/btc_window.json
+```
+
+Le premier smoke historique reproductible se relance ensuite ainsi :
+
+```bash
+uv run python scripts/run_historical_smoke.py \
+  --config config/historical_smoke_btc_2026-08-21.toml \
+  --output reports/replay/btc_2026-08-21_first_historical_smoke.json
+```
+
+Les cinq fenêtres antérieures qualifiées peuvent être réunies dans l'audit
+descriptif local avec :
+
+```bash
+uv run python scripts/audit_local_btc_sessions.py \
+  reports/data_quality/btc_2026-08-{16,17,18,19,20}_1300_1700_window.json \
+  --qualification-root reports/data_quality/qualifications \
+  --output reports/data_quality/btc_2026-08-16_20_session_frequency_audit.json
+```
+
+L'audit publié contient cinq fenêtres, dont quatre candidates ouvrées. Aucun
+Opening Drive valide n'y est observé avec la définition préenregistrée ; le
+résultat reste descriptif, sans calendrier opérateur et seize sessions sous le
+minimum historique requis.
+
+Le planner peut ensuite intégrer ces qualifications dans une nouvelle baseline
+sans modifier les rapports précédents :
+
+```bash
+uv run python scripts/plan_data_acquisition.py \
+  --config config/research_post_btc_history_qualification.toml
+```
+
+Ce rapport est volontairement conclu par `data_insufficient`. Il valide la
+chaîne technique sur une session H1 ; il ne valide ni rendement, ni frais
+historiques, ni calendrier de production, ni passage en shadow.
 
 ## Données
 

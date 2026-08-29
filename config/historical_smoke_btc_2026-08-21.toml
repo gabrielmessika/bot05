@@ -1,0 +1,47 @@
+schema_version = 1
+purpose = "single_session_pipeline_smoke_no_edge_claim"
+window_report = "../reports/data_quality/btc_2026-08-21_1300_1700_window_v2.json"
+qualification_root = "../reports/data_quality/qualifications"
+market = "BTC"
+session_id = "us_cash_open"
+t0_utc = "2026-08-21T13:30:00Z"
+generated_at_utc = "2026-08-29T00:00:00Z"
+
+[strategy]
+confirmation = "breakout_confirm"
+target = "fixed_2r"
+
+[replay]
+requested_quantity = "0.001"
+price_tick = "1"
+size_step = "0.00001"
+max_staleness_ms = 5000
+max_position_seconds = 7200
+central_entry_latency_ms = 100
+central_stop_latency_ms = 100
+central_target_ack_latency_ms = 100
+conservative_slippage_bps = "2"
+stress_slippage_bps = "5"
+
+[fees]
+account_tier = "tier_0_assumption"
+maker_rate = "0.0002"
+taker_rate = "0.0005"
+
+[risk]
+equity = "100000"
+max_spread_bps = "5"
+max_slippage_bps = "5"
+max_oracle_mark_divergence_bps = "25"
+max_risk_fraction = "0.0025"
+max_leverage = "3"
+max_daily_trades = 2
+max_daily_loss_r = "1"
+min_net_reward_risk = "1.5"
+expected_win_cost_bps = "12"
+expected_loss_cost_bps = "12"
+
+[assumptions]
+calendar = "us_cash_open_2026-08-21_13:30Z_unverified_smoke_only"
+market_definition = "BTC_core_tick_and_size_unverified_historical_smoke_only"
+funding = "zero_for_smoke_because_no_qualified_local_funding_events"

@@ -3,17 +3,24 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+from dataclasses import replace
+from datetime import timedelta
 from pathlib import Path
+
+import pytest
 
 from bot05.data.contracts import Qualification, TimeRange
 from bot05.data.inventory import discover_local_inventory
+from bot05.data.normalizer import NormalizationResult, NormalizedRecord
 from bot05.data.qualification import (
     audit_hyperbot_segment,
     build_qualification_report,
     load_hyperbot_segment_spec,
     provenance_for_hyperbot_segment,
+    select_hyperbot_segment_windows,
     write_qualification_report,
 )
+from bot05.data.reader import QualifiedStoreError, read_qualified_event_records
 from bot05.data.store import AppendOnlyStore, QualificationEvidence
 
 
@@ -164,7 +171,6 @@ def test_bounded_h1_qualification_is_deterministic_and_planner_ready(
         channels=("trades", "bbo"),
         window=window,
     )
-
     assert audit.qualified is True
     assert len(audit.result.records) == 4
     assert {item.record.market for item in audit.result.records} == {"BTC"}
@@ -220,3 +226,90 @@ def test_heartbeat_gap_blocks_qualification(tmp_path: Path) -> None:
 
     assert audit.qualified is False
     assert audit.critical_gap_count > 0
+
+
+def test_window_partition_resolves_a_bounded_physical_source(tmp_path: Path) -> None:
+    manifest, segment_name, start_ms, end_ms = _source_fixture(tmp_path / "source")
+
+    partitions = select_hyperbot_segment_windows(
+        manifest, TimeRange(start_ms + 1_000, end_ms - 1_000)
+    )
+
+    assert len(partitions) == 1
+    assert partitions[0][0].source_path.name == segment_name
+    assert partitions[0][1] == TimeRange(start_ms + 1_000, end_ms - 1_000)
+
+
+def test_qualified_reader_rechecks_store_and_combined_heartbeat(
+    tmp_path: Path,
+) -> None:
+    manifest, segment_name, start_ms, end_ms = _source_fixture(tmp_path / "source")
+    spec = load_hyperbot_segment_spec(manifest, segment_name)
+    provenance = provenance_for_hyperbot_segment(
+        spec,
+        dataset_id="h1-btc-reader-fixture",
+        code_version="reader-test",
+        config_sha256="f" * 64,
+        market="BTC",
+        channels=("trades", "bbo"),
+    )
+    window = TimeRange(start_ms, end_ms)
+    audit = audit_hyperbot_segment(
+        spec,
+        provenance,
+        market="BTC",
+        channels=("trades", "bbo"),
+        window=window,
+    )
+    original_trade = next(
+        item for item in audit.result.records if item.source_channel == "trades"
+    )
+    retransmission = NormalizedRecord(
+        source_index=max(item.source_index for item in audit.result.records) + 1,
+        source_record_sha256="9" * 64,
+        source_channel="trades",
+        record=replace(
+            original_trade.record,
+            received_at=original_trade.record.received_at + timedelta(milliseconds=1),
+        ),
+    )
+    audit = replace(
+        audit,
+        result=NormalizationResult(
+            audit.result.records + (retransmission,), audit.result.rejects
+        ),
+    )
+    stored = AppendOnlyStore(tmp_path / "normalized").append(
+        provenance.dataset_id, provenance, audit.result
+    )
+    report_root = tmp_path / "reports"
+    report_path = (report_root / "qualification.json").resolve()
+    write_qualification_report(report_path, build_qualification_report(audit, stored))
+
+    first = read_qualified_event_records(
+        (stored.manifest_path,),
+        qualification_root=report_root,
+        market="BTC",
+        requested=window,
+    )
+    second = read_qualified_event_records(
+        (stored.manifest_path,),
+        qualification_root=report_root,
+        market="BTC",
+        requested=window,
+    )
+
+    assert len(first.trades) == 1
+    assert len(first.books) == 3
+    assert first.records_sha256 == second.records_sha256
+    assert first.max_bbo_gap_ms == 5_000
+    assert first.duplicate_trade_count == 1
+
+    stored.records_path.write_bytes(stored.records_path.read_bytes() + b"corrupt")
+    with pytest.raises(QualifiedStoreError, match="records checksum"):
+        read_qualified_event_records(
+            (stored.manifest_path,),
+            qualification_root=report_root,
+            market="BTC",
+            requested=window,
+        )

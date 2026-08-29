@@ -1,0 +1,51 @@
+{
+  "audit": {
+    "channel_metrics": {
+      "bbo": {
+        "first_exchange_ms": 1786899589046,
+        "last_exchange_ms": 1786899599907,
+        "max_inter_event_gap_ms": 740,
+        "record_count": 45
+      },
+      "trades": {
+        "first_exchange_ms": 1786899589046,
+        "last_exchange_ms": 1786899598291,
+        "max_inter_event_gap_ms": 2015,
+        "record_count": 18
+      }
+    },
+    "channels": [
+      "trades",
+      "bbo"
+    ],
+    "coverage_basis": "continuous_hash_chain_plus_bbo_heartbeat",
+    "market": "BTC",
+    "max_heartbeat_gap_ms": 15000,
+    "source_content_sha256": "deb72f890e1f848af1bc462e8c10f5b17ef6b4b1492cd4004adead87bbc0aced",
+    "source_first_record_sha256": "190e7f4da32158cde993191721455a47fe59993744be95b8f174a7f6783aa60c",
+    "source_first_sequence": 33554035,
+    "source_last_record_sha256": "d11b398b493f930b9f4d2ce28610e98efd6a150dcb79e89cd012f87bb8df3917",
+    "source_last_sequence": 33685745,
+    "source_manifest_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/manifest.json",
+    "source_manifest_sha256": "b4845c57672eb9d2909f9c2e0727cc1b13de5a1ec2c337e6fe98ddd4260c328c",
+    "source_path": "/workspaces/hyperbot/data/server-fetches/fetch-20260822T070249Z-5d551f5b/payload/data/raw/collector/public-market-data/2026-08-16-000253.jsonl.gz",
+    "source_record_count": 131711,
+    "validated_record_count": 131711
+  },
+  "coverage": [
+    {
+      "end_ms": 1786899600000,
+      "start_ms": 1786899589027
+    }
+  ],
+  "critical_gap_count": 0,
+  "dataset_id": "h1-btc-43082531921d-1786899589027-1786899600000",
+  "duplicate_count": 0,
+  "kind": "bot05_dataset_qualification",
+  "qualified": true,
+  "records_sha256": "9199b449fadcd5c5c73c92a80cf0a3fc835198036d8042dc59d5d86bee65e678",
+  "reject_count": 0,
+  "schema_version": 1,
+  "segment_id": "bb8acc292cf9759560943c8f8e616647e366e79e5a4b51d7faffe26e51bf3a35",
+  "source_raw_sha256": "43082531921d7b7d79355b8a54196178b642eacb4932a67abe8e337a32c47408"
+}
